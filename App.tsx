@@ -1,14 +1,14 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 import { Text, View } from 'react-native';
-import { createAppContainer, createSwitchNavigator } from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
 
 function Screen1() {
   return (
      <View>
-       <Text>Screen1</Text>
+       <Text>Screen1Text</Text>
      </View>
   )
 }
@@ -21,33 +21,17 @@ function Screen2() {
   )
 }
 
-export const Flow1 = createStackNavigator(
-   {
-      Screen1: Screen1,
-      Screen2: Screen2
-   },
-   {
-      initialRouteName: 'Screen1'
-   }
-)
-
-const stack = createSwitchNavigator(
-   {
-      Flow1: {screen: Flow1}
-   },
-   {
-      initialRouteName: 'Flow1'
-   }
-)
-
-const AppContainer = createAppContainer(stack);
+const Stack = createStackNavigator();
 
 export default class App extends React.Component {
    render() {
       return (
-         <View style={{flex: 1}}>
-            <AppContainer/>
-         </View>
+         <NavigationContainer>
+            <Stack.Navigator>
+               <Stack.Screen name={'Screen1'} component={Screen1} />
+               <Stack.Screen name={'Screen2'} component={Screen2} />
+            </Stack.Navigator>
+         </NavigationContainer>
       )
    }
 }
