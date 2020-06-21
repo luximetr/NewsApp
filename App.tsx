@@ -3,7 +3,7 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 function Screen1() {
   return (
@@ -22,15 +22,32 @@ function Screen2() {
 }
 
 const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
+
+function Stack1() {
+   return (
+      <Stack.Navigator>
+         <Stack.Screen name={'Screen1'} component={Screen1} />
+      </Stack.Navigator>
+   )
+}
+
+function Stack2() {
+   return (
+      <Stack.Navigator>
+         <Stack.Screen name={'Screen2'} component={Screen2} />
+      </Stack.Navigator>
+   )
+}
 
 export default class App extends React.Component {
    render() {
       return (
          <NavigationContainer>
-            <Stack.Navigator>
-               <Stack.Screen name={'Screen1'} component={Screen1} />
-               <Stack.Screen name={'Screen2'} component={Screen2} />
-            </Stack.Navigator>
+            <Tab.Navigator>
+               <Tab.Screen name={'Screen1'} component={Stack1} />
+               <Tab.Screen name={'Screen2'} component={Stack2} />
+            </Tab.Navigator>
          </NavigationContainer>
       )
    }
