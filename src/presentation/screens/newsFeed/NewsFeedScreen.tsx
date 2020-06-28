@@ -6,7 +6,6 @@ export class NewsFeedScreen extends React.Component {
   render() {
     return (
       <NewsFeedScreenView 
-
       />
     )
   }

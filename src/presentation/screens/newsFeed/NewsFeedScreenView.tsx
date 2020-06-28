@@ -6,7 +6,9 @@ export class NewsFeedScreenView extends React.Component {
 
   render() {
     return (
-      <ScreenView>
+      <ScreenView
+        title={'News'}
+      >
         <Text>assdasd</Text>
       </ScreenView>
     )
