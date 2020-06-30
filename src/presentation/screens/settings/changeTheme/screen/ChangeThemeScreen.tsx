@@ -1,14 +1,16 @@
 import * as React from 'react';
 import {ChangeThemeScreenView} from "./ChangeThemeScreenView";
-import {Theme} from "../../../../../model/custom/theme/Theme";
-import {ThemeType} from "../../../../../model/custom/theme/ThemeType";
+import {appearanceProvider} from "../../../../helpers/managers/AppearanceProvider";
+import {AppearanceType} from "../../../../../model/custom/appearance/AppearanceType";
+import {ChangeThemeItem} from "../helpers/model/ChangeThemeItem";
+import {Appearance} from "../../../../../model/custom/appearance/Appearance";
 
 interface Props {
-
+   navigation: any
 }
 
 interface State {
-   themes: Theme[]
+   themes: ChangeThemeItem[]
 }
 
 export class ChangeThemeScreen extends React.Component<Props, State> {
@@ -20,18 +22,23 @@ export class ChangeThemeScreen extends React.Component<Props, State> {
          themes: [
             {
                name: 'Light',
-               type: ThemeType.light
+               appearanceType: AppearanceType.light
             },
             {
                name: 'Dark',
-               type: ThemeType.dark
+               appearanceType: AppearanceType.dark
             }
          ]
       }
    }
 
-   private onThemePress(theme: Theme) {
-      console.log(theme.name)
+   protected onThemePress(theme: ChangeThemeItem) {
+      appearanceProvider.setCurrentAppearanceByType(theme.appearanceType)
+   }
+
+   // Back
+   private onBack() {
+      this.props.navigation.pop()
    }
 
    // View
@@ -40,6 +47,7 @@ export class ChangeThemeScreen extends React.Component<Props, State> {
          <ChangeThemeScreenView
             themes={this.state.themes}
             onThemePress={this.onThemePress.bind(this)}
+            onBack={this.onBack.bind(this)}
          />
       )
    }

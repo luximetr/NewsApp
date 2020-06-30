@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet} from "react-native";
 import {Appearance} from "../../../../../model/custom/appearance/Appearance";
 
 export function getStyles(appearance: Appearance) {
@@ -12,7 +12,6 @@ export function getStyles(appearance: Appearance) {
       },
       safeArea: {
          flex: 1,
-         backgroundColor: appearance.background.primary
       },
       underSafeArea: {
          backgroundColor: appearance.background.primary,

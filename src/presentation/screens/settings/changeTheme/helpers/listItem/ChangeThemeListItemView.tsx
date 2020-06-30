@@ -1,20 +1,22 @@
 import * as React from 'react';
 import {View, Text} from "react-native";
-import {styles} from "./ChangeThemeListItemView.styles";
+import {Appearance} from "../../../../../../model/custom/appearance/Appearance";
+import {getStyles} from "./ChangeThemeListItemView.styles";
+import {BaseComponent} from "../../../../../helpers/components/baseViews/baseComponent/BaseComponent";
 
 interface Props {
    title: string
 }
 
-export class ChangeThemeListItemView extends React.Component<Props> {
+interface State {
+}
 
-   render() {
+export class ChangeThemeListItemView extends BaseComponent<Props, State> {
+
+   renderWith(appearance: Appearance): any {
+      const styles = getStyles(appearance)
       return (
-         <View>
-            <View>
-               <Text style={styles.title}>{this.props.title}</Text>
-            </View>
-         </View>
+         <Text style={styles.title}>{this.props.title}</Text>
       )
    }
 }

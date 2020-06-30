@@ -1,0 +1,19 @@
+import React from 'react';
+import {AppearanceContext} from "../../../managers/AppearanceProvider";
+import {Appearance} from "../../../../../model/custom/appearance/Appearance";
+import {View} from "react-native";
+
+export class BaseComponent<P=any, S=any> extends React.Component<P, S> {
+
+   render() {
+      return (
+         <AppearanceContext.Consumer>
+            {appearance => this.renderWith(appearance)}
+         </AppearanceContext.Consumer>
+      )
+   }
+
+   renderWith(appearance: Appearance) {
+      return <View/>
+   }
+}

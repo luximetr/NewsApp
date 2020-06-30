@@ -1,31 +1,41 @@
 import * as React from 'react';
-import {ScreenView} from "../../../../helpers/components/screenViews/screenView/ScreenView";
 import {FlatList, TouchableOpacity} from "react-native";
-import {Theme} from "../../../../../model/custom/theme/Theme";
 import {ChangeThemeListItemView} from "../helpers/listItem/ChangeThemeListItemView";
+import {ChangeThemeItem} from "../helpers/model/ChangeThemeItem";
+import {Appearance} from "../../../../../model/custom/appearance/Appearance";
+import {getStyles} from "./ChangeThemeScreenView.styles";
+import {BaseComponent} from "../../../../helpers/components/baseViews/baseComponent/BaseComponent";
+import {TopBarScreenView} from "../../../../helpers/components/screenViews/topBarScreenView/TopBarScreenView";
 
 interface Props {
-   themes: Theme[]
-   onThemePress: (theme: Theme) => void
+   themes: ChangeThemeItem[]
+   onThemePress: (theme: ChangeThemeItem) => void
+   onBack: VoidFunction
 }
 
-export class ChangeThemeScreenView extends React.Component<Props> {
+export class ChangeThemeScreenView extends BaseComponent<Props> {
 
-   render() {
+   renderWith(appearance: Appearance) {
       return (
-         <ScreenView title={'Change theme'}>
+         <TopBarScreenView
+            title={'Change theme'}
+            leftTopBarButton={{
+               action: () => {this.props.onBack()}
+            }}
+         >
             <FlatList
+               style={getStyles(appearance).content}
                data={this.props.themes}
                renderItem={(item) => {
                   return this.renderItem(item.item)
                }}
             />
-         </ScreenView>
+         </TopBarScreenView>
       )
    }
 
    // Item
-   private renderItem(theme: Theme) {
+   private renderItem(theme: ChangeThemeItem) {
       return (
          <TouchableOpacity onPress={() => {this.props.onThemePress(theme)}}>
             <ChangeThemeListItemView

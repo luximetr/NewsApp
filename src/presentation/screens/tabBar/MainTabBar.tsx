@@ -1,18 +1,26 @@
 import * as React from 'react';
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NewsStack } from './NewsStack';
-import { SettingsStack } from "./SettingsStack";
+import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
+import {NewsStack} from './NewsStack';
+import {SettingsStack} from "./SettingsStack";
+import {BaseComponent} from "../../helpers/components/baseViews/baseComponent/BaseComponent";
+import {Appearance} from "../../../model/custom/appearance/Appearance";
+import {getStyles, getActiveTintColor, getInactiveTintColor} from "./MainTabBar.styles";
 
 const Tab = createBottomTabNavigator();
 
-export class MainTabBar extends React.Component {
+export class MainTabBar extends BaseComponent {
 
-  render() {
-    return (
-      <Tab.Navigator>
-        <Tab.Screen name='News' component={NewsStack} />
-        <Tab.Screen name='Settings' component={SettingsStack} />
-      </Tab.Navigator>
-    )
-  }
+   renderWith(appearance: Appearance): any {
+      return (
+         <Tab.Navigator
+            tabBarOptions={{
+               style: getStyles(appearance).tabBar,
+               activeTintColor: getActiveTintColor(appearance),
+               inactiveTintColor: getInactiveTintColor(appearance)}}
+         >
+            <Tab.Screen name='News' component={NewsStack} />
+            <Tab.Screen name='Settings' component={SettingsStack} />
+         </Tab.Navigator>
+      )
+   }
 }

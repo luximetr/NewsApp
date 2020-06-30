@@ -1,12 +1,13 @@
+import {Appearance} from "../../../../../../model/custom/appearance/Appearance";
 import {StyleSheet} from "react-native";
 
-export const styles = StyleSheet.create({
-   title: {
-      margin: 14,
-      fontSize: 20
-   },
-   divider: {
-      height: 1,
-      backgroundColor: 'grey'
-   }
-});
+export function getStyles(appearance: Appearance) {
+   return StyleSheet.create({
+      title: {
+         marginHorizontal: 20,
+         marginVertical: 10,
+         color: appearance.text.primary,
+         fontSize: 20,
+      }
+   })
+}

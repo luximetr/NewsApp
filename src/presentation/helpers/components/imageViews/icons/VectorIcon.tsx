@@ -3,7 +3,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import FeatherIcons from 'react-native-vector-icons/Feather';
 
-interface Props {
+export interface VectorIconProps {
   name: string
   source: VectorIconSource
   size: number
@@ -14,7 +14,7 @@ interface State {
   size: number
 }
 
-export class VectorIcon extends React.Component<Props, State> {
+export class VectorIcon extends React.Component<VectorIconProps, State> {
 
   // Render
   render() {
@@ -27,4 +27,4 @@ export class VectorIcon extends React.Component<Props, State> {
   }
 }
 
-type VectorIconSource = 'material' | 'ion' | 'feather'
+export type VectorIconSource = 'material' | 'ion' | 'feather'

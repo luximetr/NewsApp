@@ -1,11 +1,41 @@
 import * as React from 'react';
-import { NewsFeedScreenView } from './NewsFeedScreenView';
+import {NewsFeedScreenView} from './NewsFeedScreenView';
+import {TopHeadlinesRepo} from "../../../model/repos/topHeadlinesRepo/TopHeadlinesRepo";
+import {BaseComponent} from "../../helpers/components/baseViews/baseComponent/BaseComponent";
 
-export class NewsFeedScreen extends React.Component {
+interface Props {
+  navigation: any
+}
 
+interface State {
+
+}
+
+export class NewsFeedScreen extends BaseComponent {
+
+  // Dependencies
+  private topHeadlinesRepo = new TopHeadlinesRepo()
+
+  // Life cycle
+  constructor(props: any) {
+    super(props);
+  }
+
+  componentDidMount(): void {
+    this.loadHeadlines()
+  }
+
+  // Load headlines
+  private loadHeadlines() {
+    this.topHeadlinesRepo.getTopHeadlines().then((result) => {
+      console.log(result)
+    })
+  }
+
+  // View
   render() {
     return (
-      <NewsFeedScreenView 
+      <NewsFeedScreenView
       />
     )
   }

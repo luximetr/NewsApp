@@ -1,15 +1,33 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
+import {Appearance} from "../../../../model/custom/appearance/Appearance";
 
-export const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    backgroundColor: 'white',
-  },
-  title: {
-    flex: 1,
-    textAlign: 'center'
-  },
-  leftAction: {
-    
-  }
-});
+export function getStyles(appearance: Appearance) {
+  return StyleSheet.create({
+    container: {
+      backgroundColor: appearance.navigation.background,
+      height: 44,
+      justifyContent: "space-between"
+    },
+    content: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      paddingTop: 10,
+    },
+    title: {
+      flex: 1,
+      textAlign: 'center',
+      color: appearance.navigation.text,
+      fontSize: 20,
+    },
+    leftAction: {
+      paddingLeft: 24,
+    },
+    rightAction: {
+      paddingRight: 24,
+    },
+    divider: {
+      backgroundColor: appearance.navigation.shadow,
+      height: 1
+    }
+  })
+}

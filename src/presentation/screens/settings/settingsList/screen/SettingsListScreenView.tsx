@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {ScreenView} from "../../../../helpers/components/screenViews/screenView/ScreenView";
 import {SettingsListItemView} from "../helpers/listItem/SettingsListItemView";
+import {TopBarScreenView} from "../../../../helpers/components/screenViews/topBarScreenView/TopBarScreenView";
 
 interface Props {
    selectedLanguageName: string
@@ -26,10 +26,10 @@ export class SettingsListScreenView extends React.Component<Props, State> {
    // Render
    render() {
       return (
-         <ScreenView title={this.state.title}>
+         <TopBarScreenView title={this.state.title}>
             {this.renderLanguageItem()}
             {this.renderThemeItem()}
-         </ScreenView>
+         </TopBarScreenView>
       )
    }
 

@@ -1,16 +1,23 @@
 import * as React from 'react';
-import { Text } from 'react-native';
-import { ScreenView } from '../../helpers/components/screenViews/screenView/ScreenView';
+import {TopBarScreenView} from "../../helpers/components/screenViews/topBarScreenView/TopBarScreenView";
+import {BaseComponent} from "../../helpers/components/baseViews/baseComponent/BaseComponent";
+import {Appearance} from "../../../model/custom/appearance/Appearance";
 
-export class NewsFeedScreenView extends React.Component {
+interface Props {
+}
 
-  render() {
+interface State {
+  title: string
+}
+
+export class NewsFeedScreenView extends BaseComponent<Props, State> {
+
+  renderWith(appearance: Appearance): any {
     return (
-      <ScreenView
-        title={'News'}
-      >
-        <Text>assdasd</Text>
-      </ScreenView>
+       <TopBarScreenView
+          title={'News'}
+       >
+       </TopBarScreenView>
     )
   }
 }

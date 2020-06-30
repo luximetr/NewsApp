@@ -1,6 +1,8 @@
 import * as React from 'react';
 import {View, Text, TouchableOpacity} from "react-native";
-import {styles} from "./SettingsListItemView.styles";
+import {getStyles} from "./SettingsListItemView.styles";
+import {BaseComponent} from "../../../../../helpers/components/baseViews/baseComponent/BaseComponent";
+import {Appearance} from "../../../../../../model/custom/appearance/Appearance";
 
 interface Props {
    title: string
@@ -8,9 +10,10 @@ interface Props {
    onSelect: VoidFunction
 }
 
-export class SettingsListItemView extends React.Component<Props> {
+export class SettingsListItemView extends BaseComponent<Props> {
 
-   render() {
+   renderWith(appearance: Appearance): any {
+      const styles = getStyles(appearance)
       return (
          <View>
             <TouchableOpacity onPress={this.props.onSelect.bind(this)}>
@@ -23,5 +26,4 @@ export class SettingsListItemView extends React.Component<Props> {
          </View>
       )
    }
-
 }
