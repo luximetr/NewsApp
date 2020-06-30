@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {ChangeThemeScreenView} from "./ChangeThemeScreenView";
 import {appearanceProvider} from "../../../../helpers/managers/AppearanceProvider";
-import {AppearanceType} from "../../../../../model/custom/appearance/AppearanceType";
+import {AppearanceType} from "../../../../../model/model/appearance/AppearanceType";
 import {ChangeThemeItem} from "../helpers/model/ChangeThemeItem";
-import {Appearance} from "../../../../../model/custom/appearance/Appearance";
+import {Appearance} from "../../../../../model/model/appearance/Appearance";
 
 interface Props {
    navigation: any

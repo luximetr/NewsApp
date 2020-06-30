@@ -1,6 +1,6 @@
 import React from 'react';
 import {AppearanceContext} from "../../../managers/AppearanceProvider";
-import {Appearance} from "../../../../../model/custom/appearance/Appearance";
+import {Appearance} from "../../../../../model/model/appearance/Appearance";
 import {View} from "react-native";
 
 export class BaseComponent<P=any, S=any> extends React.Component<P, S> {

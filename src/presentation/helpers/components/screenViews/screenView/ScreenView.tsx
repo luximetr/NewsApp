@@ -2,7 +2,7 @@ import * as React from 'react';
 import {View, StatusBar, SafeAreaView} from 'react-native';
 import {getStyles} from './ScreenView.styles';
 import {BaseComponent} from "../../baseViews/baseComponent/BaseComponent";
-import {Appearance} from "../../../../../model/custom/appearance/Appearance";
+import {Appearance} from "../../../../../model/model/appearance/Appearance";
 
 interface Props {
   title: string

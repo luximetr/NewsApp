@@ -1,4 +1,4 @@
-import {AppearanceType} from "../../../../../../model/custom/appearance/AppearanceType";
+import {AppearanceType} from "../../../../../../model/model/appearance/AppearanceType";
 
 export type ChangeThemeItem = {
    name: string,

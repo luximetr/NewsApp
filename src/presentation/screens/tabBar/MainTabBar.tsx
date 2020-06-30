@@ -3,7 +3,7 @@ import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import {NewsStack} from './NewsStack';
 import {SettingsStack} from "./SettingsStack";
 import {BaseComponent} from "../../helpers/components/baseViews/baseComponent/BaseComponent";
-import {Appearance} from "../../../model/custom/appearance/Appearance";
+import {Appearance} from "../../../model/model/appearance/Appearance";
 import {getStyles, getActiveTintColor, getInactiveTintColor} from "./MainTabBar.styles";
 
 const Tab = createBottomTabNavigator();

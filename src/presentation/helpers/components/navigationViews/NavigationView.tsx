@@ -4,7 +4,7 @@ import {getStyles} from './NavigationView.styles';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {VectorIcon, VectorIconProps} from '../imageViews/icons/VectorIcon';
 import {BaseComponent} from "../baseViews/baseComponent/BaseComponent";
-import {Appearance} from "../../../../model/custom/appearance/Appearance";
+import {Appearance} from "../../../../model/model/appearance/Appearance";
 
 interface Props {
    title: string

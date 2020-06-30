@@ -3,8 +3,8 @@ import React from 'react';
 import {NavigationContainer} from "@react-navigation/native";
 import {MainTabBar} from '../presentation/screens/tabBar/MainTabBar';
 import {AppearanceContext, appearanceProvider} from "../presentation/helpers/managers/AppearanceProvider";
-import {Appearance} from "../model/custom/appearance/Appearance";
-import {LightAppearance} from "../model/custom/appearance/LightAppearance";
+import {Appearance} from "../model/model/appearance/Appearance";
+import {LightAppearance} from "../model/model/appearance/LightAppearance";
 
 interface Props {}
 

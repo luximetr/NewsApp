@@ -1,4 +1,4 @@
-import {Appearance} from "../../../../../model/custom/appearance/Appearance";
+import {Appearance} from "../../../../../model/model/appearance/Appearance";
 import {StyleSheet} from "react-native";
 import {appearanceProvider} from "../../../../helpers/managers/AppearanceProvider";
 

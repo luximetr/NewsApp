@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {View, Text} from "react-native";
-import {Appearance} from "../../../../../../model/custom/appearance/Appearance";
+import {Appearance} from "../../../../../../model/model/appearance/Appearance";
 import {getStyles} from "./ChangeThemeListItemView.styles";
 import {BaseComponent} from "../../../../../helpers/components/baseViews/baseComponent/BaseComponent";
 

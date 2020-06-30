@@ -1,5 +1,5 @@
 import {BaseComponent} from "../../baseViews/baseComponent/BaseComponent";
-import {Appearance} from "../../../../../model/custom/appearance/Appearance";
+import {Appearance} from "../../../../../model/model/appearance/Appearance";
 import {getStyles} from "../screenView/ScreenView.styles";
 import {SafeAreaView, StatusBar, View} from "react-native";
 import {NavigationActionProps, NavigationView} from "../../navigationViews/NavigationView";

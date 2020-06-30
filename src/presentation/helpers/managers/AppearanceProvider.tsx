@@ -1,8 +1,8 @@
 import React from 'react';
-import {Appearance} from "../../../model/custom/appearance/Appearance";
-import {LightAppearance} from "../../../model/custom/appearance/LightAppearance";
-import {DarkAppearance} from "../../../model/custom/appearance/DarkAppearance";
-import {AppearanceType} from "../../../model/custom/appearance/AppearanceType";
+import {Appearance} from "../../../model/model/appearance/Appearance";
+import {LightAppearance} from "../../../model/model/appearance/LightAppearance";
+import {DarkAppearance} from "../../../model/model/appearance/DarkAppearance";
+import {AppearanceType} from "../../../model/model/appearance/AppearanceType";
 
 export type AppearanceObserver = (appearance: Appearance) => void
 

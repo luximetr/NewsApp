@@ -2,7 +2,7 @@ import * as React from 'react';
 import {View, Text, TouchableOpacity} from "react-native";
 import {getStyles} from "./SettingsListItemView.styles";
 import {BaseComponent} from "../../../../../helpers/components/baseViews/baseComponent/BaseComponent";
-import {Appearance} from "../../../../../../model/custom/appearance/Appearance";
+import {Appearance} from "../../../../../../model/model/appearance/Appearance";
 
 interface Props {
    title: string
