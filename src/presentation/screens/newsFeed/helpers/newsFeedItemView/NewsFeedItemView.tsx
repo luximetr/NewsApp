@@ -36,9 +36,11 @@ export class NewsFeedItemView extends BaseComponent<Props, State> {
    // View
    renderWith(appearance: Appearance): any {
       return (
-         <View style={[getStyles(appearance).container, {backgroundColor: this.state.color}]}>
+         <View style={getStyles(appearance).container}>
             {this.renderImage(appearance)}
-            {this.renderTitle(appearance)}
+            <View style={[getStyles(appearance).titleContainer, {backgroundColor: this.state.color}]}>
+               {this.renderTitle(appearance)}
+            </View>
          </View>
       )
    }
