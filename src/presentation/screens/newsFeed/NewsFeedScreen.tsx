@@ -3,6 +3,7 @@ import {NewsFeedScreenView} from './NewsFeedScreenView';
 import {TopHeadlinesRepo} from "../../../model/repos/topHeadlinesRepo/TopHeadlinesRepo";
 import {BaseComponent} from "../../helpers/components/baseViews/baseComponent/BaseComponent";
 import {News} from "../../../model/model/news/News";
+import ImageColors from "react-native-image-colors"
 
 interface Props {
   navigation: any
@@ -27,6 +28,14 @@ export class NewsFeedScreen extends BaseComponent {
 
   componentDidMount(): void {
     this.loadHeadlines()
+
+
+    console.log('LOAD COLORS')
+    ImageColors.getColors('https://www.talkwalker.com/images/2020/blog-headers/image-analysis.png', {})
+       .then((result) => {
+         console.log((result))
+       })
+       .catch()
   }
 
   // Load headlines
