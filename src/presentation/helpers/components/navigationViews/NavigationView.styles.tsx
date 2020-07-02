@@ -4,7 +4,7 @@ import {Appearance} from "../../../../model/model/appearance/Appearance";
 export function getStyles(appearance: Appearance) {
   return StyleSheet.create({
     container: {
-      backgroundColor: appearance.navigation.background,
+      backgroundColor: appearance.background.secondary,
       height: 44,
       justifyContent: "space-between"
     },
@@ -26,7 +26,7 @@ export function getStyles(appearance: Appearance) {
       paddingRight: 24,
     },
     divider: {
-      backgroundColor: appearance.navigation.shadow,
+      backgroundColor: appearance.background.tertiary,
       height: 1
     }
   })

@@ -2,7 +2,9 @@ import {Appearance} from "./Appearance";
 
 export const LightAppearance = {
    background: {
-      primary: 'white'
+      primary: 'white',
+      secondary: 'grey',
+      tertiary: 'grey'
    },
    text: {
       primary: 'black'
@@ -11,16 +13,12 @@ export const LightAppearance = {
       style: "dark-content"
    },
    navigation: {
-      background: 'white',
       tint: 'grey',
       text: 'black',
-      shadow: 'grey'
    },
    tabBar: {
-      background: 'white',
       selectedTint: 'blue',
       unselectedTint: 'grey',
-      shadow: 'grey'
    },
    action: {
       background: {
@@ -33,4 +31,12 @@ export const LightAppearance = {
    divider: {
       primary: 'grey'
    },
+   scroll: {
+      refresh: {
+         primary: 'rgb(150, 150, 150)'
+      },
+      indicator: {
+         primary: 'rgb(150, 150, 150)'
+      }
+   }
 } as Appearance;

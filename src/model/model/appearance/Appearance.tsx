@@ -4,6 +4,8 @@ import {StatusBarStyle} from "react-native";
 export type Appearance = {
    background: {
       primary: string
+      secondary: string
+      tertiary: string
    }
    text: {
       primary: string
@@ -12,16 +14,12 @@ export type Appearance = {
       style: StatusBarStyle
    }
    navigation: {
-      background: string
       tint: string
       text: string
-      shadow: string
    }
    tabBar: {
-      background: string
       selectedTint: string
       unselectedTint: string
-      shadow: string
    }
    action: {
       background: {
@@ -33,5 +31,13 @@ export type Appearance = {
    }
    divider: {
       primary: string
+   }
+   scroll: {
+      refresh: {
+         primary: string
+      }
+      indicator: {
+         primary: string
+      }
    }
 }

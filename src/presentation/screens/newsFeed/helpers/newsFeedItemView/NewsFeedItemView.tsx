@@ -3,7 +3,6 @@ import {Appearance} from "../../../../../model/model/appearance/Appearance";
 import React from "react";
 import {View, Text, Image} from "react-native";
 import {getStyles} from "./NewsFeedItemView.styles";
-import ImageColors from "react-native-image-colors"
 
 interface Props {
    title: string
@@ -11,34 +10,16 @@ interface Props {
 }
 
 interface State {
-   color: string
 }
 
 export class NewsFeedItemView extends BaseComponent<Props, State> {
-
-   constructor(props: Props) {
-      super(props);
-      this.state = {
-         color: 'white'
-      }
-   }
-
-   componentDidMount(): void {
-      ImageColors.getColors(this.props.imageURL || '', {})
-         .then((result) => {
-            if (result.platform === "ios") {
-               this.setState({color: result.background || ''})
-            }
-         })
-         .catch()
-   }
 
    // View
    renderWith(appearance: Appearance): any {
       return (
          <View style={getStyles(appearance).container}>
             {this.renderImage(appearance)}
-            <View style={[getStyles(appearance).titleContainer, {backgroundColor: this.state.color}]}>
+            <View style={getStyles(appearance).titleContainer}>
                {this.renderTitle(appearance)}
             </View>
          </View>
@@ -58,7 +39,10 @@ export class NewsFeedItemView extends BaseComponent<Props, State> {
    // Title
    private renderTitle(appearance: Appearance) {
       return (
-         <Text style={getStyles(appearance).title}>
+         <Text
+            style={getStyles(appearance).title}
+            numberOfLines={2}
+         >
             {this.props.title}
          </Text>
       )

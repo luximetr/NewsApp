@@ -4,8 +4,8 @@ import {StyleSheet} from "react-native";
 export function getStyles(appearance: Appearance) {
    return StyleSheet.create({
       tabBar: {
-         backgroundColor: appearance.tabBar.background,
-         borderTopColor: appearance.tabBar.shadow
+         backgroundColor: appearance.background.secondary,
+         borderTopColor: appearance.background.tertiary
       }
    })
 }

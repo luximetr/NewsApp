@@ -7,15 +7,15 @@ export function getStyles(appearance: Appearance) {
          flex: 1
       },
       aboveSafeArea: {
-         backgroundColor: appearance.navigation.background,
+         backgroundColor: appearance.background.secondary,
          flex: 0,
       },
       safeArea: {
          flex: 1,
-         backgroundColor: appearance.background.primary
+         backgroundColor: appearance.background.secondary
       },
       underSafeArea: {
-         backgroundColor: appearance.background.primary,
+         backgroundColor: appearance.background.secondary,
          flex: 0
       },
    })

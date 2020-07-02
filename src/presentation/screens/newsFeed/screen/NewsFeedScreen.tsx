@@ -1,9 +1,7 @@
 import * as React from 'react';
 import {NewsFeedScreenView} from './NewsFeedScreenView';
-import {TopHeadlinesRepo} from "../../../model/repos/topHeadlinesRepo/TopHeadlinesRepo";
-import {BaseComponent} from "../../helpers/components/baseViews/baseComponent/BaseComponent";
-import {News} from "../../../model/model/news/News";
-import ImageColors from "react-native-image-colors"
+import {TopHeadlinesRepo} from "../../../../model/repos/topHeadlinesRepo/TopHeadlinesRepo";
+import {News} from "../../../../model/model/news/News";
 
 interface Props {
   navigation: any
@@ -11,9 +9,11 @@ interface Props {
 
 interface State {
   news: News[]
+  isRefreshing: boolean
+  isLoading: boolean
 }
 
-export class NewsFeedScreen extends BaseComponent {
+export class NewsFeedScreen extends React.Component<Props, State> {
 
   // Dependencies
   private topHeadlinesRepo = new TopHeadlinesRepo()
@@ -22,25 +22,21 @@ export class NewsFeedScreen extends BaseComponent {
   constructor(props: any) {
     super(props);
     this.state = {
-      news: []
+      news: [],
+      isRefreshing: false,
+      isLoading: false,
     }
   }
 
   componentDidMount(): void {
+    this.setState({isLoading: true})
     this.loadHeadlines()
-
-
-    console.log('LOAD COLORS')
-    ImageColors.getColors('https://www.talkwalker.com/images/2020/blog-headers/image-analysis.png', {})
-       .then((result) => {
-         console.log((result))
-       })
-       .catch()
   }
 
   // Load headlines
   private loadHeadlines() {
     this.topHeadlinesRepo.getTopHeadlines().then((result) => {
+      this.setState({isRefreshing: false, isLoading: false})
       if (result.data) {
         this.setState({news: result.data})
       } else {
@@ -49,11 +45,19 @@ export class NewsFeedScreen extends BaseComponent {
     })
   }
 
+  private onRefresh() {
+    this.setState({isRefreshing: true})
+    this.loadHeadlines()
+  }
+
   // View
   render() {
     return (
       <NewsFeedScreenView
          news={this.state.news}
+         isRefreshing={this.state.isRefreshing}
+         onRefresh={this.onRefresh.bind(this)}
+         isLoading={this.state.isLoading}
       />
     )
   }

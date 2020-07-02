@@ -1,28 +1,33 @@
 import {Appearance} from "../../../../../model/model/appearance/Appearance";
 import {StyleSheet} from "react-native";
 
+const borderRadius = 10
+
 export function getStyles(appearance: Appearance) {
    return StyleSheet.create({
       container: {
-         backgroundColor: 'red',
-         flexDirection: 'column-reverse',
+         flex: 1,
+         justifyContent: "space-between",
          marginHorizontal: 12,
          marginVertical: 10,
-         aspectRatio: 2.5,
-         width: '100%'
       },
       image: {
          flex: 1,
-         height: '100%',
          width: '100%',
-         position: 'absolute',
-         borderRadius: 10,
+         aspectRatio: 2.5,
+         borderTopLeftRadius: borderRadius,
+         borderTopRightRadius: borderRadius,
       },
       titleContainer: {
-         paddingVertical: 20,
+         backgroundColor: appearance.background.tertiary,
+         borderBottomLeftRadius: borderRadius,
+         borderBottomRightRadius: borderRadius,
       },
       title: {
-         color: appearance.text.primary
+         paddingVertical: 10,
+         paddingHorizontal: 10,
+         fontSize: 16,
+         color: appearance.text.primary,
       },
    })
 }

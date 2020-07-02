@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createStackNavigator } from "@react-navigation/stack";
-import { NewsFeedScreen } from '../newsFeed/NewsFeedScreen';
+import { NewsFeedScreen } from '../newsFeed/screen/NewsFeedScreen';
 
 const Stack = createStackNavigator();
 

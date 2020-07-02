@@ -7,7 +7,7 @@ export function getStyles(appearance: Appearance) {
          flex: 1
       },
       aboveSafeArea: {
-         backgroundColor: appearance.navigation.background,
+         backgroundColor: appearance.background.primary,
          flex: 0,
       },
       safeArea: {
