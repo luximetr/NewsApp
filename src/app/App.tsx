@@ -1,10 +1,9 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 import {NavigationContainer} from "@react-navigation/native";
-import {MainTabBar} from '../presentation/screens/tabBar/MainTabBar';
 import {AppearanceContext, appearanceProvider} from "../presentation/helpers/managers/AppearanceProvider";
 import {Appearance} from "../model/model/appearance/Appearance";
-import {LightAppearance} from "../model/model/appearance/LightAppearance";
+import {AppStack} from "./AppStack";
 
 interface Props {}
 
@@ -36,7 +35,7 @@ export default class App extends React.Component<Props, State> {
       return (
          <AppearanceContext.Provider value={this.state.appearance}>
             <NavigationContainer>
-               <MainTabBar />
+               <AppStack />
             </NavigationContainer>
          </AppearanceContext.Provider>
       )

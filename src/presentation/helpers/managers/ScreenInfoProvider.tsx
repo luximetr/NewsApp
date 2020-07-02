@@ -4,4 +4,4 @@ export const screenInfo = {
    size: Dimensions.get('window')
 }
 
-export const touchableOpacity = 0.4
+export const touchableOpacity = 0.7

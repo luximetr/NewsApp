@@ -36,11 +36,10 @@ export class TopBarScreenView extends BaseComponent<Props> {
          <View style={styles.container}>
             <StatusBar barStyle={appearance.statusBar.style}/>
             <SafeAreaView style={styles.aboveSafeArea}/>
-            <SafeAreaView style={styles.safeArea}>
+            <View style={styles.safeArea}>
                {this.renderNavigation(appearance)}
                {this.props.children}
-            </SafeAreaView>
-            <SafeAreaView style={styles.underSafeArea}/>
+            </View>
          </View>
       )
    }

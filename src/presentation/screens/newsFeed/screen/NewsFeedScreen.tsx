@@ -52,7 +52,7 @@ export class NewsFeedScreen extends React.Component<Props, State> {
 
   // News select
   private onNewsPress(news: News) {
-    this.props.navigation.push('NewsDetails')
+    this.props.navigation.push('NewsDetails', {news: news})
   }
 
   // View

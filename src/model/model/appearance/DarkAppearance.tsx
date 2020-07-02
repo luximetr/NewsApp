@@ -22,7 +22,7 @@ export const DarkAppearance = {
    },
    action: {
       background: {
-         primary: 'rgb(0, 0, 255)',
+         primary: 'rgb(26, 34, 44)',
       },
       title: {
          primary: 'rgb(255, 255, 255)'
