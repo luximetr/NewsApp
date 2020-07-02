@@ -1465,6 +1465,14 @@
   resolved "https://registry.yarnpkg.com/@types/qs/-/qs-6.9.3.tgz#b755a0934564a200d3efdf88546ec93c369abd03"
   integrity sha512-7s9EQWupR1fTc2pSMtXRQ9w9gLOcrJn+h7HOXw4evxyvVqMi4f+q7d2tnFe3ng3SNHjtK+0EzGMGFUQX4/AQRA==
 
+"@types/react-native-share@^3.3.0":
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@types/react-native-share/-/react-native-share-3.3.0.tgz#dc264315c28177e0262a13d5b957e0940cf715c4"
+  integrity sha512-qcmtUNOhIO0tlz7RVQR2FtWzFlblge8gsJED6dT16HdaHq+8ssm+onTVup7UYcE5DEvlmGXBuW2kZU41H+d3FA==
+  dependencies:
+    "@types/react" "*"
+    "@types/react-native" "*"
+
 "@types/react-native-vector-icons@^6.4.5":
   version "6.4.5"
   resolved "https://registry.yarnpkg.com/@types/react-native-vector-icons/-/react-native-vector-icons-6.4.5.tgz#74cbfc564bd8435e43ad6728572a0e5b49c335d1"
@@ -5752,6 +5760,11 @@ react-native-screens@~2.2.0:
   integrity sha512-a0VzxOWot7F9B/GQyDSssBRd3jUJazFnTQS61IiyReWB6aHlFhf3Xz10jBRoURXy1EMCDCHgenmTVTkKHpKyqQ==
   dependencies:
     debounce "^1.2.0"
+
+react-native-share@^3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/react-native-share/-/react-native-share-3.6.0.tgz#ea5d13de818683bb301475492dad921a64c97b46"
+  integrity sha512-K++I0u67yNqXMaJdDQq8f6cA1Lm0P4WoGIFEiWj+zP1faot9cQk7hCGtQNrEs80TeTHDDCBYpAT5iqZ94nP5Nw==
 
 react-native-unimodules@~0.8.1:
   version "0.8.1"

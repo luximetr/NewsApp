@@ -59,6 +59,7 @@ export class NewsDetailsScreenView extends BaseComponent<Props, State> {
          <TouchableOpacity
             activeOpacity={touchableOpacity}
             style={getStyles(appearance).shareButton}
+            onPress={() => {this.props.onShare()}}
          >
             <VectorIcon name={'share'} source={'material'} size={30} color={appearance.action.title.primary} />
          </TouchableOpacity>

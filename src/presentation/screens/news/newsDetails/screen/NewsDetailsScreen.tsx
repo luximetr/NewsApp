@@ -1,6 +1,7 @@
 import React from 'react';
 import {NewsDetailsScreenView} from "./NewsDetailsScreenView";
 import {News} from "../../../../../model/model/news/News";
+import Share from "react-native-share";
 
 interface Props {
    route: any
@@ -28,7 +29,7 @@ export class NewsDetailsScreen extends React.Component<Props, State> {
 
    // Share
    private onShare() {
-      
+      Share.open({url: this.state.news.url}).then(() => {})
    }
 
    // View
