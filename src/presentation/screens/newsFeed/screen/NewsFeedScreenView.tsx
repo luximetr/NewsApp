@@ -3,15 +3,17 @@ import {TopBarScreenView} from "../../../helpers/components/screenViews/topBarSc
 import {BaseComponent} from "../../../helpers/components/baseViews/baseComponent/BaseComponent";
 import {Appearance} from "../../../../model/model/appearance/Appearance";
 import {News} from "../../../../model/model/news/News";
-import {FlatList, RefreshControl} from "react-native";
+import {FlatList, RefreshControl, TouchableOpacity} from "react-native";
 import {NewsFeedItemView} from "../helpers/newsFeedItemView/NewsFeedItemView";
 import {FullScreenLoaderView} from "../../../helpers/components/loaderViews/fullScreenLoaderView/FullScreenLoaderView";
+import {touchableOpacity} from "../../../helpers/managers/ScreenInfoProvider";
 
 interface Props {
    news: News[]
    isRefreshing: boolean
    isLoading: boolean
    onRefresh: VoidFunction
+   onNewsPress: (news: News) => void
 }
 
 interface State {
@@ -64,10 +66,15 @@ export class NewsFeedScreenView extends BaseComponent<Props, State> {
   // News item
   protected renderNewsItem(news: News) {
     return (
-       <NewsFeedItemView
-          title={news.title}
-          imageURL={news.imageURL}
-       />
+       <TouchableOpacity
+          activeOpacity={touchableOpacity}
+          onPress={() => {this.props.onNewsPress(news)}}
+       >
+          <NewsFeedItemView
+             title={news.title}
+             imageURL={news.imageURL}
+          />
+       </TouchableOpacity>
     )
   }
 

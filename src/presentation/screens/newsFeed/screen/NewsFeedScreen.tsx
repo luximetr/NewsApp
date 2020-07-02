@@ -50,6 +50,11 @@ export class NewsFeedScreen extends React.Component<Props, State> {
     this.loadHeadlines()
   }
 
+  // News select
+  private onNewsPress(news: News) {
+    this.props.navigation.push('NewsDetails')
+  }
+
   // View
   render() {
     return (
@@ -58,6 +63,7 @@ export class NewsFeedScreen extends React.Component<Props, State> {
          isRefreshing={this.state.isRefreshing}
          onRefresh={this.onRefresh.bind(this)}
          isLoading={this.state.isLoading}
+         onNewsPress={this.onNewsPress.bind(this)}
       />
     )
   }
