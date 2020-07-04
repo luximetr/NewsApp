@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {NewsFeedScreenView} from './NewsFeedScreenView';
-import {TopHeadlinesRepo} from "../../../../model/repos/topHeadlinesRepo/TopHeadlinesRepo";
-import {News} from "../../../../model/model/news/News";
+import {TopHeadlinesRepo} from "../../../../../model/repos/topHeadlinesRepo/TopHeadlinesRepo";
+import {News} from "../../../../../model/model/news/News";
 
 interface Props {
   navigation: any

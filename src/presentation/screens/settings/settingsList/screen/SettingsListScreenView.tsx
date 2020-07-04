@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {SettingsListItemView} from "../helpers/listItem/SettingsListItemView";
 import {TopBarScreenView} from "../../../../helpers/components/screenViews/topBarScreenView/TopBarScreenView";
+import {View} from "react-native";
 
 interface Props {
    selectedLanguageName: string
@@ -27,8 +28,10 @@ export class SettingsListScreenView extends React.Component<Props, State> {
    render() {
       return (
          <TopBarScreenView title={this.state.title}>
-            {this.renderLanguageItem()}
-            {this.renderThemeItem()}
+            <View style={{flexDirection: 'column-reverse', flex: 1}}>
+               {this.renderLanguageItem()}
+               {this.renderThemeItem()}
+            </View>
          </TopBarScreenView>
       )
    }

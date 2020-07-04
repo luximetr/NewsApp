@@ -1,12 +1,12 @@
 import * as React from 'react';
-import {TopBarScreenView} from "../../../helpers/components/screenViews/topBarScreenView/TopBarScreenView";
-import {BaseComponent} from "../../../helpers/components/baseViews/baseComponent/BaseComponent";
-import {Appearance} from "../../../../model/model/appearance/Appearance";
-import {News} from "../../../../model/model/news/News";
+import {TopBarScreenView} from "../../../../helpers/components/screenViews/topBarScreenView/TopBarScreenView";
+import {BaseComponent} from "../../../../helpers/components/baseViews/baseComponent/BaseComponent";
+import {Appearance} from "../../../../../model/model/appearance/Appearance";
+import {News} from "../../../../../model/model/news/News";
 import {FlatList, RefreshControl, TouchableOpacity} from "react-native";
 import {NewsFeedItemView} from "../helpers/newsFeedItemView/NewsFeedItemView";
-import {FullScreenLoaderView} from "../../../helpers/components/loaderViews/fullScreenLoaderView/FullScreenLoaderView";
-import {touchableOpacity} from "../../../helpers/managers/ScreenInfoProvider";
+import {FullScreenLoaderView} from "../../../../helpers/components/loaderViews/fullScreenLoaderView/FullScreenLoaderView";
+import {touchableOpacity} from "../../../../helpers/managers/ScreenInfoProvider";
 
 interface Props {
    news: News[]
@@ -73,6 +73,7 @@ export class NewsFeedScreenView extends BaseComponent<Props, State> {
           <NewsFeedItemView
              title={news.title}
              imageURL={news.imageURL}
+             source={news.source.name}
           />
        </TouchableOpacity>
     )

@@ -4,7 +4,7 @@ import {BaseComponent} from "../../helpers/components/baseViews/baseComponent/Ba
 import {Appearance} from "../../../model/model/appearance/Appearance";
 import {getStyles, getActiveTintColor, getInactiveTintColor} from "./MainTabBar.styles";
 import {VectorIcon} from "../../helpers/components/imageViews/icons/VectorIcon";
-import {NewsFeedScreen} from "../newsFeed/screen/NewsFeedScreen";
+import {NewsFeedScreen} from "../news/newsFeed/screen/NewsFeedScreen";
 import {SettingsListScreen} from "../settings/settingsList/screen/SettingsListScreen";
 
 const Tab = createBottomTabNavigator();
