@@ -7,6 +7,8 @@ import {FlatList, RefreshControl, TouchableOpacity} from "react-native";
 import {NewsFeedItemView} from "../helpers/newsFeedItemView/NewsFeedItemView";
 import {FullScreenLoaderView} from "../../../../helpers/components/loaderViews/fullScreenLoaderView/FullScreenLoaderView";
 import {touchableOpacity} from "../../../../helpers/managers/ScreenInfoProvider";
+import {VectorIcon} from "../../../../helpers/components/imageViews/icons/VectorIcon";
+import {getStyles} from "./NewsFeedScreenView.styles";
 
 interface Props {
    news: News[]
@@ -14,6 +16,7 @@ interface Props {
    isLoading: boolean
    onRefresh: VoidFunction
    onNewsPress: (news: News) => void
+   onFilter: VoidFunction
 }
 
 interface State {
@@ -37,6 +40,7 @@ export class NewsFeedScreenView extends BaseComponent<Props, State> {
           title={this.state.title}
        >
           {this.renderContent(appearance)}
+          {this.renderFilterButton(appearance)}
        </TopBarScreenView>
     )
   }
@@ -94,6 +98,19 @@ export class NewsFeedScreenView extends BaseComponent<Props, State> {
    protected renderFullScreenLoader() {
      return (
         <FullScreenLoaderView />
+     )
+   }
+
+   // Filter button
+   private renderFilterButton(appearance: Appearance) {
+     return (
+        <TouchableOpacity
+           style={getStyles(appearance).filterButton}
+           activeOpacity={touchableOpacity}
+           onPress={() => {this.props.onFilter()}}
+        >
+           <VectorIcon name={'share'} source={'material'} size={30} color={appearance.action.title.primary} />
+        </TouchableOpacity>
      )
    }
 }

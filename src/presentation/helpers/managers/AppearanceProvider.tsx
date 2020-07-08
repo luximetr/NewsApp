@@ -21,13 +21,17 @@ class AppearanceProvider {
       this.notifyAppearanceUpdated(newAppearance)
    }
 
-   protected getAppearanceByType(type: AppearanceType): Appearance {
+   getAppearanceByType(type: AppearanceType): Appearance {
       switch (type) {
          case AppearanceType.light:
             return LightAppearance
          case AppearanceType.dark:
             return DarkAppearance
       }
+   }
+
+   getAppearanceTypesList(): AppearanceType[] {
+      return [AppearanceType.light, AppearanceType.dark]
    }
 
    // Observers

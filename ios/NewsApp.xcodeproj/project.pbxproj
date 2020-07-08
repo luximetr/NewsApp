@@ -335,7 +335,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.deskera.deskmobile;
+				PRODUCT_BUNDLE_IDENTIFIER = org.deskera.deskmobile1;
 				PRODUCT_NAME = NewsApp;
 				PROVISIONING_PROFILE_SPECIFIER = "Desk Mobile App Development Profile";
 				SWIFT_OBJC_BRIDGING_HEADER = "NewsApp-Bridging-Header.h";
@@ -361,7 +361,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.deskera.deskmobile;
+				PRODUCT_BUNDLE_IDENTIFIER = org.deskera.deskmobile1;
 				PRODUCT_NAME = NewsApp;
 				PROVISIONING_PROFILE_SPECIFIER = "Desk Mobile App Development Profile";
 				SWIFT_OBJC_BRIDGING_HEADER = "NewsApp-Bridging-Header.h";

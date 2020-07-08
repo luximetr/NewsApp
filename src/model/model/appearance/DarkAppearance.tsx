@@ -4,7 +4,8 @@ export const DarkAppearance = {
    background: {
       primary: 'rgb(19, 20, 21)',
       secondary: 'rgb(26, 34, 44)',
-      tertiary: 'rgb(36, 48, 63)'
+      tertiary: 'rgb(36, 48, 63)',
+      reversePrimary: 'rgb(255, 255, 255)'
    },
    text: {
       primary: 'rgb(255, 255, 255)'

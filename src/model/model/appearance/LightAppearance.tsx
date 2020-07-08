@@ -2,9 +2,10 @@ import {Appearance} from "./Appearance";
 
 export const LightAppearance = {
    background: {
-      primary: 'white',
-      secondary: 'grey',
-      tertiary: 'grey'
+      primary: 'rgb(255, 255, 255)',
+      secondary: 'rgb(245, 245, 245)',
+      tertiary: 'rgb(225, 225, 225)',
+      reversePrimary: 'rgb(150, 150, 150)'
    },
    text: {
       primary: 'black'

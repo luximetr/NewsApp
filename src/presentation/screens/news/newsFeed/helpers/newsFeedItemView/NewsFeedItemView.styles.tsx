@@ -1,5 +1,6 @@
 import {Appearance} from "../../../../../../model/model/appearance/Appearance";
 import {StyleSheet} from "react-native";
+import {globalMarkup} from "../../../../../helpers/managers/ScreenInfoProvider";
 
 const borderRadius = 10
 const aspectRatio = 1.25
@@ -7,15 +8,13 @@ const aspectRatio = 1.25
 export function getStyles(appearance: Appearance) {
    return StyleSheet.create({
       container: {
-         flex: 1,
          justifyContent: "space-between",
-         marginHorizontal: 12,
+         marginHorizontal: globalMarkup.marginHorizontal,
          marginVertical: 10,
          overflow: 'hidden',
          borderRadius: borderRadius,
       },
       image: {
-         flex: 1,
          width: '100%',
          aspectRatio: aspectRatio,
       },
@@ -37,11 +36,11 @@ export function getStyles(appearance: Appearance) {
       source: {
          paddingBottom: 6,
          fontSize: 24,
-         color: appearance.text.primary,
+         color: 'white',
       },
       title: {
          fontSize: 20,
-         color: appearance.text.primary,
+         color: 'white',
       },
    })
 }

@@ -45,9 +45,15 @@ export class NewsFeedScreen extends React.Component<Props, State> {
     })
   }
 
+  // Refresh
   private onRefresh() {
     this.setState({isRefreshing: true})
     this.loadHeadlines()
+  }
+
+  // Filter
+  private onFilter() {
+    this.props.navigation.push('NewsSources')
   }
 
   // News select
@@ -64,6 +70,7 @@ export class NewsFeedScreen extends React.Component<Props, State> {
          onRefresh={this.onRefresh.bind(this)}
          isLoading={this.state.isLoading}
          onNewsPress={this.onNewsPress.bind(this)}
+         onFilter={this.onFilter.bind(this)}
       />
     )
   }

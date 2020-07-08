@@ -1,11 +1,25 @@
 import * as React from 'react';
 import {SettingsListScreenView} from "./SettingsListScreenView";
+import {AppearanceType} from "../../../../../model/model/appearance/AppearanceType";
+import {appearanceProvider} from "../../../../helpers/managers/AppearanceProvider";
 
 interface Props {
    navigation: any
 }
 
-export class SettingsListScreen extends React.Component<Props> {
+interface State {
+   themes: AppearanceType[]
+}
+
+export class SettingsListScreen extends React.Component<Props, State> {
+
+   // Life cycle
+   constructor(props: Props) {
+      super(props);
+      this.state = {
+         themes: appearanceProvider.getAppearanceTypesList()
+      }
+   }
 
    // Language
    private onSelectLanguage() {
@@ -13,8 +27,8 @@ export class SettingsListScreen extends React.Component<Props> {
    }
 
    // Theme
-   private onSelectTheme() {
-      this.props.navigation.push('ChangeTheme')
+   protected onSelectTheme(appearanceType: AppearanceType) {
+      appearanceProvider.setCurrentAppearanceByType(appearanceType)
    }
 
    // View
@@ -23,7 +37,7 @@ export class SettingsListScreen extends React.Component<Props> {
          <SettingsListScreenView
             selectedLanguageName={'En'}
             onSelectLanguage={this.onSelectLanguage.bind(this)}
-            selectedThemeName={'Dark'}
+            themes={this.state.themes}
             onSelectTheme={this.onSelectTheme.bind(this)}
          />
       )
