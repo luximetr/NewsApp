@@ -2,7 +2,6 @@ import React from 'react'
 import {BaseComponent} from "../../../../helpers/components/baseViews/baseComponent/BaseComponent";
 import {Appearance} from "../../../../../model/model/appearance/Appearance";
 import {TopBarScreenView} from "../../../../helpers/components/screenViews/topBarScreenView/TopBarScreenView";
-import SegmentedControl from "@react-native-community/segmented-control";
 import {getStyles} from "./SelectCountriesScreenView.styles";
 import { TabView, SceneMap } from 'react-native-tab-view';
 import {View} from "react-native";
