@@ -2,18 +2,20 @@ import React from 'react';
 import {BottomAlert} from "../../../../../helpers/components/alerts/bottomAlert/BottomAlert";
 import {BaseComponent} from "../../../../../helpers/components/baseViews/baseComponent/BaseComponent";
 import {Appearance} from "../../../../../../model/model/appearance/Appearance";
-import {ScrollView, Text, View} from "react-native";
+import {ScrollView, Text, TouchableOpacity, View} from "react-native";
 import {getStyles} from "./NewsFeedFilterAlert.styles";
+import {CategoryItem} from "./CategoryItem";
 
 interface Props {
    isVisible: boolean
    onClose: VoidFunction
-   onClose1?: (selectedCountries: string[], selectedLanguages: string[]) => void
+   categories: CategoryItem[]
 }
 
 interface State {
    countriesHeader: string
-   languagesHeader: string
+   categoriesHeader: string
+   moreButtonTitle: string
 }
 
 export class NewsFeedFilterAlert extends BaseComponent<Props, State> {
@@ -22,8 +24,9 @@ export class NewsFeedFilterAlert extends BaseComponent<Props, State> {
    constructor(props: Props) {
       super(props);
       this.state = {
-         countriesHeader: "Country",
-         languagesHeader: "Language"
+         countriesHeader: "Countries",
+         categoriesHeader: "Categories",
+         moreButtonTitle: "more"
       }
    }
 
@@ -43,20 +46,27 @@ export class NewsFeedFilterAlert extends BaseComponent<Props, State> {
    private renderContent(appearance: Appearance) {
       return (
          <View>
-            {this.renderCountryPicker(appearance)}
-            {this.renderLanguagePicker(appearance)}
+            {this.renderCountriesPicker(appearance)}
+            {this.renderCategoriesPicker(appearance)}
          </View>
       )
    }
 
    // Country picker
-   private renderCountryPicker(appearance: Appearance) {
+   private renderCountriesPicker(appearance: Appearance) {
       return (
          <View>
             <Text style={getStyles(appearance).sectionHeader}>{this.state.countriesHeader}</Text>
-            <ScrollView horizontal={true}>
-               {this.renderCountriesList(appearance)}
-            </ScrollView>
+            <View style={getStyles(appearance).itemsListContainer}>
+               <ScrollView style={getStyles(appearance).itemsScrollView} horizontal={true}>
+                  {this.renderCountriesList(appearance)}
+               </ScrollView>
+               <TouchableOpacity style={getStyles(appearance).moreButton}>
+                  <Text style={getStyles(appearance).moreButtonText}>
+                     {this.state.moreButtonTitle}
+                  </Text>
+               </TouchableOpacity>
+            </View>
          </View>
       )
    }
@@ -76,26 +86,33 @@ export class NewsFeedFilterAlert extends BaseComponent<Props, State> {
       )
    }
 
-   // Language picker
-   private renderLanguagePicker(appearance: Appearance) {
+   // Categories picker
+   private renderCategoriesPicker(appearance: Appearance) {
       return (
          <View>
-            <Text style={getStyles(appearance).sectionHeader}>{this.state.languagesHeader}</Text>
-            <ScrollView horizontal={true}>
-               {this.renderLanguagesList(appearance)}
-            </ScrollView>
+            <Text style={getStyles(appearance).sectionHeader}>{this.state.categoriesHeader}</Text>
+            <View style={getStyles(appearance).itemsListContainer}>
+               <ScrollView style={getStyles(appearance).itemsScrollView} horizontal={true}>
+                  {this.renderCategoriesList(appearance)}
+               </ScrollView>
+               <TouchableOpacity style={getStyles(appearance).moreButton}>
+                  <Text style={getStyles(appearance).moreButtonText}>
+                     {this.state.moreButtonTitle}
+                  </Text>
+               </TouchableOpacity>
+            </View>
          </View>
       )
    }
 
-   private renderLanguagesList(appearance: Appearance) {
-      const languages = ['ru', 'ua', 'en']
+   private renderCategoriesList(appearance: Appearance) {
+      const languages = ['rufsdfhkwehfjwhf', 'uawrfwrfwrf wrf wrf wr', 'ew rf wrf n']
       return languages.map((language) => {
-         return this.renderLanguagesListItem(appearance, language)
+         return this.renderCategoriesListItem(appearance, language)
       })
    }
 
-   protected renderLanguagesListItem(appearance: Appearance, language: string) {
+   protected renderCategoriesListItem(appearance: Appearance, language: string) {
       return (
          <View style={getStyles(appearance).item}>
             <Text style={getStyles(appearance).itemText}>{language}</Text>

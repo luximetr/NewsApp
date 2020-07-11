@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, SafeAreaView} from "react-native";
+import {View, SafeAreaView} from "react-native";
 import Modal from 'react-native-modal';
 import {BaseComponent} from "../../baseViews/baseComponent/BaseComponent";
 import {Appearance} from "../../../../../model/model/appearance/Appearance";
@@ -17,7 +17,7 @@ export class BottomAlert extends BaseComponent<Props> {
          <Modal
             isVisible={this.props.isVisible}
             swipeDirection={['down']}
-            propagateSwipe={true}
+            scrollHorizontal={false}
             onSwipeComplete={() => {this.props.onClose()}}
             onBackdropPress={() => {this.props.onClose()}}
             style={getStyles(appearance).modal}
