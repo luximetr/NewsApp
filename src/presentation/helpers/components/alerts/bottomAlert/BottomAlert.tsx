@@ -16,8 +16,10 @@ export class BottomAlert extends BaseComponent<Props> {
       return (
          <Modal
             isVisible={this.props.isVisible}
-            swipeDirection={['down']}
-            scrollHorizontal={false}
+            swipeDirection={'down'}
+            propagateSwipe={true}
+            scrollTo={() => {}}
+            scrollOffset={1}
             onSwipeComplete={() => {this.props.onClose()}}
             onBackdropPress={() => {this.props.onClose()}}
             style={getStyles(appearance).modal}
