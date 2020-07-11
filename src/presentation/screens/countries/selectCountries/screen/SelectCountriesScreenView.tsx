@@ -4,7 +4,8 @@ import {Appearance} from "../../../../../model/model/appearance/Appearance";
 import {TopBarScreenView} from "../../../../helpers/components/screenViews/topBarScreenView/TopBarScreenView";
 import {getStyles} from "./SelectCountriesScreenView.styles";
 import { TabView, SceneMap } from 'react-native-tab-view';
-import {View} from "react-native";
+import {SelectedCountriesScreen} from "../../selectedCountries/screen/SelectedCountriesScreen";
+import {AvailableCountriesScreen} from "../../availableCountries/screen/AvailableCountriesScreen";
 
 interface Props {
    onBack: VoidFunction
@@ -30,11 +31,11 @@ export class SelectCountriesScreenView extends BaseComponent<Props, State> {
          routes: [
             {
                key: 'first',
-               title: 'First'
+               title: 'Selected'
             },
             {
                key: 'second',
-               title: 'Second'
+               title: 'Available'
             }
          ]
       }
@@ -58,20 +59,18 @@ export class SelectCountriesScreenView extends BaseComponent<Props, State> {
    private renderSegmentedControl(appearance: Appearance) {
       return (
          <TabView
-            renderScene={SceneMap({first: Screen1, second: Screen2})}
+            renderScene={SceneMap({
+               first: SelectedCountriesScreen,
+               second: AvailableCountriesScreen
+            })}
             onIndexChange={(index) => {
                this.setState({selectedIndex: index})
             }}
-            navigationState={{index: this.state.selectedIndex, routes: this.state.routes}}
+            navigationState={{
+               index: this.state.selectedIndex,
+               routes: this.state.routes
+            }}
          />
       )
    }
-}
-
-function Screen1() {
-   return <View/>
-}
-
-function Screen2() {
-   return <View/>
 }
