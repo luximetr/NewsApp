@@ -1,66 +1,66 @@
 import {Language} from "./Language";
 
-const Arabic = {
+const arabic = {
    code: 'ar',
    name: 'Arabic'
 } as Language
 
-const German = {
+const german = {
    code: 'de',
    name: 'German'
 } as Language
 
-const English = {
+const english = {
    code: 'en',
    name: 'English'
 } as Language
 
-const Spanish = {
+const spanish = {
    code: 'es',
    name: 'Spanish'
 } as Language
 
-const French = {
+const french = {
    code: 'fr',
    name: 'French'
 } as Language
 
-const Hebrew = {
+const hebrew = {
    code: 'he',
    name: 'Hebrew'
 } as Language
 
-const Italian = {
+const italian = {
    code: 'it',
    name: 'Italian'
 } as Language
 
-const Dutch = {
+const dutch = {
    code: 'nl',
    name: 'Dutch'
 } as Language
 
-const Norwegian = {
+const norwegian = {
    code: 'no',
    name: 'Norwegian'
 } as Language
 
-const Portuguese = {
+const portuguese = {
    code: 'pt',
    name: 'Portuguese'
 } as Language
 
-const Russian = {
+const russian = {
    code: 'ru',
    name: 'Russian'
 } as Language
 
-const NorthernSami = {
+const northernSami = {
    code: 'se',
    name: 'Northern Sami'
 } as Language
 
-const Chinese = {
+const chinese = {
    code: 'zh',
    name: 'Chinese'
 } as Language
