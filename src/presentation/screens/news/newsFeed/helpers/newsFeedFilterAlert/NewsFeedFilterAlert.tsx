@@ -2,20 +2,22 @@ import React from 'react';
 import {BottomAlert} from "../../../../../helpers/components/alerts/bottomAlert/BottomAlert";
 import {BaseComponent} from "../../../../../helpers/components/baseViews/baseComponent/BaseComponent";
 import {Appearance} from "../../../../../../model/model/appearance/Appearance";
-import {ScrollView, Text, TouchableOpacity, View} from "react-native";
+import {Image, ScrollView, Text, TouchableOpacity, View} from "react-native";
 import {getStyles} from "./NewsFeedFilterAlert.styles";
 import {CategoryItem} from "./CategoryItem";
+import {touchableOpacity} from "../../../../../helpers/managers/ScreenInfoProvider";
 
 interface Props {
    isVisible: boolean
    onClose: VoidFunction
    categories: CategoryItem[]
+   onEditCountries: VoidFunction
+   onEditCategories: VoidFunction
 }
 
 interface State {
    countriesHeader: string
    categoriesHeader: string
-   moreButtonTitle: string
 }
 
 export class NewsFeedFilterAlert extends BaseComponent<Props, State> {
@@ -26,7 +28,6 @@ export class NewsFeedFilterAlert extends BaseComponent<Props, State> {
       this.state = {
          countriesHeader: "Countries",
          categoriesHeader: "Categories",
-         moreButtonTitle: "more"
       }
    }
 
@@ -56,19 +57,18 @@ export class NewsFeedFilterAlert extends BaseComponent<Props, State> {
    private renderCountriesPicker(appearance: Appearance) {
       return (
          <View>
-            <Text style={getStyles(appearance).sectionHeader}>{this.state.countriesHeader}</Text>
+            {this.renderCountriesSectionHeader(appearance)}
             <View style={getStyles(appearance).itemsListContainer}>
-               <ScrollView style={getStyles(appearance).itemsScrollView} horizontal={true}>
+               <ScrollView style={getStyles(appearance).itemsScrollView} showsHorizontalScrollIndicator={false} horizontal={true}>
                   {this.renderCountriesList(appearance)}
                </ScrollView>
-               <TouchableOpacity style={getStyles(appearance).moreButton}>
-                  <Text style={getStyles(appearance).moreButtonText}>
-                     {this.state.moreButtonTitle}
-                  </Text>
-               </TouchableOpacity>
             </View>
          </View>
       )
+   }
+
+   private renderCountriesSectionHeader(appearance: Appearance) {
+      return this.renderSectionHeader(appearance, this.state.countriesHeader, () => {this.props.onEditCountries()})
    }
 
    private renderCountriesList(appearance: Appearance) {
@@ -90,19 +90,18 @@ export class NewsFeedFilterAlert extends BaseComponent<Props, State> {
    private renderCategoriesPicker(appearance: Appearance) {
       return (
          <View>
-            <Text style={getStyles(appearance).sectionHeader}>{this.state.categoriesHeader}</Text>
+            {this.renderCategoriesSectionHeader(appearance)}
             <View style={getStyles(appearance).itemsListContainer}>
-               <ScrollView style={getStyles(appearance).itemsScrollView} horizontal={true}>
+               <ScrollView style={getStyles(appearance).itemsScrollView} showsHorizontalScrollIndicator={false} horizontal={true}>
                   {this.renderCategoriesList(appearance)}
                </ScrollView>
-               <TouchableOpacity style={getStyles(appearance).moreButton}>
-                  <Text style={getStyles(appearance).moreButtonText}>
-                     {this.state.moreButtonTitle}
-                  </Text>
-               </TouchableOpacity>
             </View>
          </View>
       )
+   }
+
+   private renderCategoriesSectionHeader(appearance: Appearance) {
+      return this.renderSectionHeader(appearance, this.state.categoriesHeader, () => {this.props.onEditCategories()})
    }
 
    private renderCategoriesList(appearance: Appearance) {
@@ -116,6 +115,27 @@ export class NewsFeedFilterAlert extends BaseComponent<Props, State> {
       return (
          <View style={getStyles(appearance).item}>
             <Text style={getStyles(appearance).itemText}>{language}</Text>
+         </View>
+      )
+   }
+
+   // Section
+   private renderSectionHeader(appearance: Appearance, title: string, onEdit: VoidFunction) {
+      return (
+         <View style={getStyles(appearance).sectionHeader}>
+            <Text style={getStyles(appearance).sectionHeaderText}>
+               {title}
+            </Text>
+            <TouchableOpacity
+               activeOpacity={touchableOpacity}
+               style={getStyles(appearance).sectionHeaderButton}
+               onPress={() => {onEdit()}}
+            >
+               <Image
+                  source={require('../../../../../helpers/assets/edit.png')}
+                  style={getStyles(appearance).sectionHeaderButtonIcon}
+               />
+            </TouchableOpacity>
          </View>
       )
    }

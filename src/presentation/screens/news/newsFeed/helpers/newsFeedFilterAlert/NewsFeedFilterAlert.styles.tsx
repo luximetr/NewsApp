@@ -5,10 +5,27 @@ import {globalMarkup} from "../../../../../helpers/managers/ScreenInfoProvider";
 export function getStyles(appearance: Appearance) {
    return StyleSheet.create({
       sectionHeader: {
-         marginHorizontal: globalMarkup.marginHorizontal,
          marginTop: 10,
+         flexDirection: 'row',
+         justifyContent: 'space-between',
+         alignItems: 'center',
+      },
+      sectionHeaderText: {
+         marginHorizontal: globalMarkup.marginHorizontal,
          color: appearance.text.primary,
          fontSize: 18,
+      },
+      sectionHeaderButton: {
+         marginRight: globalMarkup.marginHorizontal,
+         justifyContent: 'center',
+         alignItems: 'center',
+         height: 34,
+         width: 34,
+      },
+      sectionHeaderButtonIcon: {
+         tintColor: appearance.action.title.primary,
+         height: 14,
+         width: 14,
       },
       itemsListContainer: {
          flexDirection: 'row',
