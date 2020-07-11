@@ -20,6 +20,8 @@ interface Props {
    onFilter: VoidFunction
    isPickerVisible: boolean
    onPickerClose: VoidFunction
+   onEditCountries: VoidFunction
+   onEditCategories: VoidFunction
 }
 
 interface State {
@@ -47,6 +49,9 @@ export class NewsFeedScreenView extends BaseComponent<Props, State> {
           <NewsFeedFilterAlert
              isVisible={this.props.isPickerVisible}
              onClose={() => {this.props.onPickerClose()}}
+             onEditCountries={() => {this.props.onEditCountries()}}
+             onEditCategories={() => {this.props.onEditCategories()}}
+             categories={[]}
           />
        </TopBarScreenView>
     )

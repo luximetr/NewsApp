@@ -56,11 +56,22 @@ export class NewsFeedScreen extends React.Component<Props, State> {
   // Filter
   private onFilter() {
     this.setState({isPickerVisible: true})
-    // this.props.navigation.push('NewsSources')
   }
 
   private onPickerClose() {
     this.setState({isPickerVisible: false})
+  }
+
+  // Countries
+  private onEditCountries() {
+    this.setState({isPickerVisible: false}, () => {
+      this.props.navigation.push('SelectCountries')
+    })
+  }
+
+  // Categories
+  private onEditCategories() {
+
   }
 
   // News select
@@ -80,6 +91,8 @@ export class NewsFeedScreen extends React.Component<Props, State> {
          onFilter={this.onFilter.bind(this)}
          isPickerVisible={this.state.isPickerVisible}
          onPickerClose={() => {this.onPickerClose()}}
+         onEditCategories={this.onEditCategories.bind(this)}
+         onEditCountries={this.onEditCountries.bind(this)}
       />
     )
   }
