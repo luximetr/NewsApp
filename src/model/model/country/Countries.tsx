@@ -1,271 +1,271 @@
 import {Country} from "./Country";
 
-const UnitedArabEmirates = {
+const unitedArabEmirates = {
    code: 'ae',
    name: 'United Arab Emirates'
 } as Country
 
-const Argentina = {
+const argentina = {
    code: 'ar',
    name: 'Argentina'
 } as Country
 
-const Austria = {
+const austria = {
    code: 'at',
    name: 'Austria'
 } as Country
 
-const Australia = {
+const australia = {
    code: 'au',
    name: 'Australia'
 } as Country
 
-const Belgium = {
+const belgium = {
    code: 'be',
    name: 'Belgium'
 } as Country
 
-const Bulgaria = {
+const bulgaria = {
    code: 'bg',
    name: 'Bulgaria'
 } as Country
 
-const Brazil = {
+const brazil = {
    code: 'br',
    name: 'Brazil'
 } as Country
 
-const Canada = {
+const canada = {
    code: 'ca',
    name: 'Canada'
 } as Country
 
-const Switzerland = {
+const switzerland = {
    code: 'ch',
    name: 'Switzerland'
 } as Country
 
-const China = {
+const china = {
    code: 'cn',
    name: 'China'
 } as Country
 
-const Colombia = {
+const colombia = {
    code: 'co',
    name: 'Colombia'
 } as Country
 
-const Cuba = {
+const cuba = {
    code: 'cu',
    name: 'Cuba'
 } as Country
 
-const CzechRepublic = {
+const czechRepublic = {
    code: 'cz',
    name: 'Czech Republic'
 } as Country
 
-const Germany = {
+const germany = {
    code: 'de',
    name: 'Germany'
 } as Country
 
-const Egypt = {
+const egypt = {
    code: 'eg',
    name: 'Egypt'
 } as Country
 
-const France = {
+const france = {
    code: 'fr',
    name: 'France'
 } as Country
 
-const UnitedKingdom = {
+const unitedKingdom = {
    code: 'gb',
    name: 'United Kingdom'
 } as Country
 
-const Greece = {
+const greece = {
    code: 'gr',
    name: 'Greece'
 } as Country
 
-const HongKong = {
+const hongKong = {
    code: 'hk',
    name: 'Hong Kong'
 } as Country
 
-const Hungary = {
+const hungary = {
    code: 'hu',
    name: 'Hungary'
 } as Country
 
-const Indonesia = {
+const indonesia = {
    code: 'id',
    name: 'Indonesia'
 } as Country
 
-const Ireland = {
+const ireland = {
    code: 'ie',
    name: 'Ireland'
 } as Country
 
-const Israel = {
+const israel = {
    code: 'il',
    name: 'Israel'
 } as Country
 
-const India = {
+const india = {
    code: 'in',
    name: 'India'
 } as Country
 
-const Italy = {
+const italy = {
    code: 'it',
    name: 'Italy'
 } as Country
 
-const Japan = {
+const japan = {
    code: 'jp',
    name: 'Japan'
 } as Country
 
-const SouthKorea = {
+const southKorea = {
    code: 'kr',
    name: 'South Korea'
 } as Country
 
-const Lithuania = {
+const lithuania = {
    code: 'lt',
    name: 'Lithuania'
 } as Country
 
-const Latvia = {
+const latvia = {
    code: 'lv',
    name: 'Latvia'
 } as Country
 
-const Morocco = {
+const morocco = {
    code: 'ma',
    name: 'Morocco'
 } as Country
 
-const Mexico = {
+const mexico = {
    code: 'mx',
    name: 'Mexico'
 } as Country
 
-const Malaysia = {
+const malaysia = {
    code: 'my',
    name: 'Malaysia'
 } as Country
 
-const Nigeria = {
+const nigeria = {
    code: 'ng',
    name: 'Nigeria'
 } as Country
 
-const Netherlands = {
+const netherlands = {
    code: 'nl',
    name: 'Netherlands'
 } as Country
 
-const Norway = {
+const norway = {
    code: 'no',
    name: 'Norway'
 } as Country
 
-const NewZealand = {
+const newZealand = {
    code: 'nz',
    name: 'New Zealand'
 } as Country
 
-const Philippines = {
+const philippines = {
    code: 'ph',
    name: 'Philippines'
 } as Country
 
-const Poland = {
+const poland = {
    code: 'pl',
    name: 'Poland'
 } as Country
 
-const Portugal = {
+const portugal = {
    code: 'pt',
    name: 'Portugal'
 } as Country
 
-const Romania = {
+const romania = {
    code: 'ro',
    name: 'Romania'
 } as Country
 
-const Serbia = {
+const serbia = {
    code: 'rs',
    name: 'Serbia'
 } as Country
 
-const Russia = {
+const russia = {
    code: 'ru',
    name: 'Russia'
 } as Country
 
-const SaudiArabia = {
+const saudiArabia = {
    code: 'sa',
    name: 'Saudi Arabia'
 } as Country
 
-const Sweden = {
+const sweden = {
    code: 'se',
    name: 'Sweden'
 } as Country
 
-const Singapore = {
+const singapore = {
    code: 'sg',
    name: 'Singapore'
 } as Country
 
-const Slovenia = {
+const slovenia = {
    code: 'si',
    name: 'Slovenia'
 } as Country
 
-const Slovakia = {
+const slovakia = {
    code: 'sk',
    name: 'Slovakia'
 } as Country
 
-const Thailand = {
+const thailand = {
    code: 'th',
    name: 'Thailand'
 } as Country
 
-const Turkey = {
+const turkey = {
    code: 'tr',
    name: 'Turkey'
 } as Country
 
-const Taiwan = {
+const taiwan = {
    code: 'tw',
    name: 'Taiwan'
 } as Country
 
-const Ukraine = {
+const ukraine = {
    code: 'ua',
    name: 'Ukraine'
 } as Country
 
-const UnitedStates = {
+const unitedStates = {
    code: 'us',
    name: 'United States'
 } as Country
 
-const Venezuela = {
+const venezuela = {
    code: 've',
    name: 'Venezuela'
 } as Country
 
-const SouthAfrica = {
+const southAfrica = {
    code: 'za',
    name: 'South Africa'
 } as Country
