@@ -9,6 +9,7 @@ import {FullScreenLoaderView} from "../../../../helpers/components/loaderViews/f
 import {touchableOpacity} from "../../../../helpers/managers/ScreenInfoProvider";
 import {VectorIcon} from "../../../../helpers/components/imageViews/icons/VectorIcon";
 import {getStyles} from "./NewsFeedScreenView.styles";
+import {NewsFeedFilterAlert} from "../helpers/newsFeedFilterAlert/NewsFeedFilterAlert";
 
 interface Props {
    news: News[]
@@ -17,6 +18,8 @@ interface Props {
    onRefresh: VoidFunction
    onNewsPress: (news: News) => void
    onFilter: VoidFunction
+   isPickerVisible: boolean
+   onPickerClose: VoidFunction
 }
 
 interface State {
@@ -41,6 +44,10 @@ export class NewsFeedScreenView extends BaseComponent<Props, State> {
        >
           {this.renderContent(appearance)}
           {this.renderFilterButton(appearance)}
+          <NewsFeedFilterAlert
+             isVisible={this.props.isPickerVisible}
+             onClose={() => {this.props.onPickerClose()}}
+          />
        </TopBarScreenView>
     )
   }

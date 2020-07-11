@@ -11,6 +11,7 @@ interface State {
   news: News[]
   isRefreshing: boolean
   isLoading: boolean
+  isPickerVisible: boolean
 }
 
 export class NewsFeedScreen extends React.Component<Props, State> {
@@ -25,6 +26,7 @@ export class NewsFeedScreen extends React.Component<Props, State> {
       news: [],
       isRefreshing: false,
       isLoading: false,
+      isPickerVisible: false,
     }
   }
 
@@ -53,7 +55,12 @@ export class NewsFeedScreen extends React.Component<Props, State> {
 
   // Filter
   private onFilter() {
-    this.props.navigation.push('NewsSources')
+    this.setState({isPickerVisible: true})
+    // this.props.navigation.push('NewsSources')
+  }
+
+  private onPickerClose() {
+    this.setState({isPickerVisible: false})
   }
 
   // News select
@@ -71,6 +78,8 @@ export class NewsFeedScreen extends React.Component<Props, State> {
          isLoading={this.state.isLoading}
          onNewsPress={this.onNewsPress.bind(this)}
          onFilter={this.onFilter.bind(this)}
+         isPickerVisible={this.state.isPickerVisible}
+         onPickerClose={() => {this.onPickerClose()}}
       />
     )
   }
