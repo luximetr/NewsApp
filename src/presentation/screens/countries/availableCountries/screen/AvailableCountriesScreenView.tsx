@@ -7,7 +7,7 @@ export class AvailableCountriesScreenView extends BaseComponent {
 
    renderWith(appearance: Appearance): any {
       return (
-         <View />
+         <View style={{backgroundColor: 'green', flex: 1}}/>
       )
    }
 }

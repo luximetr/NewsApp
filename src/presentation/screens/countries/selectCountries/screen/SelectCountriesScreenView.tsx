@@ -2,10 +2,15 @@ import React from 'react'
 import {BaseComponent} from "../../../../helpers/components/baseViews/baseComponent/BaseComponent";
 import {Appearance} from "../../../../../model/model/appearance/Appearance";
 import {TopBarScreenView} from "../../../../helpers/components/screenViews/topBarScreenView/TopBarScreenView";
-import {getStyles} from "./SelectCountriesScreenView.styles";
-import { TabView, SceneMap } from 'react-native-tab-view';
+// import {getStyles} from "./SelectCountriesScreenView.styles";
+// import {TabView, SceneMap, TabBar, SceneRendererProps, NavigationState} from 'react-native-tab-view';
+// import {SelectedCountriesScreen} from "../../selectedCountries/screen/SelectedCountriesScreen";
+// import {AvailableCountriesScreen} from "../../availableCountries/screen/AvailableCountriesScreen";
+// import {View, StyleSheet} from "react-native";
+import {TopTabBarView} from "../../../../helpers/components/tabBarViews/topTabBarView/TopTabBarView";
 import {SelectedCountriesScreen} from "../../selectedCountries/screen/SelectedCountriesScreen";
 import {AvailableCountriesScreen} from "../../availableCountries/screen/AvailableCountriesScreen";
+import {TopTabBarItem} from "../../../../helpers/components/tabBarViews/topTabBarView/TopTabBarItem";
 
 interface Props {
    onBack: VoidFunction
@@ -13,11 +18,7 @@ interface Props {
 
 interface State {
    title: string
-   selectedIndex: number
-   routes: {
-      key: string,
-      title: string
-   }[]
+   tabComponents: TopTabBarItem[]
 }
 
 export class SelectCountriesScreenView extends BaseComponent<Props, State> {
@@ -27,15 +28,16 @@ export class SelectCountriesScreenView extends BaseComponent<Props, State> {
       super(props);
       this.state = {
          title: 'Countries',
-         selectedIndex: 0,
-         routes: [
+         tabComponents: [
             {
-               key: 'first',
-               title: 'Selected'
+               key: 'selected',
+               title: 'Selected',
+               component: SelectedCountriesScreen
             },
             {
-               key: 'second',
-               title: 'Available'
+               key: 'available',
+               title: 'Available',
+               component: AvailableCountriesScreen
             }
          ]
       }
@@ -50,27 +52,10 @@ export class SelectCountriesScreenView extends BaseComponent<Props, State> {
                action: () => {this.props.onBack()}
             }}
          >
-            {this.renderSegmentedControl(appearance)}
+            <TopTabBarView
+               tabItems={this.state.tabComponents}
+            />
          </TopBarScreenView>
-      )
-   }
-
-   // Segmented control
-   private renderSegmentedControl(appearance: Appearance) {
-      return (
-         <TabView
-            renderScene={SceneMap({
-               first: SelectedCountriesScreen,
-               second: AvailableCountriesScreen
-            })}
-            onIndexChange={(index) => {
-               this.setState({selectedIndex: index})
-            }}
-            navigationState={{
-               index: this.state.selectedIndex,
-               routes: this.state.routes
-            }}
-         />
       )
    }
 }
