@@ -30,7 +30,7 @@ export const DarkAppearance = {
       }
    },
    divider: {
-      primary: 'rgb(255, 255, 255)'
+      primary: 'rgb(150, 150, 150)'
    },
    scroll: {
       refresh: {
