@@ -26,16 +26,37 @@ export class AvailableCountriesScreen extends React.Component<Props, State> {
    }
 
    componentDidMount(): void {
-      const countries = this.countriesRepo.getAvailableCountries()
-      const sortedCountries = this.sortCountries(countries)
-      this.setState({countries: sortedCountries})
+      this.loadCountries()
    }
 
    // Countries
+   private loadCountries() {
+      this.countriesRepo
+         .getAvailableCountries()
+         .then((countries) => {
+            const sortedCountries = this.sortCountries(countries)
+            this.setState({countries: sortedCountries})
+         })
+   }
+
    protected sortCountries(countries: Country[]) {
       return countries.sort((itemLeft, itemRight) => {
          return itemLeft.name.localeCompare(itemRight.name)
       })
+   }
+
+   // Select country
+   private onCountrySelect(country: Country) {
+      this.countriesRepo.selectCountry(country)
+      this.displayCountrySelected(country)
+   }
+
+   private displayCountrySelected(country: Country) {
+      const countries = this.state.countries
+      const filteredCountries = countries.filter((item) => {
+         return item.code !== country.code
+      })
+      this.setState({countries: filteredCountries})
    }
 
    // View
@@ -43,6 +64,7 @@ export class AvailableCountriesScreen extends React.Component<Props, State> {
       return (
          <AvailableCountriesScreenView
             countries={this.state.countries}
+            onCountrySelect={this.onCountrySelect.bind(this)}
          />
       )
    }

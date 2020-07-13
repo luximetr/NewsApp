@@ -9,6 +9,7 @@ import {touchableOpacity} from "../../../../helpers/managers/ScreenInfoProvider"
 
 interface Props {
    countries: Country[]
+   onCountrySelect: (country: Country) => void
 }
 
 export class AvailableCountriesScreenView extends BaseComponent<Props> {
@@ -32,7 +33,10 @@ export class AvailableCountriesScreenView extends BaseComponent<Props> {
    protected renderListItem(appearance: Appearance, country: Country) {
       return (
          <View>
-            <TouchableOpacity activeOpacity={touchableOpacity}>
+            <TouchableOpacity
+               activeOpacity={touchableOpacity}
+               onPress={() => {this.props.onCountrySelect(country)}}
+            >
                <CountriesListItemView
                   title={country.name}
                />
