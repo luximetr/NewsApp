@@ -22,6 +22,15 @@ export class AsyncStorage {
       }
    }
 
+   async removeItem(key: string, where: (item: any) => void) {
+      const storedString = await ReactAsyncStorage.getItem(key)
+      if (storedString) {
+         const storedArray = JSON.parse(storedString) as any[]
+         const arrayString = JSON.stringify(storedArray)
+         return ReactAsyncStorage.setItem(key, arrayString)
+      }
+   }
+
    async getData(key: string): Promise<(any | undefined)> {
       return ReactAsyncStorage
          .getItem(key)

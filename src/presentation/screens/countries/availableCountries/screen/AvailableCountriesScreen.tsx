@@ -3,6 +3,7 @@ import {AvailableCountriesScreenView} from "./AvailableCountriesScreenView";
 import {Country} from "../../../../../model/model/country/Country";
 import {allCountries} from "../../../../../model/model/country/Countries";
 import {CountriesRepo} from "../../../../../model/repos/countriesRepo/CountriesRepo";
+import {sortCountries} from "../helpers/countries/CountriesHelper";
 
 interface Props {
 
@@ -34,15 +35,9 @@ export class AvailableCountriesScreen extends React.Component<Props, State> {
       this.countriesRepo
          .getAvailableCountries()
          .then((countries) => {
-            const sortedCountries = this.sortCountries(countries)
+            const sortedCountries = sortCountries(countries)
             this.setState({countries: sortedCountries})
          })
-   }
-
-   protected sortCountries(countries: Country[]) {
-      return countries.sort((itemLeft, itemRight) => {
-         return itemLeft.name.localeCompare(itemRight.name)
-      })
    }
 
    // Select country

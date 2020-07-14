@@ -9,16 +9,15 @@ export class CountriesRepo {
 
    async getAvailableCountries() {
       const selectedCountries = await this.countriesBucket.getSelected()
-      const countries = allCountries.filter((country) => {
+      return allCountries.filter((country) => {
          return !contains(selectedCountries, (item) => {
             return item.code === country.code
          })
       })
-      return countries
    }
 
-   getSelectedCountries() {
-      return []
+   async getSelectedCountries() {
+      return this.countriesBucket.getSelected()
    }
 
    selectCountry(country: Country) {
@@ -26,6 +25,6 @@ export class CountriesRepo {
    }
 
    deselectCountry(country: Country) {
-
+      this.countriesBucket.removeFromSelected(country).then()
    }
 }
