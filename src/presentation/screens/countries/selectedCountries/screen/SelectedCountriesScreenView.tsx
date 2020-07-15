@@ -2,14 +2,15 @@ import React from 'react';
 import {BaseComponent} from "../../../../helpers/components/baseViews/baseComponent/BaseComponent";
 import {Appearance} from "../../../../../model/model/appearance/Appearance";
 import {FlatList, TouchableOpacity, View} from "react-native";
-import {Country} from "../../../../../model/model/country/Country";
 import {getStyles} from "./SelectedCountriesScreenView.styles";
 import {touchableOpacity} from "../../../../helpers/managers/ScreenInfoProvider";
-import {CountriesListItemView} from "../../availableCountries/helpers/listItem/CountriesListItemView";
+import {SelectedCountriesListItemView} from "../helpers/listItem/SelectedCountriesListItemView";
+import {SelectedCountriesListItem} from "../helpers/listItem/SelectedCountriesListItem";
 
 interface Props {
-   countries: Country[]
-   onCountrySelect: (country: Country) => void
+   items: SelectedCountriesListItem[]
+   onItemPress: (item: SelectedCountriesListItem) => void
+   onItemLongPress: (item: SelectedCountriesListItem) => void
 }
 
 export class SelectedCountriesScreenView extends BaseComponent<Props> {
@@ -19,7 +20,7 @@ export class SelectedCountriesScreenView extends BaseComponent<Props> {
       return (
          <View style={getStyles(appearance).container}>
             <FlatList
-               data={this.props.countries}
+               data={this.props.items}
                renderItem={(item) => {
                   return this.renderListItem(appearance, item.item)
                }}
@@ -29,15 +30,17 @@ export class SelectedCountriesScreenView extends BaseComponent<Props> {
    }
 
    // List item
-   protected renderListItem(appearance: Appearance, country: Country) {
+   protected renderListItem(appearance: Appearance, item: SelectedCountriesListItem) {
       return (
          <View>
             <TouchableOpacity
                activeOpacity={touchableOpacity}
-               onPress={() => {this.props.onCountrySelect(country)}}
+               onPress={() => {this.props.onItemPress(item)}}
+               onLongPress={() => {this.props.onItemLongPress(item)}}
             >
-               <CountriesListItemView
-                  title={country.name}
+               <SelectedCountriesListItemView
+                  title={item.country.name}
+                  isEnabled={item.isEnabled}
                />
             </TouchableOpacity>
             <View style={getStyles(appearance).divider}/>

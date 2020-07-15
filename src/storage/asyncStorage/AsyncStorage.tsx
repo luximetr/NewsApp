@@ -1,4 +1,5 @@
 import ReactAsyncStorage from '@react-native-community/async-storage';
+import {contains, remove} from "../../model/helpers/array/ArrayHelper";
 
 export class AsyncStorage {
 
@@ -22,10 +23,11 @@ export class AsyncStorage {
       }
    }
 
-   async removeItem(key: string, where: (item: any) => void) {
+   async removeItem(key: string, where: (item: any) => boolean) {
       const storedString = await ReactAsyncStorage.getItem(key)
       if (storedString) {
-         const storedArray = JSON.parse(storedString) as any[]
+         let storedArray = JSON.parse(storedString) as any[]
+         storedArray = remove(storedArray, where)
          const arrayString = JSON.stringify(storedArray)
          return ReactAsyncStorage.setItem(key, arrayString)
       }

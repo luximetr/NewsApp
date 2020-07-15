@@ -1,9 +1,9 @@
 import React from 'react';
 import {AvailableCountriesScreenView} from "./AvailableCountriesScreenView";
 import {Country} from "../../../../../model/model/country/Country";
-import {allCountries} from "../../../../../model/model/country/Countries";
 import {CountriesRepo} from "../../../../../model/repos/countriesRepo/CountriesRepo";
 import {sortCountries} from "../helpers/countries/CountriesHelper";
+import {countryDeselectedNotifier} from "../../../../../model/repos/countriesRepo/Notifiers";
 
 interface Props {
 
@@ -24,10 +24,15 @@ export class AvailableCountriesScreen extends React.Component<Props, State> {
       this.state = {
          countries: []
       }
+      countryDeselectedNotifier.attach(this.onCountryDeselected.bind(this))
    }
 
    componentDidMount(): void {
       this.loadCountries()
+   }
+
+   componentWillUnmount(): void {
+      countryDeselectedNotifier.detach(this.onCountryDeselected)
    }
 
    // Countries
@@ -47,11 +52,19 @@ export class AvailableCountriesScreen extends React.Component<Props, State> {
    }
 
    private displayCountrySelected(country: Country) {
-      const countries = this.state.countries
-      const filteredCountries = countries.filter((item) => {
+      let countries = this.state.countries
+      countries = countries.filter((item) => {
          return item.code !== country.code
       })
-      this.setState({countries: filteredCountries})
+      this.setState({countries: countries})
+   }
+
+   // Country deselected
+   private onCountryDeselected(country: Country) {
+      let countries = [...this.state.countries]
+      countries.push(country)
+      countries = sortCountries(countries)
+      this.setState({countries: countries})
    }
 
    // View

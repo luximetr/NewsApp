@@ -1,11 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {BaseComponent} from "../../baseViews/baseComponent/BaseComponent";
 import {Appearance} from "../../../../../model/model/appearance/Appearance";
 import {NavigationState, SceneMap, SceneRendererProps, TabBar, TabView} from "react-native-tab-view";
-import {SelectedCountriesScreen} from "../../../../screens/countries/selectedCountries/screen/SelectedCountriesScreen";
-import {AvailableCountriesScreen} from "../../../../screens/countries/availableCountries/screen/AvailableCountriesScreen";
 import {getStyles} from "./TopTabBarView.styles";
-import {View} from "react-native";
 import {TopTabBarItem} from "./TopTabBarItem";
 
 interface Props {
