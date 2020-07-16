@@ -99,6 +99,9 @@ export class NewsFeedScreen extends React.Component<Props, State> {
 
   // Categories
   private onEditCategories() {
+    this.setState({isPickerVisible: false}, () => {
+      this.props.navigation.push('SelectCategories')
+    })
   }
 
   // News select

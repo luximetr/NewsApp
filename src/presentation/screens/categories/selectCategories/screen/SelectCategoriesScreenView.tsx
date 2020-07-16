@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 import {BaseComponent} from "../../../../helpers/components/baseViews/baseComponent/BaseComponent";
-import {Appearance} from "../../../../../model/model/appearance/Appearance";
-import {TopBarScreenView} from "../../../../helpers/components/screenViews/topBarScreenView/TopBarScreenView";
-import {TopTabBarView} from "../../../../helpers/components/tabBarViews/topTabBarView/TopTabBarView";
-import {SelectedCountriesScreen} from "../../selectedCountries/screen/SelectedCountriesScreen";
-import {AvailableCountriesScreen} from "../../availableCountries/screen/AvailableCountriesScreen";
 import {TopTabBarItem} from "../../../../helpers/components/tabBarViews/topTabBarView/TopTabBarItem";
+import {SelectedCategoriesScreen} from "../../selectedCategories/screen/SelectedCategoriesScreen";
+import {AvailableCategoriesScreen} from "../../availableCategories/screen/AvailableCategoriesScreen";
+import {Appearance} from "../../../../../model/model/appearance/Appearance";
+import {TopTabBarView} from "../../../../helpers/components/tabBarViews/topTabBarView/TopTabBarView";
+import {TopBarScreenView} from "../../../../helpers/components/screenViews/topBarScreenView/TopBarScreenView";
 
 interface Props {
    onBack: VoidFunction
@@ -16,23 +16,23 @@ interface State {
    tabComponents: TopTabBarItem[]
 }
 
-export class SelectCountriesScreenView extends BaseComponent<Props, State> {
+export class SelectCategoriesScreenView extends BaseComponent<Props, State> {
 
    // Life cycle
    constructor(props: Props) {
       super(props);
       this.state = {
-         title: 'Countries',
+         title: 'Categories',
          tabComponents: [
             {
                key: 'selected',
                title: 'Selected',
-               component: SelectedCountriesScreen
+               component: SelectedCategoriesScreen
             },
             {
                key: 'available',
                title: 'Available',
-               component: AvailableCountriesScreen
+               component: AvailableCategoriesScreen
             }
          ]
       }
@@ -54,3 +54,4 @@ export class SelectCountriesScreenView extends BaseComponent<Props, State> {
       )
    }
 }
+
