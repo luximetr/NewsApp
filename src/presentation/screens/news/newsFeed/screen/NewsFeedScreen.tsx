@@ -4,6 +4,7 @@ import {TopHeadlinesRepo} from "../../../../../model/repos/topHeadlinesRepo/TopH
 import {News} from "../../../../../model/model/news/News";
 import {Country} from "../../../../../model/model/country/Country";
 import {enabledCountryChangedNotifier} from "../../../../../model/repos/countriesRepo/CountriesNotifiers";
+import {CountriesRepo} from "../../../../../model/repos/countriesRepo/CountriesRepo";
 
 interface Props {
   navigation: any
@@ -24,6 +25,7 @@ export class NewsFeedScreen extends React.Component<Props, State> {
 
   // Dependencies
   private topHeadlinesRepo = new TopHeadlinesRepo()
+  private countriesRepo = new CountriesRepo()
 
   // Life cycle
   constructor(props: any) {
@@ -48,15 +50,18 @@ export class NewsFeedScreen extends React.Component<Props, State> {
 
   // Load headlines
   private loadHeadlines() {
-    this.topHeadlinesRepo
-       .getTopHeadlines(this.filteredCountry)
-       .then((result) => {
-         this.setState({isRefreshing: false, isLoading: false})
-         if (result.data) {
-           this.setState({news: result.data})
-         } else {
-         }
-    })
+    this.asyncLoadHeadlines().then()
+  }
+
+  private async asyncLoadHeadlines() {
+    if (this.filteredCountry === undefined) {
+      this.filteredCountry = await this.countriesRepo.getEnabledCountry()
+    }
+    const result = await this.topHeadlinesRepo.getTopHeadlines(this.filteredCountry)
+    this.setState({isRefreshing: false, isLoading: false})
+    if (result.data) {
+      this.setState({news: result.data})
+    }
   }
 
   // Refresh

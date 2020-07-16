@@ -47,7 +47,7 @@ export class NewsFeedFilterAlertView extends BaseComponent<Props, State> {
    // Content
    private renderContent(appearance: Appearance) {
       return (
-         <View>
+         <View style={getStyles(appearance).container}>
             {this.renderCountriesPicker(appearance)}
             {this.renderCategoriesPicker(appearance)}
          </View>

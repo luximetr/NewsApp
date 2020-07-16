@@ -44,6 +44,6 @@ export class CountriesRepo {
    }
 
    async getEnabledCountry() {
-      await this.countriesBucket.getEnabled()
+      return this.countriesBucket.getEnabled()
    }
 }

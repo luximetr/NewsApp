@@ -4,6 +4,9 @@ import {globalMarkup} from "../../../../../helpers/managers/ScreenInfoProvider";
 
 export function getStyles(appearance: Appearance) {
    return StyleSheet.create({
+      container: {
+         marginBottom: 10,
+      },
       sectionHeader: {
          marginTop: 10,
          flexDirection: 'row',
