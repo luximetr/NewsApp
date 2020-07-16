@@ -7,7 +7,6 @@ import {countrySelectedNotifier} from "../../../../../model/repos/countriesRepo/
 import {Country} from "../../../../../model/model/country/Country";
 
 interface Props {
-
 }
 
 interface State {
