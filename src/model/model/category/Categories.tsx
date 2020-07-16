@@ -34,3 +34,13 @@ const technology = {
    code: 'technology',
    name: 'Technology'
 } as Category
+
+export const allCategories = [
+   business,
+   entertainment,
+   general,
+   health,
+   science,
+   sports,
+   technology,
+]

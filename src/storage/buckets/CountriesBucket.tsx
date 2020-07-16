@@ -27,10 +27,6 @@ export class CountriesBucket {
       })
    }
 
-   async addToEnabled(country: Country) {
-      return this.storage.addItem(this.enabledCountriesKey, country)
-   }
-
    async setEnabled(country: Country) {
       return this.storage.storeItem(this.enabledCountriesKey, [country])
    }
