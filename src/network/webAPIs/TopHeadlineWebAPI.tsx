@@ -6,9 +6,13 @@ export type WebAPIResult = {
 
 export class TopHeadlineWebAPI {
 
-   async getTopHeadline(country: string, apiKey: string): Promise<WebAPIResult> {
+   async getTopHeadline(apiKey: string, country?: string): Promise<WebAPIResult> {
+      let url = `http://newsapi.org/v2/top-headlines?apiKey=${apiKey}`
+      if (country) {
+         url = url.concat(`&country=${country}`)
+      }
       return fetch(
-         `http://newsapi.org/v2/top-headlines?country=${country}&apiKey=${apiKey}`,
+         url,
          {
             method: 'GET'
          })

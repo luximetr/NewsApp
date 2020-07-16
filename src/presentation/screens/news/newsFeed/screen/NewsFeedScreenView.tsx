@@ -46,13 +46,7 @@ export class NewsFeedScreenView extends BaseComponent<Props, State> {
        >
           {this.renderContent(appearance)}
           {this.renderFilterButton(appearance)}
-          <NewsFeedFilterAlert
-             isVisible={this.props.isPickerVisible}
-             onClose={() => {this.props.onPickerClose()}}
-             onEditCountries={() => {this.props.onEditCountries()}}
-             onEditCategories={() => {this.props.onEditCategories()}}
-             categories={[]}
-          />
+          {this.renderFilterAlert()}
        </TopBarScreenView>
     )
   }
@@ -123,6 +117,19 @@ export class NewsFeedScreenView extends BaseComponent<Props, State> {
         >
            <VectorIcon name={'share'} source={'material'} size={30} color={appearance.action.title.primary} />
         </TouchableOpacity>
+     )
+   }
+
+   // Filter alert
+   private renderFilterAlert() {
+     return (
+        <NewsFeedFilterAlert
+           isVisible={this.props.isPickerVisible}
+           onClose={() => {this.props.onPickerClose()}}
+           onEditCountries={() => {this.props.onEditCountries()}}
+           onEditCategories={() => {this.props.onEditCategories()}}
+           categories={[]}
+        />
      )
    }
 }

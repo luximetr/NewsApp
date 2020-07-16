@@ -11,5 +11,4 @@ class CountryObserverNotifier extends ObserversNotifier<CountriesObserver> {
 
 export const countrySelectedNotifier = new CountryObserverNotifier()
 export const countryDeselectedNotifier = new CountryObserverNotifier()
-export const countryEnabledNotifier = new CountryObserverNotifier()
-export const countryDisabledNotifier = new CountryObserverNotifier()
+export const enabledCountryChangedNotifier = new CountryObserverNotifier()

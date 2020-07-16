@@ -4,7 +4,7 @@ import {CountriesRepo} from "../../../../../model/repos/countriesRepo/CountriesR
 import {compareCountries, sortCountries} from "../../availableCountries/helpers/countries/CountriesHelper";
 import {SelectedCountriesListItem} from "../helpers/listItem/SelectedCountriesListItem";
 import {contains} from "../../../../../model/helpers/array/ArrayHelper";
-import {countrySelectedNotifier} from "../../../../../model/repos/countriesRepo/Notifiers";
+import {countrySelectedNotifier} from "../../../../../model/repos/countriesRepo/CountriesNotifiers";
 import {Country} from "../../../../../model/model/country/Country";
 
 interface Props {
@@ -16,6 +16,9 @@ interface State {
 }
 
 export class SelectedCountriesScreen extends React.Component<Props, State> {
+
+   // Data
+   private enabledCountry?: Country
 
    // Dependencies
    private countriesRepo = new CountriesRepo()
@@ -42,13 +45,14 @@ export class SelectedCountriesScreen extends React.Component<Props, State> {
       this.countriesRepo
          .getSelectedCountries()
          .then((data) => {
-            this.displayCountries(data.countries, data.disabled)
+            this.displayCountries(data.countries, data.enabled)
          })
    }
 
-   private displayCountries(countries: Country[], disabled: Country[]) {
+   private displayCountries(countries: Country[], enabled?: Country) {
+      this.enabledCountry = enabled
       const items = countries.map((country) => {
-         const isEnabled = !contains(disabled, ($0) => { return $0.code === country.code})
+         const isEnabled = enabled !== undefined && enabled.code === country.code
          return {country: country, isEnabled: isEnabled}
       })
       this.prepareAndDisplayItems(items)
@@ -63,8 +67,11 @@ export class SelectedCountriesScreen extends React.Component<Props, State> {
 
    // Deselect country
    private onItemLongPress(listItem: SelectedCountriesListItem) {
-      this.countriesRepo.deselectCountry(listItem.country)
-      this.displayItemDeselected(listItem)
+      this.countriesRepo
+         .deselectCountry(listItem.country)
+         .then(() => {
+            this.displayItemDeselected(listItem)
+         })
    }
 
    private displayItemDeselected(listItem: SelectedCountriesListItem) {
@@ -77,34 +84,46 @@ export class SelectedCountriesScreen extends React.Component<Props, State> {
 
    // Enable country
    private onItemPress(item: SelectedCountriesListItem) {
-      if (item.isEnabled) {
-         this.countriesRepo.disableCountry(item.country)
-         this.displayItemDisabled(item)
-      } else {
-         this.countriesRepo.enableCountry(item.country)
-         this.displayItemEnabled(item)
-      }
+      if (item.isEnabled) { return }
+      this.countriesRepo.setEnabledCountry(item.country).then(() => {
+         this.displayEnabledCountryChanged(item.country)
+      })
    }
 
-   private displayItemEnabled(item: SelectedCountriesListItem) {
+   private displayEnabledCountryChanged(newEnabledCountry: Country) {
+      if (this.enabledCountry) {
+         this.displayCountryDisabled(this.enabledCountry)
+      }
+      this.displayCountryEnabled(newEnabledCountry)
+      this.enabledCountry = newEnabledCountry
+   }
+
+   private displayCountryDisabled(country: Country) {
+      const index = this.findItemIndex(country)
       const itemsCopy = [...this.state.items]
-      const itemIndex = itemsCopy.indexOf(item)
-      itemsCopy[itemIndex].isEnabled = true
+      itemsCopy[index].isEnabled = false
       this.setState({items: itemsCopy})
    }
 
-   private displayItemDisabled(item: SelectedCountriesListItem) {
+   private displayCountryEnabled(country: Country) {
+      const index = this.findItemIndex(country)
       const itemsCopy = [...this.state.items]
-      const itemIndex = itemsCopy.indexOf(item)
-      itemsCopy[itemIndex].isEnabled = false
+      itemsCopy[index].isEnabled = true
       this.setState({items: itemsCopy})
    }
 
    // Country selected
    private countrySelected(country: Country) {
       const itemsCopy = [...this.state.items]
-      itemsCopy.push({country: country, isEnabled: true})
+      itemsCopy.push({country: country, isEnabled: false})
       this.prepareAndDisplayItems(itemsCopy)
+   }
+
+   // Helpers
+   private findItemIndex(country: Country): number {
+      return this.state.items.findIndex((item) => {
+         return item.country.code === country.code
+      })
    }
 
    // View

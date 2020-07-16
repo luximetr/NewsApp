@@ -326,3 +326,5 @@ export const allCountries = [
    venezuela,
    southAfrica
 ]
+
+export const defaultCountry = unitedStates

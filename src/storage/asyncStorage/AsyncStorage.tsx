@@ -23,7 +23,7 @@ export class AsyncStorage {
       }
    }
 
-   async removeItem(key: string, where: (item: any) => boolean) {
+   async removeItemWhere(key: string, where: (item: any) => boolean) {
       const storedString = await ReactAsyncStorage.getItem(key)
       if (storedString) {
          let storedArray = JSON.parse(storedString) as any[]
@@ -33,13 +33,16 @@ export class AsyncStorage {
       }
    }
 
+   async removeItem(key: string) {
+      return ReactAsyncStorage.removeItem(key)
+   }
+
    async getData(key: string): Promise<(any | undefined)> {
       return ReactAsyncStorage
          .getItem(key)
          .then((result) => {
             if (result) {
-               const json = JSON.parse(result)
-               return json
+               return JSON.parse(result)
             } else {
                return undefined
             }

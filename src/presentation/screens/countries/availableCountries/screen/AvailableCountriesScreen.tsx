@@ -3,7 +3,7 @@ import {AvailableCountriesScreenView} from "./AvailableCountriesScreenView";
 import {Country} from "../../../../../model/model/country/Country";
 import {CountriesRepo} from "../../../../../model/repos/countriesRepo/CountriesRepo";
 import {sortCountries} from "../helpers/countries/CountriesHelper";
-import {countryDeselectedNotifier} from "../../../../../model/repos/countriesRepo/Notifiers";
+import {countryDeselectedNotifier} from "../../../../../model/repos/countriesRepo/CountriesNotifiers";
 
 interface Props {
 
@@ -47,8 +47,11 @@ export class AvailableCountriesScreen extends React.Component<Props, State> {
 
    // Select country
    private onCountrySelect(country: Country) {
-      this.countriesRepo.selectCountry(country)
-      this.displayCountrySelected(country)
+      this.countriesRepo
+         .selectCountry(country)
+         .then(() => {
+            this.displayCountrySelected(country)
+         })
    }
 
    private displayCountrySelected(country: Country) {

@@ -34,11 +34,14 @@ export function getStyles(appearance: Appearance) {
          marginTop: 10,
       },
       item: {
-         marginRight: 10,
+         marginRight: 4,
          marginLeft: globalMarkup.marginHorizontal,
          backgroundColor: appearance.background.tertiary,
+         borderRadius: 12,
       },
       itemText: {
+         paddingHorizontal: 10,
+         paddingVertical: 4,
          color: appearance.text.primary,
          fontSize: 16,
       },
@@ -49,4 +52,12 @@ export function getStyles(appearance: Appearance) {
          color: appearance.text.primary
       }
    })
+}
+
+export function getItemColor(appearance: Appearance, isEnabled: boolean) {
+   if (isEnabled) {
+      return appearance.background.secondary
+   } else {
+      return appearance.background.tertiary
+   }
 }

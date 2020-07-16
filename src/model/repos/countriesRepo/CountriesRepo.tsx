@@ -2,12 +2,14 @@ import {allCountries} from "../../model/country/Countries";
 import {Country} from "../../model/country/Country";
 import {CountriesBucket} from "../../../storage/buckets/CountriesBucket";
 import {contains} from "../../helpers/array/ArrayHelper";
-import {countryDeselectedNotifier, countrySelectedNotifier} from "./Notifiers";
+import {countryDeselectedNotifier, countrySelectedNotifier, enabledCountryChangedNotifier} from "./CountriesNotifiers";
 
 export class CountriesRepo {
 
+   // Dependencies
    private countriesBucket = new CountriesBucket()
 
+   // Available countries
    async getAvailableCountries() {
       const selectedCountries = await this.countriesBucket.getSelected()
       return allCountries.filter((country) => {
@@ -17,33 +19,33 @@ export class CountriesRepo {
       })
    }
 
+   // Selected countries
    async getSelectedCountries() {
-      const disabledCountries = await this.countriesBucket.getDisabled()
+      const enabledCountry = await this.countriesBucket.getEnabled()
       const selectedCountries = await this.countriesBucket.getSelected()
-      return {countries: selectedCountries, disabled: disabledCountries}
+      return {countries: selectedCountries, enabled: enabledCountry}
    }
 
-   selectCountry(country: Country) {
-      this.countriesBucket
-         .addToSelected(country)
-         .then(() => {
-            countrySelectedNotifier.notify(country)
-         })
+   async selectCountry(country: Country) {
+      await this.countriesBucket.addToSelected(country)
+      countrySelectedNotifier.notify(country)
    }
 
-   deselectCountry(country: Country) {
-      this.countriesBucket
-         .removeFromSelected(country)
-         .then(() => {
-            countryDeselectedNotifier.notify(country)
-         })
+   async deselectCountry(country: Country) {
+      await this.countriesBucket.removeFromSelected(country)
+      console.log('removed from selected')
+      await this.countriesBucket.removeFromEnabled(country)
+      console.log('removed from enabled')
+      countryDeselectedNotifier.notify(country)
    }
 
-   disableCountry(country: Country) {
-      this.countriesBucket.addToDisabled(country).then()
+   // Enabled country
+   async setEnabledCountry(country: Country) {
+      await this.countriesBucket.setEnabled(country)
+      enabledCountryChangedNotifier.notify(country)
    }
 
-   enableCountry(country: Country) {
-      this.countriesBucket.removeFromDisabled(country).then()
+   async getEnabledCountry() {
+      await this.countriesBucket.getEnabled()
    }
 }

@@ -2,6 +2,8 @@ import * as React from 'react';
 import {NewsFeedScreenView} from './NewsFeedScreenView';
 import {TopHeadlinesRepo} from "../../../../../model/repos/topHeadlinesRepo/TopHeadlinesRepo";
 import {News} from "../../../../../model/model/news/News";
+import {Country} from "../../../../../model/model/country/Country";
+import {enabledCountryChangedNotifier} from "../../../../../model/repos/countriesRepo/CountriesNotifiers";
 
 interface Props {
   navigation: any
@@ -16,6 +18,9 @@ interface State {
 
 export class NewsFeedScreen extends React.Component<Props, State> {
 
+  // Data
+  private filteredCountry?: Country
+
   // Dependencies
   private topHeadlinesRepo = new TopHeadlinesRepo()
 
@@ -28,6 +33,11 @@ export class NewsFeedScreen extends React.Component<Props, State> {
       isLoading: false,
       isPickerVisible: false,
     }
+    enabledCountryChangedNotifier.attach(this.onEnabledCountryChanged.bind(this))
+  }
+
+  componentWillUnmount(): void {
+    enabledCountryChangedNotifier.attach(this.onEnabledCountryChanged)
   }
 
   componentDidMount(): void {
@@ -37,13 +47,14 @@ export class NewsFeedScreen extends React.Component<Props, State> {
 
   // Load headlines
   private loadHeadlines() {
-    this.topHeadlinesRepo.getTopHeadlines().then((result) => {
-      this.setState({isRefreshing: false, isLoading: false})
-      if (result.data) {
-        this.setState({news: result.data})
-      } else {
-
-      }
+    this.topHeadlinesRepo
+       .getTopHeadlines(this.filteredCountry)
+       .then((result) => {
+         this.setState({isRefreshing: false, isLoading: false})
+         if (result.data) {
+           this.setState({news: result.data})
+         } else {
+         }
     })
   }
 
@@ -60,6 +71,11 @@ export class NewsFeedScreen extends React.Component<Props, State> {
 
   private onPickerClose() {
     this.setState({isPickerVisible: false})
+    this.applyFilters()
+  }
+
+  private applyFilters() {
+    this.loadHeadlines()
   }
 
   // Countries
@@ -69,9 +85,12 @@ export class NewsFeedScreen extends React.Component<Props, State> {
     })
   }
 
+  private onEnabledCountryChanged(country: Country) {
+    this.filteredCountry = country
+  }
+
   // Categories
   private onEditCategories() {
-
   }
 
   // News select
