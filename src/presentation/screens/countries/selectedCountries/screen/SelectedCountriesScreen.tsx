@@ -1,9 +1,8 @@
 import React from 'react';
 import {SelectedCountriesScreenView} from "./SelectedCountriesScreenView";
 import {CountriesRepo} from "../../../../../model/repos/countriesRepo/CountriesRepo";
-import {compareCountries, sortCountries} from "../../availableCountries/helpers/countries/CountriesHelper";
+import {compareCountries} from "../../availableCountries/helpers/countries/CountriesHelper";
 import {SelectedCountriesListItem} from "../helpers/listItem/SelectedCountriesListItem";
-import {contains} from "../../../../../model/helpers/array/ArrayHelper";
 import {countrySelectedNotifier} from "../../../../../model/repos/countriesRepo/CountriesNotifiers";
 import {Country} from "../../../../../model/model/country/Country";
 

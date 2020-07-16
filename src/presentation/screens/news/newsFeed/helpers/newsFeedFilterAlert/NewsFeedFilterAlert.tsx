@@ -4,9 +4,12 @@ import {SelectedCountriesListItem} from "../../../../countries/selectedCountries
 import {NewsFeedFilterAlertView} from "./NewsFeedFilterAlertView";
 import {CountriesRepo} from "../../../../../../model/repos/countriesRepo/CountriesRepo";
 import {Country} from "../../../../../../model/model/country/Country";
-import {contains} from "../../../../../../model/helpers/array/ArrayHelper";
 import {compareCountries} from "../../../../countries/availableCountries/helpers/countries/CountriesHelper";
-import {SelectedCountriesListItemView} from "../../../../countries/selectedCountries/helpers/listItem/SelectedCountriesListItemView";
+import {
+   countryDeselectedNotifier,
+   countrySelectedNotifier, enabledCountryChangedNotifier
+} from "../../../../../../model/repos/countriesRepo/CountriesNotifiers";
+import {remove} from "../../../../../../model/helpers/array/ArrayHelper";
 
 interface Props {
    isVisible: boolean
@@ -22,6 +25,9 @@ interface State {
 
 export class NewsFeedFilterAlert extends React.Component<Props, State> {
 
+   // Data
+   private enabledCountry?: Country
+
    // Dependencies
    private countriesRepo = new CountriesRepo()
 
@@ -31,6 +37,15 @@ export class NewsFeedFilterAlert extends React.Component<Props, State> {
       this.state = {
          countriesList: [],
       }
+      countrySelectedNotifier.attach(this.onCountrySelected.bind(this))
+      countryDeselectedNotifier.attach(this.onCountryDeselected.bind(this))
+      enabledCountryChangedNotifier.attach(this.onEnabledCountryChanged.bind(this))
+   }
+
+   componentWillUnmount(): void {
+      countrySelectedNotifier.detach(this.onCountrySelected)
+      countryDeselectedNotifier.detach(this.onCountryDeselected)
+      enabledCountryChangedNotifier.detach(this.onEnabledCountryChanged)
    }
 
    componentDidMount(): void {
@@ -42,15 +57,16 @@ export class NewsFeedFilterAlert extends React.Component<Props, State> {
       this.countriesRepo
          .getSelectedCountries()
          .then((data) => {
-            this.displayCountries(data.countries, data.disabled)
+            this.displayCountries(data.countries, data.enabled)
          })
    }
 
-   private displayCountries(countries: Country[], disabled: Country[]) {
+   private displayCountries(countries: Country[], enabled?: Country) {
       const items = countries.map((country) => {
-         const isEnabled = !contains(disabled, ($0) => { return $0.code === country.code})
+         const isEnabled = enabled !== undefined && enabled.code === country.code
          return {country: country, isEnabled: isEnabled}
       })
+      this.enabledCountry = enabled
       this.prepareAndDisplayItems(items)
    }
 
@@ -63,27 +79,58 @@ export class NewsFeedFilterAlert extends React.Component<Props, State> {
 
    // On country item press
    private onCountryItemPress(item: SelectedCountriesListItem) {
-      if (item.isEnabled) {
-         this.countriesRepo.disableCountry(item.country)
-         this.displayCountryItemDisabled(item)
-      } else {
-         this.countriesRepo.enableCountry(item.country)
-         this.displayCountryItemEnabled(item)
-      }
+      if (item.isEnabled) { return }
+      this.countriesRepo.setEnabledCountry(item.country).then(() => {
+         this.displayEnabledCountryChanged(item.country)
+      })
    }
 
-   private displayCountryItemDisabled(item: SelectedCountriesListItem) {
+   private displayEnabledCountryChanged(newEnabledCountry: Country) {
+      if (this.enabledCountry) {
+         this.displayCountryDisabled(this.enabledCountry)
+      }
+      this.displayCountryEnabled(newEnabledCountry)
+      this.enabledCountry = newEnabledCountry
+   }
+
+   private displayCountryDisabled(country: Country) {
+      const index = this.findItemIndex(country)
       const itemsCopy = [...this.state.countriesList]
-      const index = itemsCopy.indexOf(item)
       itemsCopy[index].isEnabled = false
       this.setState({countriesList: itemsCopy})
    }
 
-   private displayCountryItemEnabled(item: SelectedCountriesListItem) {
+   private displayCountryEnabled(country: Country) {
+      const index = this.findItemIndex(country)
       const itemsCopy = [...this.state.countriesList]
-      const index = itemsCopy.indexOf(item)
       itemsCopy[index].isEnabled = true
       this.setState({countriesList: itemsCopy})
+   }
+
+   // On country selected
+   private onCountrySelected(country: Country) {
+      const itemsCopy = [...this.state.countriesList]
+      itemsCopy.push({country: country, isEnabled: false})
+      this.prepareAndDisplayItems(itemsCopy)
+   }
+
+   // On country deselected
+   private onCountryDeselected(country: Country) {
+      let itemsCopy = [...this.state.countriesList]
+      itemsCopy = remove(itemsCopy, ($0) => { return $0.country.code === country.code })
+      this.prepareAndDisplayItems(itemsCopy)
+   }
+
+   // On enabled country changed
+   private onEnabledCountryChanged(country: Country) {
+      this.displayEnabledCountryChanged(country)
+   }
+
+   // Helpers
+   private findItemIndex(country: Country): number {
+      return this.state.countriesList.findIndex((item) => {
+         return item.country.code === country.code
+      })
    }
 
    // View

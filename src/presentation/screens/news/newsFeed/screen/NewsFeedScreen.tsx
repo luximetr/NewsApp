@@ -20,6 +20,7 @@ export class NewsFeedScreen extends React.Component<Props, State> {
 
   // Data
   private filteredCountry?: Country
+  private filterUpdated = false
 
   // Dependencies
   private topHeadlinesRepo = new TopHeadlinesRepo()
@@ -75,6 +76,7 @@ export class NewsFeedScreen extends React.Component<Props, State> {
   }
 
   private applyFilters() {
+    if (!this.filterUpdated) { return }
     this.loadHeadlines()
   }
 
@@ -87,6 +89,7 @@ export class NewsFeedScreen extends React.Component<Props, State> {
 
   private onEnabledCountryChanged(country: Country) {
     this.filteredCountry = country
+    this.filterUpdated = true
   }
 
   // Categories

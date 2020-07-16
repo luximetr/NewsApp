@@ -33,9 +33,7 @@ export class CountriesRepo {
 
    async deselectCountry(country: Country) {
       await this.countriesBucket.removeFromSelected(country)
-      console.log('removed from selected')
       await this.countriesBucket.removeFromEnabled(country)
-      console.log('removed from enabled')
       countryDeselectedNotifier.notify(country)
    }
 

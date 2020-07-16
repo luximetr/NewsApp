@@ -8,6 +8,6 @@ export class ObserversNotifier<T> {
    }
 
    detach(observer: T) {
-      this.observers = this.observers.filter(item => item === observer)
+      this.observers = this.observers.filter(item => item !== observer)
    }
 }

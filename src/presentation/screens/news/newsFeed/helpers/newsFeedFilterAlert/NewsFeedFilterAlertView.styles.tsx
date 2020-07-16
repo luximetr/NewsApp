@@ -56,8 +56,8 @@ export function getStyles(appearance: Appearance) {
 
 export function getItemColor(appearance: Appearance, isEnabled: boolean) {
    if (isEnabled) {
-      return appearance.background.secondary
-   } else {
       return appearance.background.tertiary
+   } else {
+      return appearance.background.secondary
    }
 }
