@@ -5,6 +5,9 @@ import {News} from "../../../../../model/model/news/News";
 import {Country} from "../../../../../model/model/country/Country";
 import {enabledCountryChangedNotifier} from "../../../../../model/repos/countriesRepo/CountriesNotifiers";
 import {CountriesRepo} from "../../../../../model/repos/countriesRepo/CountriesRepo";
+import {Category} from "../../../../../model/model/category/Category";
+import {enabledCategoryChangedNotifier} from "../../../../../model/repos/categoriesRepo/CategoriesNotifiers";
+import {CategoriesRepo} from "../../../../../model/repos/categoriesRepo/CategoriesRepo";
 
 interface Props {
   navigation: any
@@ -21,11 +24,13 @@ export class NewsFeedScreen extends React.Component<Props, State> {
 
   // Data
   private filteredCountry?: Country
+  private filteredCategory?: Category
   private filterUpdated = false
 
   // Dependencies
   private topHeadlinesRepo = new TopHeadlinesRepo()
   private countriesRepo = new CountriesRepo()
+  private categoriesRepo = new CategoriesRepo()
 
   // Life cycle
   constructor(props: any) {
@@ -37,10 +42,12 @@ export class NewsFeedScreen extends React.Component<Props, State> {
       isPickerVisible: false,
     }
     enabledCountryChangedNotifier.attach(this.onEnabledCountryChanged.bind(this))
+    enabledCategoryChangedNotifier.attach(this.onEnabledCategoryChanged.bind(this))
   }
 
   componentWillUnmount(): void {
-    enabledCountryChangedNotifier.attach(this.onEnabledCountryChanged)
+    enabledCountryChangedNotifier.detach(this.onEnabledCountryChanged)
+    enabledCategoryChangedNotifier.detach(this.onEnabledCategoryChanged)
   }
 
   componentDidMount(): void {
@@ -57,7 +64,10 @@ export class NewsFeedScreen extends React.Component<Props, State> {
     if (this.filteredCountry === undefined) {
       this.filteredCountry = await this.countriesRepo.getEnabledCountry()
     }
-    const result = await this.topHeadlinesRepo.getTopHeadlines(this.filteredCountry)
+    if (this.filteredCategory === undefined) {
+      this.filteredCategory = await this.categoriesRepo.getEnabledCategory()
+    }
+    const result = await this.topHeadlinesRepo.getTopHeadlines(this.filteredCountry, this.filteredCategory)
     this.setState({isRefreshing: false, isLoading: false})
     if (result.data) {
       this.setState({news: result.data})
@@ -82,6 +92,7 @@ export class NewsFeedScreen extends React.Component<Props, State> {
 
   private applyFilters() {
     if (!this.filterUpdated) { return }
+    this.filterUpdated = false
     this.loadHeadlines()
   }
 
@@ -102,6 +113,11 @@ export class NewsFeedScreen extends React.Component<Props, State> {
     this.setState({isPickerVisible: false}, () => {
       this.props.navigation.push('SelectCategories')
     })
+  }
+
+  private onEnabledCategoryChanged(category: Category) {
+    this.filteredCategory = category
+    this.filterUpdated = true
   }
 
   // News select

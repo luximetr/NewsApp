@@ -6,6 +6,7 @@ import {getItemColor, getStyles} from "./NewsFeedFilterAlertView.styles";
 import {SelectedCountriesListItem} from "../../../countries/selectedCountries/helpers/listItem/SelectedCountriesListItem";
 import {touchableOpacity} from "../../../../helpers/managers/ScreenInfoProvider";
 import React from "react";
+import {SelectedCategoriesListItem} from "../../../categories/selectedCategories/helpers/selectedCategoriesListItem/SelectedCategoriesListItem";
 
 interface Props {
    isVisible: boolean
@@ -14,6 +15,8 @@ interface Props {
    onEditCategories: VoidFunction
    countriesList: SelectedCountriesListItem[]
    onCountryItemPress: (item: SelectedCountriesListItem) => void
+   categoriesList: SelectedCategoriesListItem[]
+   onCategoryItemPress: (item: SelectedCategoriesListItem) => void
 }
 
 interface State {
@@ -79,15 +82,11 @@ export class NewsFeedFilterAlertView extends BaseComponent<Props, State> {
    }
 
    protected renderCountriesListItem(appearance: Appearance, item: SelectedCountriesListItem) {
-      return (
-         <TouchableOpacity
-            activeOpacity={touchableOpacity}
-            onPress={() => {this.props.onCountryItemPress(item)}}
-         >
-            <View style={[getStyles(appearance).item, {backgroundColor: getItemColor(appearance, item.isEnabled)}]}>
-               <Text style={getStyles(appearance).itemText}>{item.country.name}</Text>
-            </View>
-         </TouchableOpacity>
+      return this.renderListItem(
+         appearance,
+         item.country.name,
+         item.isEnabled,
+         () => {this.props.onCountryItemPress(item)}
       )
    }
 
@@ -110,18 +109,17 @@ export class NewsFeedFilterAlertView extends BaseComponent<Props, State> {
    }
 
    private renderCategoriesList(appearance: Appearance) {
-      const languages = ['rufsdfhkwehfjwhf', 'uawrfwrfwrf wrf wrf wr', 'ew rf wrf n']
-      return languages.map((language) => {
-         return this.renderCategoriesListItem(appearance, language)
+      return this.props.categoriesList.map((item) => {
+         return this.renderCategoriesListItem(appearance, item)
       })
    }
 
-   protected renderCategoriesListItem(appearance: Appearance, language: string) {
-      return (
-         <View style={getStyles(appearance).item}>
-            <Text style={getStyles(appearance).itemText}>{language}</Text>
-         </View>
-      )
+   protected renderCategoriesListItem(appearance: Appearance, item: SelectedCategoriesListItem) {
+      return this.renderListItem(
+         appearance,
+         item.category.name,
+         item.isEnabled,
+         () => {this.props.onCategoryItemPress(item)})
    }
 
    // Section
@@ -142,6 +140,20 @@ export class NewsFeedFilterAlertView extends BaseComponent<Props, State> {
                />
             </TouchableOpacity>
          </View>
+      )
+   }
+
+   // List item
+   private renderListItem(appearance: Appearance, title: string, isEnabled: boolean, onPress: VoidFunction) {
+      return (
+         <TouchableOpacity
+            activeOpacity={touchableOpacity}
+            onPress={() => {onPress()}}
+         >
+            <View style={[getStyles(appearance).item, {backgroundColor: getItemColor(appearance, isEnabled)}]}>
+               <Text style={getStyles(appearance).itemText}>{title}</Text>
+            </View>
+         </TouchableOpacity>
       )
    }
 }
