@@ -9,7 +9,7 @@ import {FullScreenLoaderView} from "../../../../helpers/components/loaderViews/f
 import {touchableOpacity} from "../../../../helpers/managers/ScreenInfoProvider";
 import {VectorIcon} from "../../../../helpers/components/imageViews/icons/VectorIcon";
 import {getStyles} from "./NewsFeedScreenView.styles";
-import {NewsFeedFilterAlert} from "../helpers/newsFeedFilterAlert/NewsFeedFilterAlert";
+import {NewsFeedFilterAlert} from "../../newsFeedFilter/screen/NewsFeedFilterAlert";
 
 interface Props {
    news: News[]
@@ -128,7 +128,6 @@ export class NewsFeedScreenView extends BaseComponent<Props, State> {
            onClose={() => {this.props.onPickerClose()}}
            onEditCountries={() => {this.props.onEditCountries()}}
            onEditCategories={() => {this.props.onEditCategories()}}
-           categories={[]}
         />
      )
    }

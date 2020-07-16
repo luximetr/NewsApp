@@ -1,20 +1,18 @@
 import React from 'react';
-import {CategoryItem} from "./CategoryItem";
-import {SelectedCountriesListItem} from "../../../../countries/selectedCountries/helpers/listItem/SelectedCountriesListItem";
+import {SelectedCountriesListItem} from "../../../countries/selectedCountries/helpers/listItem/SelectedCountriesListItem";
 import {NewsFeedFilterAlertView} from "./NewsFeedFilterAlertView";
-import {CountriesRepo} from "../../../../../../model/repos/countriesRepo/CountriesRepo";
-import {Country} from "../../../../../../model/model/country/Country";
-import {compareCountries} from "../../../../countries/availableCountries/helpers/countries/CountriesHelper";
+import {CountriesRepo} from "../../../../../model/repos/countriesRepo/CountriesRepo";
+import {Country} from "../../../../../model/model/country/Country";
+import {compareCountries} from "../../../countries/availableCountries/helpers/countries/CountriesHelper";
 import {
    countryDeselectedNotifier,
    countrySelectedNotifier, enabledCountryChangedNotifier
-} from "../../../../../../model/repos/countriesRepo/CountriesNotifiers";
-import {remove} from "../../../../../../model/helpers/array/ArrayHelper";
+} from "../../../../../model/repos/countriesRepo/CountriesNotifiers";
+import {remove} from "../../../../../model/helpers/array/ArrayHelper";
 
 interface Props {
    isVisible: boolean
    onClose: VoidFunction
-   categories: CategoryItem[]
    onEditCountries: VoidFunction
    onEditCategories: VoidFunction
 }

@@ -1,10 +1,10 @@
-import {BaseComponent} from "../../../../../helpers/components/baseViews/baseComponent/BaseComponent";
-import {Appearance} from "../../../../../../model/model/appearance/Appearance";
-import {BottomAlert} from "../../../../../helpers/components/alerts/bottomAlert/BottomAlert";
+import {BaseComponent} from "../../../../helpers/components/baseViews/baseComponent/BaseComponent";
+import {Appearance} from "../../../../../model/model/appearance/Appearance";
+import {BottomAlert} from "../../../../helpers/components/alerts/bottomAlert/BottomAlert";
 import {Image, ScrollView, Text, TouchableOpacity, View} from "react-native";
 import {getItemColor, getStyles} from "./NewsFeedFilterAlertView.styles";
-import {SelectedCountriesListItem} from "../../../../countries/selectedCountries/helpers/listItem/SelectedCountriesListItem";
-import {touchableOpacity} from "../../../../../helpers/managers/ScreenInfoProvider";
+import {SelectedCountriesListItem} from "../../../countries/selectedCountries/helpers/listItem/SelectedCountriesListItem";
+import {touchableOpacity} from "../../../../helpers/managers/ScreenInfoProvider";
 import React from "react";
 
 interface Props {
@@ -137,7 +137,7 @@ export class NewsFeedFilterAlertView extends BaseComponent<Props, State> {
                onPress={() => {onEdit()}}
             >
                <Image
-                  source={require('../../../../../helpers/assets/edit.png')}
+                  source={require('../../../../helpers/assets/edit.png')}
                   style={getStyles(appearance).sectionHeaderButtonIcon}
                />
             </TouchableOpacity>
