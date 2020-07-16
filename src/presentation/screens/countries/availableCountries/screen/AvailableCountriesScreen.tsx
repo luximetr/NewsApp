@@ -6,7 +6,6 @@ import {sortCountries} from "../helpers/countries/CountriesHelper";
 import {countryDeselectedNotifier} from "../../../../../model/repos/countriesRepo/CountriesNotifiers";
 
 interface Props {
-
 }
 
 interface State {
