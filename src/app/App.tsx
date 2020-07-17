@@ -1,29 +1,42 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 import {NavigationContainer} from "@react-navigation/native";
-import {AppearanceContext, appearanceProvider} from "../presentation/helpers/managers/AppearanceProvider";
 import {Appearance} from "../model/model/appearance/Appearance";
 import {AppStack} from "./AppStack";
+import {AppearancesRepo} from "../model/repos/appearancesRepo/AppearancesRepo";
+import {View} from "react-native";
+import {selectedAppearanceChangedNotifier} from "../model/repos/appearancesRepo/AppearancesNotifiers";
+import {AppearanceContext} from "../model/repos/appearancesRepo/AppearancesRepo";
 
 interface Props {}
 
 interface State {
-   appearance: Appearance
+   appearance?: Appearance
+   isContentReady: boolean
 }
 
 export default class App extends React.Component<Props, State> {
+
+   // Dependencies
+   private appearancesRepo = new AppearancesRepo()
 
    // Life cycle
    constructor(props: Props) {
       super(props);
       this.state = {
-         appearance: appearanceProvider.getCurrentAppearance()
+         isContentReady: false,
       }
-      appearanceProvider.attach(this.appearanceUpdated.bind(this))
+      selectedAppearanceChangedNotifier.attach(this.appearanceUpdated.bind(this))
+   }
+
+   componentDidMount(): void {
+      this.appearancesRepo.loadSelectedAppearance().then((appearance) => {
+         this.setState({appearance: appearance, isContentReady: true})
+      })
    }
 
    componentWillUnmount(): void {
-      appearanceProvider.detach(this.appearanceUpdated)
+      selectedAppearanceChangedNotifier.detach(this.appearanceUpdated)
    }
 
    private appearanceUpdated(appearance: Appearance) {
@@ -32,12 +45,28 @@ export default class App extends React.Component<Props, State> {
 
    // Render
    render() {
-      return (
+      if (this.state.isContentReady) {
+         return this.renderContent()
+      } else {
+         return this.renderPlaceholder()
+      }
+   }
+
+   // Content
+   private renderContent() {
+      return this.state.appearance && (
          <AppearanceContext.Provider value={this.state.appearance}>
             <NavigationContainer>
                <AppStack />
             </NavigationContainer>
          </AppearanceContext.Provider>
+      )
+   }
+
+   // Placeholder
+   private renderPlaceholder() {
+      return (
+         <View/>
       )
    }
 }

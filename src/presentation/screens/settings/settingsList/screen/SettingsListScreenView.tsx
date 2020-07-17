@@ -1,19 +1,22 @@
 import * as React from 'react';
 import {TopBarScreenView} from "../../../../helpers/components/screenViews/topBarScreenView/TopBarScreenView";
 import {View, Text} from "react-native";
-import {ThemePickerView} from "../helpers/themePicker/ThemePickerView";
+import {AppearancePickerView} from "../helpers/appearancePicker/AppearancePickerView";
 import {AppearanceType} from "../../../../../model/model/appearance/AppearanceType";
 import {BaseComponent} from "../../../../helpers/components/baseViews/baseComponent/BaseComponent";
 import {Appearance} from "../../../../../model/model/appearance/Appearance";
 import {LanguagePickerView} from "../helpers/languagePicker/LanguagePickerView";
 import {getStyles} from "./SettingsListScreenView.styles";
 import {NewsFeedItemView} from "../../../news/newsFeed/helpers/newsFeedItemView/NewsFeedItemView";
+import {Language} from "../../../../../model/model/language/Language";
+import {AppearancePickerItem} from "../helpers/appearancePicker/AppearancePickerItem";
 
 interface Props {
-   selectedLanguageName: string
-   onSelectLanguage: VoidFunction
-   themes: AppearanceType[]
-   onSelectTheme: (theme: AppearanceType) => void
+   languages: Language[]
+   selectedLanguage: Language
+   onLanguagePress: (language: Language) => void
+   appearances: AppearancePickerItem[]
+   onAppearancePress: (appearance: AppearancePickerItem) => void
 }
 
 interface State {
@@ -53,9 +56,6 @@ export class SettingsListScreenView extends BaseComponent<Props, State> {
             <View style={getStyles(appearance).content}>
                {this.renderThemePicker(appearance)}
                {this.renderLanguagePicker(appearance)}
-               {/*<View style={getStyles(appearance).pickersContainer}>*/}
-               {/*   */}
-               {/*</View>*/}
                {this.renderPreview(appearance)}
             </View>
          </TopBarScreenView>
@@ -90,9 +90,9 @@ export class SettingsListScreenView extends BaseComponent<Props, State> {
             >
                {this.state.themesHeader}
             </Text>
-            <ThemePickerView
-               themes={this.props.themes}
-               onSelectTheme={this.props.onSelectTheme.bind(this)}
+            <AppearancePickerView
+               appearances={this.props.appearances}
+               onItemPress={this.props.onAppearancePress.bind(this)}
             />
          </View>
       )
@@ -108,6 +108,9 @@ export class SettingsListScreenView extends BaseComponent<Props, State> {
                {this.state.languagesHeader}
             </Text>
             <LanguagePickerView
+               languages={this.props.languages}
+               selectedLanguage={this.props.selectedLanguage}
+               onLanguagePress={(language) => {this.props.onLanguagePress(language)}}
             />
          </View>
       )

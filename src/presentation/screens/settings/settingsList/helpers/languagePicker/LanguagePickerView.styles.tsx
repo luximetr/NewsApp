@@ -25,6 +25,7 @@ export function getStyles(appearance: Appearance) {
       },
       itemText: {
          color: appearance.text.primary,
+         fontSize: 16,
       }
    })
 }

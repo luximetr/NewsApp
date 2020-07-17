@@ -1,44 +1,73 @@
 import * as React from 'react';
 import {SettingsListScreenView} from "./SettingsListScreenView";
 import {AppearanceType} from "../../../../../model/model/appearance/AppearanceType";
-import {appearanceProvider} from "../../../../helpers/managers/AppearanceProvider";
+import {Language} from "../../../../../model/model/language/Language";
+import {appLanguages, defaultAppLanguage} from "../../../../../model/model/language/Languages";
+import {AppearancesRepo} from "../../../../../model/repos/appearancesRepo/AppearancesRepo";
+import {AppearancePickerItem} from "../helpers/appearancePicker/AppearancePickerItem";
 
 interface Props {
    navigation: any
 }
 
 interface State {
-   themes: AppearanceType[]
+   languages: Language[]
+   selectedLanguage: Language
+   appearances: AppearancePickerItem[]
 }
 
 export class SettingsListScreen extends React.Component<Props, State> {
+
+   // Dependencies
+   private appearancesRepo = new AppearancesRepo()
 
    // Life cycle
    constructor(props: Props) {
       super(props);
       this.state = {
-         themes: appearanceProvider.getAppearanceTypesList()
+         languages: appLanguages,
+         selectedLanguage: defaultAppLanguage,
+         appearances: []
       }
    }
 
-   // Language
-   private onSelectLanguage() {
+   componentDidMount(): void {
+      this.loadAppearances()
+   }
+
+   // Load appearances
+   private loadAppearances() {
+      const types = this.appearancesRepo.getAvailableAppearanceTypes()
+      this.displayAvailableAppearances(types)
+   }
+
+   private displayAvailableAppearances(types: AppearanceType[]) {
+      const items = types.map((type) => {
+         const appearance = this.appearancesRepo.getAppearanceByType(type)
+         return {type: type, color: appearance.background.primary} as AppearancePickerItem
+      })
+      this.setState({appearances: items})
+   }
+
+   // Language - On press
+   private onLanguagePress(language: Language) {
 
    }
 
    // Theme
-   protected onSelectTheme(appearanceType: AppearanceType) {
-      appearanceProvider.setCurrentAppearanceByType(appearanceType)
+   private onAppearancePress(item: AppearancePickerItem) {
+      this.appearancesRepo.setCurrentAppearanceByType(item.type)
    }
 
    // View
    render() {
       return (
          <SettingsListScreenView
-            selectedLanguageName={'En'}
-            onSelectLanguage={this.onSelectLanguage.bind(this)}
-            themes={this.state.themes}
-            onSelectTheme={this.onSelectTheme.bind(this)}
+            languages={this.state.languages}
+            selectedLanguage={this.state.selectedLanguage}
+            onLanguagePress={this.onLanguagePress.bind(this)}
+            appearances={this.state.appearances}
+            onAppearancePress={this.onAppearancePress.bind(this)}
          />
       )
    }

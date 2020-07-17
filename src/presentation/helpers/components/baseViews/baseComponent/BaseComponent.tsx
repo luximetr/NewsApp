@@ -1,5 +1,5 @@
 import React from 'react';
-import {AppearanceContext} from "../../../managers/AppearanceProvider";
+import {AppearanceContext} from "../../../../../model/repos/appearancesRepo/AppearancesRepo";
 import {Appearance} from "../../../../../model/model/appearance/Appearance";
 import {View} from "react-native";
 

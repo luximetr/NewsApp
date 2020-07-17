@@ -64,3 +64,25 @@ const chinese = {
    code: 'zh',
    name: 'Chinese'
 } as Language
+
+export const appLanguages = [
+   english,
+   russian,
+]
+export const defaultAppLanguage = appLanguages[0]
+
+export const newsSourcesLanguages = [
+   arabic,
+   german,
+   english,
+   spanish,
+   french,
+   hebrew,
+   italian,
+   dutch,
+   norwegian,
+   portuguese,
+   russian,
+   northernSami,
+   chinese,
+]
