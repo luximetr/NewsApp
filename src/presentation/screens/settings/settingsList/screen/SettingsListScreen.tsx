@@ -5,7 +5,7 @@ import {Language} from "../../../../../model/model/language/Language";
 import {appLanguages} from "../../../../../model/model/language/Languages";
 import {AppearancesRepo} from "../../../../../app/repos/appearancesRepo/AppearancesRepo";
 import {AppearancePickerItem} from "../helpers/appearancePicker/AppearancePickerItem";
-import {appLanguagesRepo, AppLanguagesRepo} from "../../../../../app/repos/appLanguagesRepo/repo/AppLanguagesRepo";
+import {appLanguagesRepo} from "../../../../../app/repos/appLanguagesRepo/repo/AppLanguagesRepo";
 
 interface Props {
    navigation: any
@@ -46,7 +46,7 @@ export class SettingsListScreen extends React.Component<Props, State> {
    private displayAvailableAppearances(types: AppearanceType[]) {
       const items = types.map((type) => {
          const appearance = this.appearancesRepo.getAppearanceByType(type)
-         return {type: type, color: appearance.background.primary} as AppearancePickerItem
+         return {type: type, color: appearance.background.secondary} as AppearancePickerItem
       })
       this.setState({appearances: items})
    }
