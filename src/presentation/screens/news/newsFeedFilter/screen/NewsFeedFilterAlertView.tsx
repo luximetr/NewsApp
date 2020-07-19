@@ -1,4 +1,3 @@
-import {BaseComponent} from "../../../../helpers/components/baseViews/baseComponent/BaseComponent";
 import {Appearance} from "../../../../../model/model/appearance/Appearance";
 import {BottomAlert} from "../../../../helpers/components/alerts/bottomAlert/BottomAlert";
 import {Image, ScrollView, Text, TouchableOpacity, View} from "react-native";
@@ -7,6 +6,8 @@ import {SelectedCountriesListItem} from "../../../countries/selectedCountries/he
 import {touchableOpacity} from "../../../../helpers/managers/ScreenInfoProvider";
 import React from "react";
 import {SelectedCategoriesListItem} from "../../../categories/selectedCategories/helpers/selectedCategoriesListItem/SelectedCategoriesListItem";
+import {LocalizableComponent} from "../../../../helpers/components/baseViews/baseComponent/LocalizableComponent";
+import {translate} from "../../../../../app/repos/appLanguagesRepo/repo/AppLanguagesRepo";
 
 interface Props {
    isVisible: boolean
@@ -24,15 +25,23 @@ interface State {
    categoriesHeader: string
 }
 
-export class NewsFeedFilterAlertView extends BaseComponent<Props, State> {
+export class NewsFeedFilterAlertView extends LocalizableComponent<Props, State> {
 
    // Life cycle
    constructor(props: Props) {
       super(props);
       this.state = {
-         countriesHeader: "Countries",
-         categoriesHeader: "Categories",
+         countriesHeader: '',
+         categoriesHeader: '',
       }
+   }
+
+   // Strings
+   setupStrings() {
+      this.setState({
+         countriesHeader: translate('news_filter_countries_header'),
+         categoriesHeader: translate('news_filter_categories_header'),
+      })
    }
 
    // Render

@@ -1,4 +1,7 @@
 {
+  "news_feed_title": "Главные новости",
+  "news_filter_countries_header": "Страна",
+  "news_filter_categories_header": "Категория",
   "settings_title": "Настройки",
   "settings_preview_header": "Превью",
   "settings_themes_header": "Темы",

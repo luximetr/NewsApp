@@ -25,8 +25,8 @@ export class MainTabBar extends LocalizableComponent<Props, State> {
    constructor(props: Props) {
       super(props);
       this.state = {
-         screen1Title: 'Screen1',
-         screen2Title: 'Screen2',
+         screen1Title: '',
+         screen2Title: '',
       }
    }
 

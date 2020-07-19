@@ -1,4 +1,7 @@
 {
+  "news_feed_title": "Top news",
+  "news_filter_countries_header": "Country",
+  "news_filter_categories_header": "Category",
   "settings_title": "Settings",
   "settings_preview_header": "Preview",
   "settings_themes_header": "Themes",
