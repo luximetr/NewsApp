@@ -8,7 +8,8 @@ export const LightAppearance = {
       reversePrimary: 'rgb(150, 150, 150)'
    },
    text: {
-      primary: 'black'
+      primary: 'rgb(0, 0, 0)',
+      secondary: 'rgb(85, 85, 85)',
    },
    statusBar: {
       style: "dark-content"
@@ -18,15 +19,16 @@ export const LightAppearance = {
       text: 'black',
    },
    tabBar: {
-      selectedTint: 'blue',
+      selectedTint: 'rgb(63, 126, 195)',
       unselectedTint: 'grey',
    },
    action: {
       background: {
-         primary: 'blue',
+         primary: 'rgb(100, 163, 238)',
       },
       title: {
-         primary: 'white'
+         primary: 'rgb(255, 255, 255)',
+         secondary: 'grey'
       }
    },
    divider: {

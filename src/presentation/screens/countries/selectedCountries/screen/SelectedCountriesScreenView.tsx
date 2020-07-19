@@ -21,6 +21,7 @@ export class SelectedCountriesScreenView extends BaseComponent<Props> {
          <View style={getStyles(appearance).container}>
             <FlatList
                data={this.props.items}
+               contentInset={{top: 8}}
                renderItem={(item) => {
                   return this.renderListItem(appearance, item.item)
                }}
@@ -43,7 +44,6 @@ export class SelectedCountriesScreenView extends BaseComponent<Props> {
                   isEnabled={item.isEnabled}
                />
             </TouchableOpacity>
-            <View style={getStyles(appearance).divider}/>
          </View>
       )
    }

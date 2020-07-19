@@ -7,10 +7,5 @@ export function getStyles(appearance: Appearance) {
       container: {
          flex: 1
       },
-      divider: {
-         height: 1,
-         backgroundColor: appearance.divider.primary,
-         marginLeft: globalMarkup.marginHorizontal,
-      }
    })
 }

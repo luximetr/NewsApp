@@ -10,6 +10,7 @@ export type Appearance = {
    }
    text: {
       primary: string
+      secondary: string
    }
    statusBar: {
       style: StatusBarStyle
@@ -28,6 +29,7 @@ export type Appearance = {
       }
       title: {
          primary: string
+         secondary: string
       }
    }
    divider: {

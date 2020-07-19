@@ -19,6 +19,7 @@ export class AvailableCountriesScreenView extends BaseComponent<Props> {
       return (
          <View style={getStyles(appearance).container}>
             <FlatList
+               contentInset={{top: 8}}
                contentInsetAdjustmentBehavior={'automatic'}
                data={this.props.countries}
                renderItem={(item) => {
@@ -32,17 +33,14 @@ export class AvailableCountriesScreenView extends BaseComponent<Props> {
    // List item
    protected renderListItem(appearance: Appearance, country: Country) {
       return (
-         <View>
-            <TouchableOpacity
-               activeOpacity={touchableOpacity}
-               onPress={() => {this.props.onCountrySelect(country)}}
-            >
-               <CountriesListItemView
-                  title={country.name}
-               />
-            </TouchableOpacity>
-            <View style={getStyles(appearance).divider}/>
-         </View>
+         <TouchableOpacity
+            activeOpacity={touchableOpacity}
+            onPress={() => {this.props.onCountrySelect(country)}}
+         >
+            <CountriesListItemView
+               title={country.name}
+            />
+         </TouchableOpacity>
       )
    }
 }

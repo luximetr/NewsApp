@@ -26,7 +26,7 @@ export function getStyles(appearance: Appearance) {
          width: 34,
       },
       sectionHeaderButtonIcon: {
-         tintColor: appearance.action.title.primary,
+         tintColor: appearance.action.title.secondary,
          height: 14,
          width: 14,
       },
@@ -37,7 +37,6 @@ export function getStyles(appearance: Appearance) {
          marginTop: 10,
       },
       item: {
-         marginRight: 4,
          marginLeft: globalMarkup.marginHorizontal,
          backgroundColor: appearance.background.tertiary,
          borderRadius: 12,

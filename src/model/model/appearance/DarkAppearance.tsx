@@ -8,7 +8,8 @@ export const DarkAppearance = {
       reversePrimary: 'rgb(255, 255, 255)'
    },
    text: {
-      primary: 'rgb(255, 255, 255)'
+      primary: 'rgb(255, 255, 255)',
+      secondary: 'rgb(200, 200, 200)'
    },
    statusBar: {
       style: "light-content"
@@ -23,10 +24,11 @@ export const DarkAppearance = {
    },
    action: {
       background: {
-         primary: 'rgb(26, 34, 44)',
+         primary: 'rgb(106, 156, 203)',
       },
       title: {
-         primary: 'rgb(255, 255, 255)'
+         primary: 'rgb(255, 255, 255)',
+         secondary: 'rgb(180, 194, 211)'
       }
    },
    divider: {

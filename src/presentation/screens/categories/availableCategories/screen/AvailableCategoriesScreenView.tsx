@@ -19,6 +19,7 @@ export class AvailableCategoriesScreenView extends BaseComponent<Props> {
       return (
          <View style={getStyles(appearance).container}>
             <FlatList
+               contentInset={{top: 8}}
                data={this.props.categories}
                renderItem={(item)=> {
                   return this.renderListItem(appearance, item.item)
@@ -31,17 +32,14 @@ export class AvailableCategoriesScreenView extends BaseComponent<Props> {
    // List item
    protected renderListItem(appearance: Appearance, category: Category) {
       return (
-         <View>
-            <TouchableOpacity
-               activeOpacity={touchableOpacity}
-               onPress={() => {this.props.onCategoryPress(category)}}
-            >
-               <CountriesListItemView
-                  title={category.name}
-               />
-            </TouchableOpacity>
-            <View style={getStyles(appearance).divider}/>
-         </View>
+         <TouchableOpacity
+            activeOpacity={touchableOpacity}
+            onPress={() => {this.props.onCategoryPress(category)}}
+         >
+            <CountriesListItemView
+               title={category.name}
+            />
+         </TouchableOpacity>
       )
    }
 }

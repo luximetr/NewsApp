@@ -16,7 +16,7 @@ export function getStyles(appearance: Appearance) {
       pickerHeaderText: {
          paddingLeft: 14,
          paddingTop: 12,
-         color: appearance.text.primary,
+         color: appearance.text.secondary,
          fontSize: 18,
       },
       previewContainer: {

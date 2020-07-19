@@ -20,6 +20,7 @@ export class SelectedCategoriesScreenView extends BaseComponent<Props> {
       return (
          <View style={getStyles(appearance).container}>
             <FlatList
+               contentInset={{top: 8}}
                data={this.props.items}
                renderItem={(item) => {
                   return this.renderListItem(appearance, item.item)
@@ -32,19 +33,16 @@ export class SelectedCategoriesScreenView extends BaseComponent<Props> {
    // List item
    protected renderListItem(appearance: Appearance, item: SelectedCategoriesListItem) {
       return (
-         <View>
-            <TouchableOpacity
-               activeOpacity={touchableOpacity}
-               onPress={() => {this.props.onItemPress(item)}}
-               onLongPress={() => {this.props.onItemLongPress(item)}}
-            >
-               <SelectedCountriesListItemView
-                  title={item.category.name}
-                  isEnabled={item.isEnabled}
-               />
-            </TouchableOpacity>
-            <View style={getStyles(appearance).divider} />
-         </View>
+         <TouchableOpacity
+            activeOpacity={touchableOpacity}
+            onPress={() => {this.props.onItemPress(item)}}
+            onLongPress={() => {this.props.onItemLongPress(item)}}
+         >
+            <SelectedCountriesListItemView
+               title={item.category.name}
+               isEnabled={item.isEnabled}
+            />
+         </TouchableOpacity>
       )
    }
 }
