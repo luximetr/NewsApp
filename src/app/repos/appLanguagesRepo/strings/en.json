@@ -2,6 +2,7 @@
   "news_feed_title": "Top news",
   "news_filter_countries_header": "Country",
   "news_filter_categories_header": "Category",
+  "news_details_title": "Details",
   "settings_title": "Settings",
   "settings_preview_header": "Preview",
   "settings_themes_header": "Themes",
@@ -9,5 +10,11 @@
   "settings_template_news_source": "NewsApp",
   "settings_template_news_title": "Here you can see example news title",
   "tab_bar_tab1_title": "News",
-  "tab_bar_tab2_title": "Settings"
+  "tab_bar_tab2_title": "Settings",
+  "categories_title": "Categories",
+  "categories_tab1_title": "Selected",
+  "categories_tab2_title": "Available",
+  "countries_title": "Countries",
+  "countries_tab1_title": "Selected",
+  "countries_tab2_title": "Available"
 }

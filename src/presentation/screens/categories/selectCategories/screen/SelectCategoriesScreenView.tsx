@@ -6,6 +6,7 @@ import {AvailableCategoriesScreen} from "../../availableCategories/screen/Availa
 import {Appearance} from "../../../../../model/model/appearance/Appearance";
 import {TopTabBarView} from "../../../../helpers/components/tabBarViews/topTabBarView/TopTabBarView";
 import {TopBarScreenView} from "../../../../helpers/components/screenViews/topBarScreenView/TopBarScreenView";
+import {translate} from "../../../../../app/repos/appLanguagesRepo/repo/AppLanguagesRepo";
 
 interface Props {
    onBack: VoidFunction
@@ -22,16 +23,16 @@ export class SelectCategoriesScreenView extends BaseComponent<Props, State> {
    constructor(props: Props) {
       super(props);
       this.state = {
-         title: 'Categories',
+         title: translate('categories_title'),
          tabComponents: [
             {
                key: 'selected',
-               title: 'Selected',
+               title: translate('categories_tab1_title'),
                component: SelectedCategoriesScreen
             },
             {
                key: 'available',
-               title: 'Available',
+               title: translate('categories_tab2_title'),
                component: AvailableCategoriesScreen
             }
          ]

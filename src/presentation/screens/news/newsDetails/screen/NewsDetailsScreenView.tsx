@@ -7,6 +7,7 @@ import {getStyles} from "./NewsDetailsScreenView.styles";
 import {TouchableOpacity} from "react-native";
 import {VectorIcon} from "../../../../helpers/components/imageViews/icons/VectorIcon";
 import {touchableOpacity} from "../../../../helpers/managers/ScreenInfoProvider";
+import {translate} from "../../../../../app/repos/appLanguagesRepo/repo/AppLanguagesRepo";
 
 interface Props {
    uri: string
@@ -24,7 +25,7 @@ export class NewsDetailsScreenView extends BaseComponent<Props, State> {
    constructor(props: Props) {
       super(props);
       this.state = {
-         title: "Details"
+         title: translate('news_details_title')
       }
    }
 

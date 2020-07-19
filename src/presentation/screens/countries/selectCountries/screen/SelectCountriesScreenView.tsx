@@ -6,6 +6,7 @@ import {TopTabBarView} from "../../../../helpers/components/tabBarViews/topTabBa
 import {SelectedCountriesScreen} from "../../selectedCountries/screen/SelectedCountriesScreen";
 import {AvailableCountriesScreen} from "../../availableCountries/screen/AvailableCountriesScreen";
 import {TopTabBarItem} from "../../../../helpers/components/tabBarViews/topTabBarView/TopTabBarItem";
+import {translate} from "../../../../../app/repos/appLanguagesRepo/repo/AppLanguagesRepo";
 
 interface Props {
    onBack: VoidFunction
@@ -22,16 +23,16 @@ export class SelectCountriesScreenView extends BaseComponent<Props, State> {
    constructor(props: Props) {
       super(props);
       this.state = {
-         title: 'Countries',
+         title: translate('countries_title'),
          tabComponents: [
             {
                key: 'selected',
-               title: 'Selected',
+               title: translate('countries_tab1_title'),
                component: SelectedCountriesScreen
             },
             {
                key: 'available',
-               title: 'Available',
+               title: translate('countries_tab2_title'),
                component: AvailableCountriesScreen
             }
          ]

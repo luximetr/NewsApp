@@ -2,6 +2,7 @@
   "news_feed_title": "Главные новости",
   "news_filter_countries_header": "Страна",
   "news_filter_categories_header": "Категория",
+  "news_details_title": "Подробнее",
   "settings_title": "Настройки",
   "settings_preview_header": "Превью",
   "settings_themes_header": "Темы",
@@ -9,5 +10,11 @@
   "settings_template_news_source": "NewsApp",
   "settings_template_news_title": "Здесь можно увидеть краткое описание",
   "tab_bar_tab1_title": "Новости",
-  "tab_bar_tab2_title": "Настройки"
+  "tab_bar_tab2_title": "Настройки",
+  "categories_title": "Категории",
+  "categories_tab1_title": "Выбранные",
+  "categories_tab2_title": "Доступные",
+  "countries_title": "Страны",
+  "countries_tab1_title": "Выбранные",
+  "countries_tab2_title": "Доступные"
 }
