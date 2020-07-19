@@ -4,5 +4,7 @@
   "settings_themes_header": "Themes",
   "settings_languages_header": "Languages",
   "settings_template_news_source": "NewsApp",
-  "settings_template_news_title": "Here you can see example news title"
+  "settings_template_news_title": "Here you can see example news title",
+  "tab_bar_tab1_title": "News",
+  "tab_bar_tab2_title": "Settings"
 }

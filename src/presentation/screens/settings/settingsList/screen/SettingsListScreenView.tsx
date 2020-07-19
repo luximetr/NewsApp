@@ -68,7 +68,7 @@ export class SettingsListScreenView extends LocalizableComponent<Props, State> {
    // Render
    renderWith(appearance: Appearance): any {
       return (
-         <TopBarScreenView title={this.state.title || ''}>
+         <TopBarScreenView title={this.state.title}>
             <View style={getStyles(appearance).content}>
                {this.renderThemePicker(appearance)}
                {this.renderLanguagePicker(appearance)}

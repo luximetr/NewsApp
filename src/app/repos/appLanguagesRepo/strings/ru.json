@@ -4,5 +4,7 @@
   "settings_themes_header": "Темы",
   "settings_languages_header": "Языки",
   "settings_template_news_source": "NewsApp",
-  "settings_template_news_title": "Здесь можно увидеть краткое описание"
+  "settings_template_news_title": "Здесь можно увидеть краткое описание",
+  "tab_bar_tab1_title": "Новости",
+  "tab_bar_tab2_title": "Настройки"
 }
