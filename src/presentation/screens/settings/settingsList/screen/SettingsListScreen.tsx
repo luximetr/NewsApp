@@ -5,7 +5,7 @@ import {Language} from "../../../../../model/model/language/Language";
 import {appLanguages} from "../../../../../model/model/language/Languages";
 import {AppearancesRepo} from "../../../../../app/repos/appearancesRepo/AppearancesRepo";
 import {AppearancePickerItem} from "../helpers/appearancePicker/AppearancePickerItem";
-import {AppLanguagesRepo} from "../../../../../app/repos/appLanguagesRepo/repo/AppLanguagesRepo";
+import {appLanguagesRepo, AppLanguagesRepo} from "../../../../../app/repos/appLanguagesRepo/repo/AppLanguagesRepo";
 
 interface Props {
    navigation: any
@@ -21,7 +21,7 @@ export class SettingsListScreen extends React.Component<Props, State> {
 
    // Dependencies
    private appearancesRepo = new AppearancesRepo()
-   private appLanguagesRepo = new AppLanguagesRepo()
+   private appLanguagesRepo = appLanguagesRepo
 
    // Life cycle
    constructor(props: Props) {

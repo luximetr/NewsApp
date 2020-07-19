@@ -1,3 +1,8 @@
 {
-  "settings_title": "Settings"
+  "settings_title": "Settings",
+  "settings_preview_header": "Preview",
+  "settings_themes_header": "Themes",
+  "settings_languages_header": "Languages",
+  "settings_template_news_source": "NewsApp",
+  "settings_template_news_title": "Here you can see example news title"
 }

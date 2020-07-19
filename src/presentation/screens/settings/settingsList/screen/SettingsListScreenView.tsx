@@ -2,14 +2,14 @@ import * as React from 'react';
 import {TopBarScreenView} from "../../../../helpers/components/screenViews/topBarScreenView/TopBarScreenView";
 import {View, Text} from "react-native";
 import {AppearancePickerView} from "../helpers/appearancePicker/AppearancePickerView";
-import {AppearanceType} from "../../../../../model/model/appearance/AppearanceType";
-import {BaseComponent} from "../../../../helpers/components/baseViews/baseComponent/BaseComponent";
 import {Appearance} from "../../../../../model/model/appearance/Appearance";
 import {LanguagePickerView} from "../helpers/languagePicker/LanguagePickerView";
 import {getStyles} from "./SettingsListScreenView.styles";
 import {NewsFeedItemView} from "../../../news/newsFeed/helpers/newsFeedItemView/NewsFeedItemView";
 import {Language} from "../../../../../model/model/language/Language";
 import {AppearancePickerItem} from "../helpers/appearancePicker/AppearancePickerItem";
+import {translate} from "../../../../../app/repos/appLanguagesRepo/repo/AppLanguagesRepo";
+import {LocalizableComponent} from "../../../../helpers/components/baseViews/baseComponent/LocalizableComponent";
 
 interface Props {
    languages: Language[]
@@ -20,8 +20,8 @@ interface Props {
 }
 
 interface State {
-   title: string
-   previewHeader: string
+   title: ''
+   previewHeader: ''
    themesHeader: string
    languagesHeader: string
    templateNews: {
@@ -31,28 +31,44 @@ interface State {
    }
 }
 
-export class SettingsListScreenView extends BaseComponent<Props, State> {
+export class SettingsListScreenView extends LocalizableComponent<Props, State> {
+
+   private templateImageURL = 'https://image.freepik.com/free-photo/image-human-brain_99433-298.jpg'
 
    // Life cycle
    constructor(props: Props) {
       super(props);
       this.state = {
-         title: "Settings",
-         previewHeader: "Preview",
-         themesHeader: "Themes",
-         languagesHeader: "Languages",
+         title: '',
+         previewHeader: '',
+         themesHeader: '',
+         languagesHeader: '',
          templateNews: {
-            source: "NewsApp",
-            title: "Here you can see example news title",
-            imageURL: "https://image.freepik.com/free-photo/image-human-brain_99433-298.jpg",
+            source: 'NewsApp',
+            title: 'News title',
+            imageURL: this.templateImageURL,
          }
       }
+   }
+
+   setupStrings() {
+      this.setState({
+         title: translate('settings_title'),
+         previewHeader: translate('settings_preview_header'),
+         themesHeader: translate('settings_themes_header'),
+         languagesHeader: translate('settings_languages_header'),
+         templateNews: {
+            source: translate('settings_template_news_source'),
+            title: translate('settings_template_news_title'),
+            imageURL: this.templateImageURL
+         }
+      })
    }
 
    // Render
    renderWith(appearance: Appearance): any {
       return (
-         <TopBarScreenView title={this.state.title}>
+         <TopBarScreenView title={this.state.title || ''}>
             <View style={getStyles(appearance).content}>
                {this.renderThemePicker(appearance)}
                {this.renderLanguagePicker(appearance)}

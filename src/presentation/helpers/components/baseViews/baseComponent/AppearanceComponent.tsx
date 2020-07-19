@@ -1,9 +1,9 @@
 import React from 'react';
-import {AppearanceContext} from "../../../../../app/repos/appearancesRepo/AppearancesRepo";
 import {Appearance} from "../../../../../model/model/appearance/Appearance";
+import {AppearanceContext} from "../../../../../app/repos/appearancesRepo/AppearancesRepo";
 import {View} from "react-native";
 
-export class BaseComponent<P=any, S=any> extends React.Component<P, S> {
+export class AppearanceComponent<P = any, S = any> extends React.Component<P, S> {
 
    render() {
       return (

@@ -2,10 +2,12 @@ import React from 'react';
 import {appLanguages} from "../../../../model/model/language/Languages";
 import {Language} from "../../../../model/model/language/Language";
 import {selectedAppLanguageChangedNotifier} from "./AppLanguagesNotifiers";
+import en from '../strings/en.json';
+import ru from '../strings/ru.json';
 
-export class AppLanguagesRepo {
+class AppLanguagesRepo {
 
-   private currentLanguage = defaultAppLanguage
+   private currentLanguage = appLanguages[0]
 
    getAvailableLanguages() {
       return appLanguages
@@ -24,6 +26,17 @@ export class AppLanguagesRepo {
       return this.currentLanguage
    }
 }
+export const appLanguagesRepo = new AppLanguagesRepo()
 
-const defaultAppLanguage = appLanguages[0]
-export const AppLanguageContext = React.createContext(defaultAppLanguage)
+export function translate(key: string) {
+   const language = appLanguagesRepo.getCurrentLanguage()
+   const strings = getStrings(language)
+   return strings[key]
+}
+
+function getStrings(language: Language): any {
+   switch (language.code) {
+      case 'en': return en
+      case 'ru': return ru
+   }
+}

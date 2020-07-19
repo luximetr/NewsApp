@@ -7,15 +7,12 @@ import {AppearancesRepo} from "../repos/appearancesRepo/AppearancesRepo";
 import {View} from "react-native";
 import {selectedAppearanceChangedNotifier} from "../repos/appearancesRepo/AppearancesNotifiers";
 import {AppearanceContext} from "../repos/appearancesRepo/AppearancesRepo";
-import {AppLanguageContext, AppLanguagesRepo} from "../repos/appLanguagesRepo/repo/AppLanguagesRepo";
-import {Language} from "../../model/model/language/Language";
-import {selectedAppLanguageChangedNotifier} from "../repos/appLanguagesRepo/repo/AppLanguagesNotifiers";
+import {appLanguagesRepo} from "../repos/appLanguagesRepo/repo/AppLanguagesRepo";
 
 interface Props {}
 
 interface State {
    appearance?: Appearance
-   appLanguage?: Language
    isContentReady: boolean
 }
 
@@ -23,7 +20,7 @@ export default class App extends React.Component<Props, State> {
 
    // Dependencies
    private appearancesRepo = new AppearancesRepo()
-   private appLanguagesRepo = new AppLanguagesRepo()
+   private appLanguagesRepo = appLanguagesRepo
 
    // Life cycle
    constructor(props: Props) {
@@ -32,34 +29,30 @@ export default class App extends React.Component<Props, State> {
          isContentReady: false,
       }
       selectedAppearanceChangedNotifier.attach(this.appearanceUpdated.bind(this))
-      selectedAppLanguageChangedNotifier.attach(this.appLanguageUpdated.bind(this))
    }
 
+   // View life cycle
    componentDidMount(): void {
       this.prepareContent().then()
    }
 
+   componentWillUnmount(): void {
+      selectedAppearanceChangedNotifier.detach(this.appearanceUpdated)
+   }
+
+   // Prepare content
    private async prepareContent() {
       const selectedAppearance = await this.appearancesRepo.loadSelectedAppearance()
-      const selectedAppLanguage = await this.appLanguagesRepo.loadCurrentLanguage()
+      await this.appLanguagesRepo.loadCurrentLanguage()
       this.setState({
          appearance: selectedAppearance,
-         appLanguage: selectedAppLanguage,
          isContentReady: true
       })
    }
 
-   componentWillUnmount(): void {
-      selectedAppearanceChangedNotifier.detach(this.appearanceUpdated)
-      selectedAppLanguageChangedNotifier.detach(this.appLanguageUpdated)
-   }
-
+   // Appearance updated
    private appearanceUpdated(appearance: Appearance) {
       this.setState({appearance: appearance})
-   }
-
-   private appLanguageUpdated(appLanguage: Language) {
-      this.setState({appLanguage: appLanguage})
    }
 
    // Render
@@ -73,19 +66,17 @@ export default class App extends React.Component<Props, State> {
 
    // Content
    private renderContent() {
-      return this.state.appearance && this.state.appLanguage && (
+      return this.state.appearance && (
          <AppearanceContext.Provider value={this.state.appearance}>
-            <AppLanguageContext.Provider value={this.state.appLanguage}>
-               <NavigationContainer>
-                  <AppStack />
-               </NavigationContainer>
-            </AppLanguageContext.Provider>
+            <NavigationContainer>
+               <AppStack/>
+            </NavigationContainer>
          </AppearanceContext.Provider>
       )
    }
 
    // Placeholder
-   private renderPlaceholder() {
+   protected renderPlaceholder() {
       return (
          <View/>
       )
