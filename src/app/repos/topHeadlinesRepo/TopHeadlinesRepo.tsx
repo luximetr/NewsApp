@@ -1,8 +1,8 @@
 import {TopHeadlineWebAPI} from "../../../network/webAPIs/TopHeadlineWebAPI";
-import {NewsJSONConverter} from "../../model/news/NewsJSONConverter";
-import {Country} from "../../model/country/Country";
-import {defaultCountry} from "../../model/country/Countries";
-import {Category} from "../../model/category/Category";
+import {NewsJSONConverter} from "../../../model/model/news/NewsJSONConverter";
+import {Country} from "../../../model/model/country/Country";
+import {defaultCountry} from "../../../model/model/country/Countries";
+import {Category} from "../../../model/model/category/Category";
 
 export const newsAPIKey = "75bda762ecb443dd977111a4226a6049"
 

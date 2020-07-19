@@ -1,7 +1,7 @@
-import {allCountries} from "../../model/country/Countries";
-import {Country} from "../../model/country/Country";
+import {allCountries} from "../../../model/model/country/Countries";
+import {Country} from "../../../model/model/country/Country";
 import {CountriesBucket} from "../../../storage/buckets/CountriesBucket";
-import {contains} from "../../helpers/array/ArrayHelper";
+import {contains} from "../../../model/helpers/array/ArrayHelper";
 import {countryDeselectedNotifier, countrySelectedNotifier, enabledCountryChangedNotifier} from "./CountriesNotifiers";
 
 export class CountriesRepo {

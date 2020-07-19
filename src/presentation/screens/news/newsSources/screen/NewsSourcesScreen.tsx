@@ -1,6 +1,6 @@
 import React from 'react';
 import {NewsSourcesScreenView} from "./NewsSourcesScreenView";
-import {NewsSourcesRepo} from "../../../../../model/repos/newsSourcesRepo/NewsSourcesRepo";
+import {NewsSourcesRepo} from "../../../../../app/repos/newsSourcesRepo/NewsSourcesRepo";
 import {NewsSource} from "../../../../../model/model/newsSource/NewsSource";
 
 interface Props {

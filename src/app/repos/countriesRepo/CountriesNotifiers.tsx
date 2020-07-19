@@ -1,5 +1,5 @@
-import {Country} from "../../model/country/Country";
-import {ObserversNotifier} from "../../helpers/managers/ObserversNotifier";
+import {Country} from "../../../model/model/country/Country";
+import {ObserversNotifier} from "../../../model/helpers/managers/ObserversNotifier";
 
 export type CountriesObserver = (country: Country) => void
 

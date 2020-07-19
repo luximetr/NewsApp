@@ -69,7 +69,6 @@ export const appLanguages = [
    english,
    russian,
 ]
-export const defaultAppLanguage = appLanguages[0]
 
 export const newsSourcesLanguages = [
    arabic,

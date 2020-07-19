@@ -2,9 +2,10 @@ import * as React from 'react';
 import {SettingsListScreenView} from "./SettingsListScreenView";
 import {AppearanceType} from "../../../../../model/model/appearance/AppearanceType";
 import {Language} from "../../../../../model/model/language/Language";
-import {appLanguages, defaultAppLanguage} from "../../../../../model/model/language/Languages";
-import {AppearancesRepo} from "../../../../../model/repos/appearancesRepo/AppearancesRepo";
+import {appLanguages} from "../../../../../model/model/language/Languages";
+import {AppearancesRepo} from "../../../../../app/repos/appearancesRepo/AppearancesRepo";
 import {AppearancePickerItem} from "../helpers/appearancePicker/AppearancePickerItem";
+import {AppLanguagesRepo} from "../../../../../app/repos/appLanguagesRepo/repo/AppLanguagesRepo";
 
 interface Props {
    navigation: any
@@ -20,13 +21,14 @@ export class SettingsListScreen extends React.Component<Props, State> {
 
    // Dependencies
    private appearancesRepo = new AppearancesRepo()
+   private appLanguagesRepo = new AppLanguagesRepo()
 
    // Life cycle
    constructor(props: Props) {
       super(props);
       this.state = {
          languages: appLanguages,
-         selectedLanguage: defaultAppLanguage,
+         selectedLanguage: this.appLanguagesRepo.getCurrentLanguage(),
          appearances: []
       }
    }
@@ -51,7 +53,7 @@ export class SettingsListScreen extends React.Component<Props, State> {
 
    // Language - On press
    private onLanguagePress(language: Language) {
-
+      this.appLanguagesRepo.setCurrentLanguage(language)
    }
 
    // Theme

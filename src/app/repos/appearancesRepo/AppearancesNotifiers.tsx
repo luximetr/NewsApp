@@ -1,5 +1,5 @@
-import {Appearance} from "../../model/appearance/Appearance";
-import {ObserversNotifier} from "../../helpers/managers/ObserversNotifier";
+import {Appearance} from "../../../model/model/appearance/Appearance";
+import {ObserversNotifier} from "../../../model/helpers/managers/ObserversNotifier";
 
 export type AppearancesObserver = (appearance: Appearance) => void
 

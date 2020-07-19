@@ -1,5 +1,5 @@
-import {Category} from "../../model/category/Category";
-import {ObserversNotifier} from "../../helpers/managers/ObserversNotifier";
+import {Category} from "../../../model/model/category/Category";
+import {ObserversNotifier} from "../../../model/helpers/managers/ObserversNotifier";
 
 export type CategoriesObserver = (category: Category) => void
 

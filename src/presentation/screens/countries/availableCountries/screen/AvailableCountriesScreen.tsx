@@ -1,9 +1,9 @@
 import React from 'react';
 import {AvailableCountriesScreenView} from "./AvailableCountriesScreenView";
 import {Country} from "../../../../../model/model/country/Country";
-import {CountriesRepo} from "../../../../../model/repos/countriesRepo/CountriesRepo";
+import {CountriesRepo} from "../../../../../app/repos/countriesRepo/CountriesRepo";
 import {sortCountries} from "../helpers/countries/CountriesHelper";
-import {countryDeselectedNotifier} from "../../../../../model/repos/countriesRepo/CountriesNotifiers";
+import {countryDeselectedNotifier} from "../../../../../app/repos/countriesRepo/CountriesNotifiers";
 
 interface Props {
 }

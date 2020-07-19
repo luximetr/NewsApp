@@ -1,13 +1,13 @@
 import * as React from 'react';
 import {NewsFeedScreenView} from './NewsFeedScreenView';
-import {TopHeadlinesRepo} from "../../../../../model/repos/topHeadlinesRepo/TopHeadlinesRepo";
+import {TopHeadlinesRepo} from "../../../../../app/repos/topHeadlinesRepo/TopHeadlinesRepo";
 import {News} from "../../../../../model/model/news/News";
 import {Country} from "../../../../../model/model/country/Country";
-import {enabledCountryChangedNotifier} from "../../../../../model/repos/countriesRepo/CountriesNotifiers";
-import {CountriesRepo} from "../../../../../model/repos/countriesRepo/CountriesRepo";
+import {enabledCountryChangedNotifier} from "../../../../../app/repos/countriesRepo/CountriesNotifiers";
+import {CountriesRepo} from "../../../../../app/repos/countriesRepo/CountriesRepo";
 import {Category} from "../../../../../model/model/category/Category";
-import {enabledCategoryChangedNotifier} from "../../../../../model/repos/categoriesRepo/CategoriesNotifiers";
-import {CategoriesRepo} from "../../../../../model/repos/categoriesRepo/CategoriesRepo";
+import {enabledCategoryChangedNotifier} from "../../../../../app/repos/categoriesRepo/CategoriesNotifiers";
+import {CategoriesRepo} from "../../../../../app/repos/categoriesRepo/CategoriesRepo";
 
 interface Props {
   navigation: any

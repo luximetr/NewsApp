@@ -1,8 +1,8 @@
 import React from 'react';
 import {AvailableCategoriesScreenView} from "./AvailableCategoriesScreenView";
 import {Category} from "../../../../../model/model/category/Category";
-import {CategoriesRepo} from "../../../../../model/repos/categoriesRepo/CategoriesRepo";
-import {categoryDeselectedNotifier} from "../../../../../model/repos/categoriesRepo/CategoriesNotifiers";
+import {CategoriesRepo} from "../../../../../app/repos/categoriesRepo/CategoriesRepo";
+import {categoryDeselectedNotifier} from "../../../../../app/repos/categoriesRepo/CategoriesNotifiers";
 import {sortCategories} from "../helpers/categories/CategoriesHelper";
 
 interface Props {

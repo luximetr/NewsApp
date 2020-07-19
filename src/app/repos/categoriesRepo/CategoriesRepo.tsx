@@ -1,7 +1,7 @@
 import {CategoriesBucket} from "../../../storage/buckets/CategoriesBucket";
-import {allCategories} from "../../model/category/Categories";
-import {Category} from "../../model/category/Category";
-import {contains} from "../../helpers/array/ArrayHelper";
+import {allCategories} from "../../../model/model/category/Categories";
+import {Category} from "../../../model/model/category/Category";
+import {contains} from "../../../model/helpers/array/ArrayHelper";
 import {
    categoryDeselectedNotifier,
    categorySelectedNotifier,

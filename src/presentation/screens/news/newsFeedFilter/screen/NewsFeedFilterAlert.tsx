@@ -1,22 +1,22 @@
 import React from 'react';
 import {SelectedCountriesListItem} from "../../../countries/selectedCountries/helpers/listItem/SelectedCountriesListItem";
 import {NewsFeedFilterAlertView} from "./NewsFeedFilterAlertView";
-import {CountriesRepo} from "../../../../../model/repos/countriesRepo/CountriesRepo";
+import {CountriesRepo} from "../../../../../app/repos/countriesRepo/CountriesRepo";
 import {Country} from "../../../../../model/model/country/Country";
 import {compareCountries} from "../../../countries/availableCountries/helpers/countries/CountriesHelper";
 import {
    countryDeselectedNotifier,
    countrySelectedNotifier, enabledCountryChangedNotifier
-} from "../../../../../model/repos/countriesRepo/CountriesNotifiers";
+} from "../../../../../app/repos/countriesRepo/CountriesNotifiers";
 import {remove} from "../../../../../model/helpers/array/ArrayHelper";
 import {SelectedCategoriesListItem} from "../../../categories/selectedCategories/helpers/selectedCategoriesListItem/SelectedCategoriesListItem";
 import {Category} from "../../../../../model/model/category/Category";
 import {
    categoryDeselectedNotifier,
    categorySelectedNotifier, enabledCategoryChangedNotifier
-} from "../../../../../model/repos/categoriesRepo/CategoriesNotifiers";
+} from "../../../../../app/repos/categoriesRepo/CategoriesNotifiers";
 import {compareCategories} from "../../../categories/availableCategories/helpers/categories/CategoriesHelper";
-import {CategoriesRepo} from "../../../../../model/repos/categoriesRepo/CategoriesRepo";
+import {CategoriesRepo} from "../../../../../app/repos/categoriesRepo/CategoriesRepo";
 
 interface Props {
    isVisible: boolean

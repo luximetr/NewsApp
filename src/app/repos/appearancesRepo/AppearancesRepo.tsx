@@ -1,9 +1,9 @@
 import React from "react";
 import {AppearancesBucket} from "../../../storage/buckets/AppearancesBucket";
-import {Appearance} from "../../model/appearance/Appearance";
-import {DarkAppearance} from "../../model/appearance/DarkAppearance";
-import {AppearanceType} from "../../model/appearance/AppearanceType";
-import {LightAppearance} from "../../model/appearance/LightAppearance";
+import {Appearance} from "../../../model/model/appearance/Appearance";
+import {DarkAppearance} from "../../../model/model/appearance/DarkAppearance";
+import {AppearanceType} from "../../../model/model/appearance/AppearanceType";
+import {LightAppearance} from "../../../model/model/appearance/LightAppearance";
 import {selectedAppearanceChangedNotifier} from "./AppearancesNotifiers";
 
 export class AppearancesRepo {

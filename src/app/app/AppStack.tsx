@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {createStackNavigator} from "@react-navigation/stack";
-import {MainTabBar} from "../presentation/screens/tabBar/MainTabBar";
-import {NewsDetailsScreen} from "../presentation/screens/news/newsDetails/screen/NewsDetailsScreen";
-import {NewsSourcesScreen} from "../presentation/screens/news/newsSources/screen/NewsSourcesScreen";
-import {SelectCountriesScreen} from "../presentation/screens/countries/selectCountries/screen/SelectCountriesScreen";
-import {SelectCategoriesScreen} from "../presentation/screens/categories/selectCategories/screen/SelectCategoriesScreen";
+import {MainTabBar} from "../../presentation/screens/tabBar/MainTabBar";
+import {NewsDetailsScreen} from "../../presentation/screens/news/newsDetails/screen/NewsDetailsScreen";
+import {NewsSourcesScreen} from "../../presentation/screens/news/newsSources/screen/NewsSourcesScreen";
+import {SelectCountriesScreen} from "../../presentation/screens/countries/selectCountries/screen/SelectCountriesScreen";
+import {SelectCategoriesScreen} from "../../presentation/screens/categories/selectCategories/screen/SelectCategoriesScreen";
 
 const Stack = createStackNavigator();
 

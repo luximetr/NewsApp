@@ -2,8 +2,8 @@ import React from 'react';
 import {SelectedCategoriesScreenView} from "./SelectedCategoriesScreenView";
 import {SelectedCategoriesListItem} from "../helpers/selectedCategoriesListItem/SelectedCategoriesListItem";
 import {Category} from "../../../../../model/model/category/Category";
-import {CategoriesRepo} from "../../../../../model/repos/categoriesRepo/CategoriesRepo";
-import {categorySelectedNotifier} from "../../../../../model/repos/categoriesRepo/CategoriesNotifiers";
+import {CategoriesRepo} from "../../../../../app/repos/categoriesRepo/CategoriesRepo";
+import {categorySelectedNotifier} from "../../../../../app/repos/categoriesRepo/CategoriesNotifiers";
 import {compareCategories} from "../../availableCategories/helpers/categories/CategoriesHelper";
 
 interface Props {
