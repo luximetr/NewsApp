@@ -4,9 +4,8 @@ import {Appearance} from "../../../../../model/model/appearance/Appearance";
 import {TopBarScreenView} from "../../../../helpers/components/screenViews/topBarScreenView/TopBarScreenView";
 import {WebView} from 'react-native-webview';
 import {getStyles} from "./NewsDetailsScreenView.styles";
-import {Image, TouchableOpacity} from "react-native";
-import {touchableOpacity} from "../../../../helpers/managers/ScreenInfoProvider";
 import {translate} from "../../../../../app/repos/appLanguagesRepo/repo/AppLanguagesRepo";
+import {FloatRoundButton} from "../../../../helpers/components/buttons/floatRoundButton/FloatRoundButton";
 
 interface Props {
    uri: string
@@ -38,7 +37,7 @@ export class NewsDetailsScreenView extends BaseComponent<Props, State> {
             }}
          >
             {this.renderContent(appearance)}
-            {this.renderShareButton(appearance)}
+            {this.renderShareButton()}
          </TopBarScreenView>
       )
    }
@@ -54,15 +53,12 @@ export class NewsDetailsScreenView extends BaseComponent<Props, State> {
    }
 
    // Share button
-   protected renderShareButton(appearance: Appearance) {
+   protected renderShareButton() {
       return (
-         <TouchableOpacity
-            activeOpacity={touchableOpacity}
-            style={getStyles(appearance).shareButton}
-            onPress={() => {this.props.onShare()}}
-         >
-            <Image source={require('../../../../helpers/assets/share.png')} style={getStyles(appearance).shareButtonIcon} />
-         </TouchableOpacity>
+         <FloatRoundButton
+             imageSource={require('../../../../helpers/assets/share.png')}
+             onPress={() => {this.props.onShare()}}
+         />
       )
    }
 

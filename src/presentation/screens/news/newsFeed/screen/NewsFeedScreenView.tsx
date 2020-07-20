@@ -2,14 +2,14 @@ import * as React from 'react';
 import {TopBarScreenView} from "../../../../helpers/components/screenViews/topBarScreenView/TopBarScreenView";
 import {Appearance} from "../../../../../model/model/appearance/Appearance";
 import {News} from "../../../../../model/model/news/News";
-import {FlatList, Image, RefreshControl, TouchableOpacity} from "react-native";
+import {FlatList, RefreshControl, TouchableOpacity} from "react-native";
 import {NewsFeedItemView} from "../helpers/newsFeedItemView/NewsFeedItemView";
 import {FullScreenLoaderView} from "../../../../helpers/components/loaderViews/fullScreenLoaderView/FullScreenLoaderView";
 import {touchableOpacity} from "../../../../helpers/managers/ScreenInfoProvider";
-import {getStyles} from "./NewsFeedScreenView.styles";
 import {NewsFeedFilterAlert} from "../../newsFeedFilter/screen/NewsFeedFilterAlert";
 import {translate} from "../../../../../app/repos/appLanguagesRepo/repo/AppLanguagesRepo";
 import {LocalizableComponent} from "../../../../helpers/components/baseViews/baseComponent/LocalizableComponent";
+import {FloatRoundButton} from "../../../../helpers/components/buttons/floatRoundButton/FloatRoundButton";
 
 interface Props {
    news: News[]
@@ -52,7 +52,7 @@ export class NewsFeedScreenView extends LocalizableComponent<Props, State> {
             title={this.state.title}
          >
             {this.renderContent(appearance)}
-            {this.renderFilterButton(appearance)}
+            {this.renderFilterButton()}
             {this.renderFilterAlert()}
          </TopBarScreenView>
       )
@@ -116,15 +116,12 @@ export class NewsFeedScreenView extends LocalizableComponent<Props, State> {
    }
 
    // Filter button
-   private renderFilterButton(appearance: Appearance) {
+   private renderFilterButton() {
       return (
-         <TouchableOpacity
-            style={getStyles(appearance).filterButton}
-            activeOpacity={touchableOpacity}
+         <FloatRoundButton
+            imageSource={require('../../../../helpers/assets/filter.png')}
             onPress={() => {this.props.onFilter()}}
-         >
-            <Image source={require('../../../../helpers/assets/filter.png')} style={getStyles(appearance).filterButtonIcon} />
-         </TouchableOpacity>
+         />
       )
    }
 
