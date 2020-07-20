@@ -15,6 +15,11 @@ export function getStyles(appearance: Appearance) {
          backgroundColor: appearance.action.background.primary,
          alignItems: 'center',
          justifyContent: "center",
+      },
+      filterButtonIcon: {
+         tintColor: appearance.action.title.primary,
+         height: 25,
+         width: 25,
       }
    })
 }

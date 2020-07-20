@@ -2,11 +2,10 @@ import * as React from 'react';
 import {TopBarScreenView} from "../../../../helpers/components/screenViews/topBarScreenView/TopBarScreenView";
 import {Appearance} from "../../../../../model/model/appearance/Appearance";
 import {News} from "../../../../../model/model/news/News";
-import {FlatList, RefreshControl, TouchableOpacity} from "react-native";
+import {FlatList, Image, RefreshControl, TouchableOpacity} from "react-native";
 import {NewsFeedItemView} from "../helpers/newsFeedItemView/NewsFeedItemView";
 import {FullScreenLoaderView} from "../../../../helpers/components/loaderViews/fullScreenLoaderView/FullScreenLoaderView";
 import {touchableOpacity} from "../../../../helpers/managers/ScreenInfoProvider";
-import {VectorIcon} from "../../../../helpers/components/imageViews/icons/VectorIcon";
 import {getStyles} from "./NewsFeedScreenView.styles";
 import {NewsFeedFilterAlert} from "../../newsFeedFilter/screen/NewsFeedFilterAlert";
 import {translate} from "../../../../../app/repos/appLanguagesRepo/repo/AppLanguagesRepo";
@@ -72,6 +71,7 @@ export class NewsFeedScreenView extends LocalizableComponent<Props, State> {
    private renderNews(appearance: Appearance) {
       return (
          <FlatList
+            contentInset={{top: 6}}
             data={this.props.news}
             renderItem={(item) => {
                return this.renderNewsItem(item.item)
@@ -123,7 +123,7 @@ export class NewsFeedScreenView extends LocalizableComponent<Props, State> {
             activeOpacity={touchableOpacity}
             onPress={() => {this.props.onFilter()}}
          >
-            <VectorIcon name={'share'} source={'material'} size={30} color={appearance.action.title.primary} />
+            <Image source={require('../../../../helpers/assets/filter.png')} style={getStyles(appearance).filterButtonIcon} />
          </TouchableOpacity>
       )
    }

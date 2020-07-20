@@ -4,8 +4,7 @@ import {Appearance} from "../../../../../model/model/appearance/Appearance";
 import {TopBarScreenView} from "../../../../helpers/components/screenViews/topBarScreenView/TopBarScreenView";
 import {WebView} from 'react-native-webview';
 import {getStyles} from "./NewsDetailsScreenView.styles";
-import {TouchableOpacity} from "react-native";
-import {VectorIcon} from "../../../../helpers/components/imageViews/icons/VectorIcon";
+import {Image, TouchableOpacity} from "react-native";
 import {touchableOpacity} from "../../../../helpers/managers/ScreenInfoProvider";
 import {translate} from "../../../../../app/repos/appLanguagesRepo/repo/AppLanguagesRepo";
 
@@ -62,7 +61,7 @@ export class NewsDetailsScreenView extends BaseComponent<Props, State> {
             style={getStyles(appearance).shareButton}
             onPress={() => {this.props.onShare()}}
          >
-            <VectorIcon name={'share'} source={'material'} size={30} color={appearance.action.title.primary} />
+            <Image source={require('../../../../helpers/assets/share.png')} style={getStyles(appearance).shareButtonIcon} />
          </TouchableOpacity>
       )
    }
