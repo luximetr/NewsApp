@@ -4,6 +4,7 @@ import {Appearance} from "../../../../../../model/model/appearance/Appearance";
 import {ScrollView, TouchableOpacity, View} from "react-native";
 import {getStyles} from "./AppearancePickerView.styles";
 import {AppearancePickerItem} from "./AppearancePickerItem";
+import {touchableOpacity} from "../../../../../helpers/managers/ScreenInfoProvider";
 
 interface Props {
    appearances: AppearancePickerItem[]
@@ -33,9 +34,11 @@ export class AppearancePickerView extends BaseComponent<Props> {
    private renderItem(appearance: Appearance, item: AppearancePickerItem) {
       return (
          <TouchableOpacity
+            activeOpacity={touchableOpacity}
             onPress={() => {this.props.onItemPress(item)}}
          >
             <View style={[getStyles(appearance).item, {backgroundColor: item.color}]} />
+            {item.isSelected && (<View style={getStyles(appearance).selectingIndicator}/>)}
          </TouchableOpacity>
       )
    }

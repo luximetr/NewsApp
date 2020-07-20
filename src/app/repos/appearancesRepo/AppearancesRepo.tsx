@@ -47,6 +47,10 @@ export class AppearancesRepo {
       }
    }
 
+   getSelectedAppearanceType(): AppearanceType {
+      return this.selectedAppearanceType
+   }
+
    // Storing
    setCurrentAppearanceByType(appearanceType: AppearanceType) {
       const newAppearance = this.getAppearanceByType(appearanceType)

@@ -97,23 +97,6 @@ export class SettingsListScreenView extends LocalizableComponent<Props, State> {
       )
    }
 
-   // Theme picker
-   private renderThemePicker(appearance: Appearance) {
-      return (
-         <View>
-            <Text
-               style={getStyles(appearance).pickerHeaderText}
-            >
-               {this.state.themesHeader}
-            </Text>
-            <AppearancePickerView
-               appearances={this.props.appearances}
-               onItemPress={this.props.onAppearancePress.bind(this)}
-            />
-         </View>
-      )
-   }
-
    // Language picker
    private renderLanguagePicker(appearance: Appearance) {
       return (
@@ -127,6 +110,23 @@ export class SettingsListScreenView extends LocalizableComponent<Props, State> {
                languages={this.props.languages}
                selectedLanguage={this.props.selectedLanguage}
                onLanguagePress={(language) => {this.props.onLanguagePress(language)}}
+            />
+         </View>
+      )
+   }
+
+   // Theme picker
+   private renderThemePicker(appearance: Appearance) {
+      return (
+         <View>
+            <Text
+               style={getStyles(appearance).pickerHeaderText}
+            >
+               {this.state.themesHeader}
+            </Text>
+            <AppearancePickerView
+               appearances={this.props.appearances}
+               onItemPress={this.props.onAppearancePress.bind(this)}
             />
          </View>
       )

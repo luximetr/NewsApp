@@ -3,4 +3,5 @@ import {AppearanceType} from "../../../../../../model/model/appearance/Appearanc
 export type AppearancePickerItem = {
    type: AppearanceType
    color: string
+   isSelected: boolean
 }

@@ -3,6 +3,7 @@ import {Appearance} from "../../../../../../model/model/appearance/Appearance";
 import {globalMarkup} from "../../../../../helpers/managers/ScreenInfoProvider";
 
 const itemSide = 60
+const indicatorSide = itemSide - 6
 
 export function getStyles(appearance: Appearance) {
    return StyleSheet.create({
@@ -20,6 +21,16 @@ export function getStyles(appearance: Appearance) {
          width: itemSide,
          borderRadius: itemSide / 2,
          marginLeft: 10,
+      },
+      selectingIndicator: {
+         position: "absolute",
+         height: indicatorSide,
+         width: indicatorSide,
+         borderWidth: 3,
+         borderColor: appearance.background.tertiary,
+         borderRadius: indicatorSide / 2,
+         marginLeft: 13,
+         marginTop: 3,
       }
    })
 }
