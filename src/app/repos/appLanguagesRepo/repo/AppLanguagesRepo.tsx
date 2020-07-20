@@ -14,7 +14,7 @@ class AppLanguagesRepo {
    // Data
    private currentLanguage = appLanguages[0]
 
-   getAvailableLanguages() {
+   getAvailableLanguages(): Language[] {
       return appLanguages
    }
 
@@ -26,13 +26,14 @@ class AppLanguagesRepo {
       return this.currentLanguage
    }
 
-   setCurrentLanguage(language: Language) {
+   setCurrentLanguageByCode(code: string) {
+      const language = this.getLanguageByCode(code)
       this.currentLanguage = language
       this.appLanguagesBucket.setSelectedAppLanguage(language.code).then()
       selectedAppLanguageChangedNotifier.notify(language)
    }
 
-   getCurrentLanguage() {
+   getCurrentLanguage(): Language {
       return this.currentLanguage
    }
 

@@ -3,14 +3,12 @@ import {BaseComponent} from "../../../../../helpers/components/baseViews/baseCom
 import {Appearance} from "../../../../../../model/model/appearance/Appearance";
 import {ScrollView, TouchableOpacity, View, Text} from "react-native";
 import {getStyles} from "./LanguagePickerView.styles";
-import {Language} from "../../../../../../model/model/language/Language";
-import {capitalizeFirstLetter} from "../../../../../../model/helpers/strings/StringsHelpers";
 import {touchableOpacity} from "../../../../../helpers/managers/ScreenInfoProvider";
+import {LanguagePickerItem} from "./LanguagePickerItem";
 
 interface Props {
-   languages: Language[]
-   selectedLanguage: Language
-   onLanguagePress: (language: Language) => void
+   items: LanguagePickerItem[]
+   onItemPress: (item: LanguagePickerItem) => void
 }
 
 export class LanguagePickerView extends BaseComponent<Props> {
@@ -30,22 +28,23 @@ export class LanguagePickerView extends BaseComponent<Props> {
 
    // Items
    private renderItems(appearance: Appearance) {
-      return this.props.languages.map((language) => {
-         return this.renderItem(appearance, language)
+      return this.props.items.map((item) => {
+         return this.renderItem(appearance, item)
       })
    }
 
-   protected renderItem(appearance: Appearance, language: Language) {
+   protected renderItem(appearance: Appearance, item: LanguagePickerItem) {
       return (
          <TouchableOpacity
             activeOpacity={touchableOpacity}
-            onPress={() => {this.props.onLanguagePress(language)}}
+            onPress={() => {this.props.onItemPress(item)}}
          >
             <View style={getStyles(appearance).item}>
                <Text style={getStyles(appearance).itemText}>
-                  {capitalizeFirstLetter(language.code)}
+                  {item.title}
                </Text>
             </View>
+            {item.isSelected && (<View style={getStyles(appearance).selectingIndicator}/>)}
          </TouchableOpacity>
       )
    }

@@ -6,15 +6,14 @@ import {Appearance} from "../../../../../model/model/appearance/Appearance";
 import {LanguagePickerView} from "../helpers/languagePicker/LanguagePickerView";
 import {getStyles} from "./SettingsListScreenView.styles";
 import {NewsFeedItemView} from "../../../news/newsFeed/helpers/newsFeedItemView/NewsFeedItemView";
-import {Language} from "../../../../../model/model/language/Language";
 import {AppearancePickerItem} from "../helpers/appearancePicker/AppearancePickerItem";
 import {translate} from "../../../../../app/repos/appLanguagesRepo/repo/AppLanguagesRepo";
 import {LocalizableComponent} from "../../../../helpers/components/baseViews/baseComponent/LocalizableComponent";
+import {LanguagePickerItem} from "../helpers/languagePicker/LanguagePickerItem";
 
 interface Props {
-   languages: Language[]
-   selectedLanguage: Language
-   onLanguagePress: (language: Language) => void
+   languages: LanguagePickerItem[]
+   onLanguagePress: (language: LanguagePickerItem) => void
    appearances: AppearancePickerItem[]
    onAppearancePress: (appearance: AppearancePickerItem) => void
 }
@@ -107,9 +106,8 @@ export class SettingsListScreenView extends LocalizableComponent<Props, State> {
                {this.state.languagesHeader}
             </Text>
             <LanguagePickerView
-               languages={this.props.languages}
-               selectedLanguage={this.props.selectedLanguage}
-               onLanguagePress={(language) => {this.props.onLanguagePress(language)}}
+               items={this.props.languages}
+               onItemPress={(item) => {this.props.onLanguagePress(item)}}
             />
          </View>
       )
