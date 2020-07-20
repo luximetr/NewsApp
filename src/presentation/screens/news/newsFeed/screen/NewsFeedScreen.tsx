@@ -8,6 +8,7 @@ import {CountriesRepo} from "../../../../../app/repos/countriesRepo/CountriesRep
 import {Category} from "../../../../../model/model/category/Category";
 import {enabledCategoryChangedNotifier} from "../../../../../app/repos/categoriesRepo/CategoriesNotifiers";
 import {CategoriesRepo} from "../../../../../app/repos/categoriesRepo/CategoriesRepo";
+import {showTopErrorBanner} from "../../../../helpers/components/alerts/topBanner/TopBanner";
 
 interface Props {
   navigation: any
@@ -71,6 +72,8 @@ export class NewsFeedScreen extends React.Component<Props, State> {
     this.setState({isRefreshing: false, isLoading: false})
     if (result.data) {
       this.setState({news: result.data})
+    } else {
+      showTopErrorBanner(result.error.message)
     }
   }
 

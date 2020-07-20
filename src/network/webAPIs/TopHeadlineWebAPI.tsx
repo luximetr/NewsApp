@@ -1,3 +1,4 @@
+import {parseWebAPIError} from "../model/webAPIError/WebAPIErrorJSONConvertor";
 
 export type WebAPIResult = {
    data?: any
@@ -24,11 +25,12 @@ export class TopHeadlineWebAPI {
             if (json.status === 'ok') {
                return {data: json.articles}
             } else {
-               return {error: 'Error'}
+               const error = parseWebAPIError(json)
+               return {error: error}
             }
          })
          .catch((error) => {
-            return {error: error}
+            return {error: parseWebAPIError(error)}
          })
    }
 }

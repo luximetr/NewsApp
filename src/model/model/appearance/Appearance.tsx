@@ -7,6 +7,7 @@ export type Appearance = {
       secondary: string
       tertiary: string
       reversePrimary: string
+      error: string
    }
    text: {
       primary: string

@@ -8,6 +8,7 @@ import {View} from "react-native";
 import {selectedAppearanceChangedNotifier} from "../repos/appearancesRepo/AppearancesNotifiers";
 import {AppearanceContext} from "../repos/appearancesRepo/AppearancesRepo";
 import {appLanguagesRepo} from "../repos/appLanguagesRepo/repo/AppLanguagesRepo";
+import {TopBannerView} from "../../presentation/helpers/components/alerts/topBanner/TopBannerView";
 
 interface Props {}
 
@@ -68,9 +69,12 @@ export default class App extends React.Component<Props, State> {
    private renderContent() {
       return this.state.appearance && (
          <AppearanceContext.Provider value={this.state.appearance}>
-            <NavigationContainer>
-               <AppStack/>
-            </NavigationContainer>
+            <View style={{flex: 1}}>
+               <NavigationContainer>
+                  <AppStack/>
+               </NavigationContainer>
+               <TopBannerView/>
+            </View>
          </AppearanceContext.Provider>
       )
    }

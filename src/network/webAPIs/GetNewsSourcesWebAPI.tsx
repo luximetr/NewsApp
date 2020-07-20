@@ -1,4 +1,5 @@
 import {WebAPIResult} from "./TopHeadlineWebAPI";
+import {parseWebAPIError} from "../model/webAPIError/WebAPIErrorJSONConvertor";
 
 export class GetNewsSourcesWebAPI {
 
@@ -13,11 +14,11 @@ export class GetNewsSourcesWebAPI {
             if (json.status === 'ok') {
                return {data: json.sources}
             } else {
-               return {error: 'Error'}
+               return {error: parseWebAPIError(json)}
             }
          })
          .catch((error) => {
-            return {error: error}
+            return {error: parseWebAPIError(error)}
          })
    }
 }

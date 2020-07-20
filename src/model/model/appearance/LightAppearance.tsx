@@ -5,7 +5,8 @@ export const LightAppearance = {
       primary: 'rgb(255, 255, 255)',
       secondary: 'rgb(245, 245, 245)',
       tertiary: 'rgb(225, 225, 225)',
-      reversePrimary: 'rgb(150, 150, 150)'
+      reversePrimary: 'rgb(150, 150, 150)',
+      error: 'rgb(245,67,67)'
    },
    text: {
       primary: 'rgb(0, 0, 0)',
