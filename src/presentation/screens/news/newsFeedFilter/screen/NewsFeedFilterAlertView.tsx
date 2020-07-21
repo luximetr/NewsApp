@@ -126,7 +126,7 @@ export class NewsFeedFilterAlertView extends LocalizableComponent<Props, State> 
    protected renderCategoriesListItem(appearance: Appearance, item: SelectedCategoriesListItem) {
       return this.renderListItem(
          appearance,
-         item.category.name,
+         translate(`category_name_${item.category.code}`),
          item.isEnabled,
          () => {this.props.onCategoryItemPress(item)})
    }

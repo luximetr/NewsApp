@@ -6,6 +6,7 @@ import {Category} from "../../../../../model/model/category/Category";
 import {touchableOpacity} from "../../../../helpers/managers/ScreenInfoProvider";
 import {CountriesListItemView} from "../../../countries/availableCountries/helpers/listItem/CountriesListItemView";
 import {getStyles} from "./AvailableCategoriesScreenView.styles";
+import {translate} from "../../../../../app/repos/appLanguagesRepo/repo/Translator";
 
 interface Props {
    categories: Category[]
@@ -37,7 +38,7 @@ export class AvailableCategoriesScreenView extends BaseComponent<Props> {
             onPress={() => {this.props.onCategoryPress(category)}}
          >
             <CountriesListItemView
-               title={category.name}
+               title={translate(`category_name_${category.code}`)}
             />
          </TouchableOpacity>
       )

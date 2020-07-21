@@ -6,7 +6,7 @@ import {appLanguagesRepo} from "./AppLanguagesRepo";
 export function translate(key: string) {
    const language = appLanguagesRepo.getCurrentLanguage()
    const strings = getStrings(language)
-   return strings[key]
+   return strings[key] || key
 }
 
 function getStrings(language: Language): any {
