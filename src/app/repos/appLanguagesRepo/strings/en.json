@@ -16,5 +16,6 @@
   "categories_tab2_title": "Available",
   "countries_title": "Countries",
   "countries_tab1_title": "Selected",
-  "countries_tab2_title": "Available"
+  "countries_tab2_title": "Available",
+  "selected_countries_can_not_remove_error_message": "You can not remove enabled country"
 }

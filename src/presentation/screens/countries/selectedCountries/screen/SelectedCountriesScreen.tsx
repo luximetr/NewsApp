@@ -5,6 +5,8 @@ import {compareCountries} from "../../availableCountries/helpers/countries/Count
 import {SelectedCountriesListItem} from "../helpers/listItem/SelectedCountriesListItem";
 import {countrySelectedNotifier} from "../../../../../app/repos/countriesRepo/CountriesNotifiers";
 import {Country} from "../../../../../model/model/country/Country";
+import {showTopErrorBanner} from "../../../../helpers/components/alerts/topBanner/TopBanner";
+import {translate} from "../../../../../app/repos/appLanguagesRepo/repo/AppLanguagesRepo";
 
 interface Props {
 }
@@ -65,6 +67,14 @@ export class SelectedCountriesScreen extends React.Component<Props, State> {
 
    // Deselect country
    private onItemLongPress(listItem: SelectedCountriesListItem) {
+      if (listItem.isEnabled) {
+         this.displayCanNotDeselectError()
+      } else {
+         this.deselectCountry(listItem)
+      }
+   }
+
+   private deselectCountry(listItem: SelectedCountriesListItem) {
       this.countriesRepo
          .deselectCountry(listItem.country)
          .then(() => {
@@ -78,6 +88,10 @@ export class SelectedCountriesScreen extends React.Component<Props, State> {
          return item.country.code !== listItem.country.code
       })
       this.setState({items: filteredItems})
+   }
+
+   protected displayCanNotDeselectError() {
+      showTopErrorBanner(translate('selected_countries_can_not_remove_error_message'))
    }
 
    // Enable country
