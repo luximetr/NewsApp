@@ -36,22 +36,24 @@ export class CountriesRepo {
       }
    }
 
-   private async addCountryToSelected(country: Country) {
-      await this.countriesBucket.addToSelected(country)
-   }
-
+   // Select
    async selectCountry(country: Country) {
       await this.addCountryToSelected(country)
       countrySelectedNotifier.notify(country)
    }
 
+   private async addCountryToSelected(country: Country) {
+      await this.countriesBucket.addToSelected(country)
+   }
+
+   // Deselect
    async deselectCountry(country: Country) {
       await this.countriesBucket.removeFromSelected(country)
       await this.countriesBucket.removeFromEnabled(country)
       countryDeselectedNotifier.notify(country)
    }
 
-   // Enabled country
+   // Enabled - Set
    async setEnabledCountry(country: Country) {
       enabledCountry = country
       await this.saveEnabledCountry(country)
@@ -62,6 +64,7 @@ export class CountriesRepo {
       await this.countriesBucket.setEnabled(country)
    }
 
+   // Enabled - Get
    async getEnabledCountry(): Promise<Country> {
       if (enabledCountry !== undefined) {
          return enabledCountry

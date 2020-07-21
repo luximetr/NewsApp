@@ -5,6 +5,8 @@ import {Category} from "../../../../../model/model/category/Category";
 import {CategoriesRepo} from "../../../../../app/repos/categoriesRepo/CategoriesRepo";
 import {categorySelectedNotifier} from "../../../../../app/repos/categoriesRepo/CategoriesNotifiers";
 import {compareCategories} from "../../availableCategories/helpers/categories/CategoriesHelper";
+import {showTopErrorBanner} from "../../../../helpers/components/alerts/topBanner/TopBanner";
+import {translate} from "../../../../../app/repos/appLanguagesRepo/repo/Translator";
 
 interface Props {
 }
@@ -41,7 +43,7 @@ export class SelectedCategoriesScreen extends React.Component<Props, State> {
    // Load categories
    private loadCategories() {
       this.categoriesRepo
-         .getSelected()
+         .getSelectedAndEnabled()
          .then((data) => {
             this.displayCategories(data.selected, data.enabled)
          })
@@ -102,11 +104,23 @@ export class SelectedCategoriesScreen extends React.Component<Props, State> {
 
    // On item long press
    private onItemLongPress(item: SelectedCategoriesListItem) {
+      if (item.isEnabled) {
+         this.showCanNotDeselectCategory()
+      } else {
+         this.deselectCategory(item)
+      }
+   }
+
+   private deselectCategory(item: SelectedCategoriesListItem) {
       this.categoriesRepo
          .deselectCategory(item.category)
          .then(() => {
             this.displayItemDeselected(item)
          })
+   }
+
+   protected showCanNotDeselectCategory() {
+      showTopErrorBanner(translate('selected_categories_can_not_remove_error_message'))
    }
 
    private displayItemDeselected(listItem: SelectedCategoriesListItem) {

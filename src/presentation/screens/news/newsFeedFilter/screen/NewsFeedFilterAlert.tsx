@@ -146,7 +146,7 @@ export class NewsFeedFilterAlert extends React.Component<Props, State> {
    // Load categories
    private loadCategories() {
       this.categoriesRepo
-         .getSelected()
+         .getSelectedAndEnabled()
          .then((data) => {
             this.displayCategories(data.selected, data.enabled)
          })

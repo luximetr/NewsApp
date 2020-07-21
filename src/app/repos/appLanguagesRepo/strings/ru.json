@@ -17,5 +17,6 @@
   "countries_title": "Страны",
   "countries_tab1_title": "Выбранные",
   "countries_tab2_title": "Доступные",
-  "selected_countries_can_not_remove_error_message": "Вы не можете удалить активированную страну"
+  "selected_countries_can_not_remove_error_message": "Вы не можете удалить активную страну",
+  "selected_categories_can_not_remove_error_message": "Вы не можете удалить активную категорию"
 }
