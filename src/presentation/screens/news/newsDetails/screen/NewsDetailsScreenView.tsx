@@ -4,7 +4,7 @@ import {Appearance} from "../../../../../model/model/appearance/Appearance";
 import {TopBarScreenView} from "../../../../helpers/components/screenViews/topBarScreenView/TopBarScreenView";
 import {WebView} from 'react-native-webview';
 import {getStyles} from "./NewsDetailsScreenView.styles";
-import {translate} from "../../../../../app/repos/appLanguagesRepo/repo/AppLanguagesRepo";
+import {translate} from "../../../../../app/repos/appLanguagesRepo/repo/Translator";
 import {FloatRoundButton} from "../../../../helpers/components/buttons/floatRoundButton/FloatRoundButton";
 
 interface Props {

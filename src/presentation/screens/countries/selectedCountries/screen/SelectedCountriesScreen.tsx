@@ -6,7 +6,7 @@ import {SelectedCountriesListItem} from "../helpers/listItem/SelectedCountriesLi
 import {countrySelectedNotifier} from "../../../../../app/repos/countriesRepo/CountriesNotifiers";
 import {Country} from "../../../../../model/model/country/Country";
 import {showTopErrorBanner} from "../../../../helpers/components/alerts/topBanner/TopBanner";
-import {translate} from "../../../../../app/repos/appLanguagesRepo/repo/AppLanguagesRepo";
+import {translate} from "../../../../../app/repos/appLanguagesRepo/repo/Translator";
 
 interface Props {
 }

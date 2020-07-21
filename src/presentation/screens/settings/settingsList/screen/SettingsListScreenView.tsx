@@ -7,7 +7,7 @@ import {LanguagePickerView} from "../helpers/languagePicker/LanguagePickerView";
 import {getStyles} from "./SettingsListScreenView.styles";
 import {NewsFeedItemView} from "../../../news/newsFeed/helpers/newsFeedItemView/NewsFeedItemView";
 import {AppearancePickerItem} from "../helpers/appearancePicker/AppearancePickerItem";
-import {translate} from "../../../../../app/repos/appLanguagesRepo/repo/AppLanguagesRepo";
+import {translate} from "../../../../../app/repos/appLanguagesRepo/repo/Translator";
 import {LocalizableComponent} from "../../../../helpers/components/baseViews/baseComponent/LocalizableComponent";
 import {LanguagePickerItem} from "../helpers/languagePicker/LanguagePickerItem";
 

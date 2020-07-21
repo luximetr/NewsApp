@@ -6,7 +6,7 @@ import {AvailableCategoriesScreen} from "../../availableCategories/screen/Availa
 import {Appearance} from "../../../../../model/model/appearance/Appearance";
 import {TopTabBarView} from "../../../../helpers/components/tabBarViews/topTabBarView/TopTabBarView";
 import {TopBarScreenView} from "../../../../helpers/components/screenViews/topBarScreenView/TopBarScreenView";
-import {translate} from "../../../../../app/repos/appLanguagesRepo/repo/AppLanguagesRepo";
+import {translate} from "../../../../../app/repos/appLanguagesRepo/repo/Translator";
 
 interface Props {
    onBack: VoidFunction

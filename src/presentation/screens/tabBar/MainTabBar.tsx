@@ -5,7 +5,7 @@ import {getStyles, getActiveTintColor, getInactiveTintColor} from "./MainTabBar.
 import {NewsFeedScreen} from "../news/newsFeed/screen/NewsFeedScreen";
 import {SettingsListScreen} from "../settings/settingsList/screen/SettingsListScreen";
 import {LocalizableComponent} from "../../helpers/components/baseViews/baseComponent/LocalizableComponent";
-import {translate} from "../../../app/repos/appLanguagesRepo/repo/AppLanguagesRepo";
+import {translate} from "../../../app/repos/appLanguagesRepo/repo/Translator";
 import {Image, ImageSourcePropType} from "react-native";
 
 const Tab = createBottomTabNavigator();

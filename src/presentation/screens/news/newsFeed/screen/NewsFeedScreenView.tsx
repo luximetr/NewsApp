@@ -7,7 +7,7 @@ import {NewsFeedItemView} from "../helpers/newsFeedItemView/NewsFeedItemView";
 import {FullScreenLoaderView} from "../../../../helpers/components/loaderViews/fullScreenLoaderView/FullScreenLoaderView";
 import {touchableOpacity} from "../../../../helpers/managers/ScreenInfoProvider";
 import {NewsFeedFilterAlert} from "../../newsFeedFilter/screen/NewsFeedFilterAlert";
-import {translate} from "../../../../../app/repos/appLanguagesRepo/repo/AppLanguagesRepo";
+import {translate} from "../../../../../app/repos/appLanguagesRepo/repo/Translator";
 import {LocalizableComponent} from "../../../../helpers/components/baseViews/baseComponent/LocalizableComponent";
 import {FloatRoundButton} from "../../../../helpers/components/buttons/floatRoundButton/FloatRoundButton";
 

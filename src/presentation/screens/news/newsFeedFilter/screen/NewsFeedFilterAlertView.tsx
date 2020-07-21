@@ -7,7 +7,7 @@ import {touchableOpacity} from "../../../../helpers/managers/ScreenInfoProvider"
 import React from "react";
 import {SelectedCategoriesListItem} from "../../../categories/selectedCategories/helpers/selectedCategoriesListItem/SelectedCategoriesListItem";
 import {LocalizableComponent} from "../../../../helpers/components/baseViews/baseComponent/LocalizableComponent";
-import {translate} from "../../../../../app/repos/appLanguagesRepo/repo/AppLanguagesRepo";
+import {translate} from "../../../../../app/repos/appLanguagesRepo/repo/Translator";
 
 interface Props {
    isVisible: boolean

@@ -45,16 +45,3 @@ class AppLanguagesRepo {
    }
 }
 export const appLanguagesRepo = new AppLanguagesRepo()
-
-export function translate(key: string) {
-   const language = appLanguagesRepo.getCurrentLanguage()
-   const strings = getStrings(language)
-   return strings[key]
-}
-
-function getStrings(language: Language): any {
-   switch (language.code) {
-      case 'en': return en
-      case 'ru': return ru
-   }
-}

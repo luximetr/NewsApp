@@ -6,7 +6,7 @@ import {TopTabBarView} from "../../../../helpers/components/tabBarViews/topTabBa
 import {SelectedCountriesScreen} from "../../selectedCountries/screen/SelectedCountriesScreen";
 import {AvailableCountriesScreen} from "../../availableCountries/screen/AvailableCountriesScreen";
 import {TopTabBarItem} from "../../../../helpers/components/tabBarViews/topTabBarView/TopTabBarItem";
-import {translate} from "../../../../../app/repos/appLanguagesRepo/repo/AppLanguagesRepo";
+import {translate} from "../../../../../app/repos/appLanguagesRepo/repo/Translator";
 
 interface Props {
    onBack: VoidFunction
