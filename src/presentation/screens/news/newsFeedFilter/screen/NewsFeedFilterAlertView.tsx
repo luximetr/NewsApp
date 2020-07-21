@@ -154,7 +154,7 @@ export class NewsFeedFilterAlertView extends LocalizableComponent<Props, State> 
                onPress={() => {onEdit()}}
             >
                <Image
-                  source={require('../../../../helpers/assets/edit.png')}
+                  source={{uri: 'edit'}}
                   style={getStyles(appearance).sectionHeaderButtonIcon}
                />
             </TouchableOpacity>

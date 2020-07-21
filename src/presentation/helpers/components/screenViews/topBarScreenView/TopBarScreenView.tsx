@@ -57,7 +57,7 @@ export class TopBarScreenView extends BaseComponent<Props> {
       if (this.props.leftTopBarButton) {
          return {
             icon: {
-               source: this.props.leftTopBarButton.iconSource || require('../../../assets/back.png'),
+               source: this.props.leftTopBarButton.iconSource || {uri: 'back'},
                size: 20,
                color: appearance.navigation.tint
             },

@@ -56,7 +56,7 @@ export class NewsDetailsScreenView extends BaseComponent<Props, State> {
    protected renderShareButton() {
       return (
          <FloatRoundButton
-             imageSource={require('../../../../helpers/assets/share.png')}
+             imageSource={{uri: 'share'}}
              onPress={() => {this.props.onShare()}}
          />
       )

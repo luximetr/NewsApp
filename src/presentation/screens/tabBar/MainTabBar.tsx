@@ -51,7 +51,7 @@ export class MainTabBar extends LocalizableComponent<Props, State> {
                component={NewsFeedScreen}
                options={{
                   tabBarIcon: (params) => {
-                     return this.renderTabIcon(params, require('../../helpers/assets/news.png'))
+                     return this.renderTabIcon(params, {uri: 'news'})
                   },
                   tabBarLabel: this.state.screen1Title
                }}
@@ -61,7 +61,7 @@ export class MainTabBar extends LocalizableComponent<Props, State> {
                component={SettingsListScreen}
                options={{
                   tabBarIcon: (params) => {
-                     return this.renderTabIcon(params, require('../../helpers/assets/settings.png'))
+                     return this.renderTabIcon(params, {uri: 'settings'})
                   },
                   tabBarLabel: this.state.screen2Title
                }}

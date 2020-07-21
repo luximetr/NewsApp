@@ -119,7 +119,7 @@ export class NewsFeedScreenView extends LocalizableComponent<Props, State> {
    private renderFilterButton() {
       return (
          <FloatRoundButton
-            imageSource={require('../../../../helpers/assets/filter.png')}
+            imageSource={{uri: 'filter'}}
             onPress={() => {this.props.onFilter()}}
          />
       )
