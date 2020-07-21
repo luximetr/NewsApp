@@ -72,9 +72,9 @@ export class NewsFeedFilterAlert extends React.Component<Props, State> {
    // Countries
    private loadCountries() {
       this.countriesRepo
-         .getSelectedCountries()
+         .getSelectedAndEnabledCountries()
          .then((data) => {
-            this.displayCountries(data.countries, data.enabled)
+            this.displayCountries(data.selected, data.enabled)
          })
    }
 

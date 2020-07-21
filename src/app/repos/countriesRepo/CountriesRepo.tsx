@@ -1,4 +1,4 @@
-import {allCountries} from "../../../model/model/country/Countries";
+import {allCountries, defaultCountry} from "../../../model/model/country/Countries";
 import {Country} from "../../../model/model/country/Country";
 import {CountriesBucket} from "../../../storage/buckets/CountriesBucket";
 import {contains} from "../../../model/helpers/array/ArrayHelper";
@@ -11,7 +11,7 @@ export class CountriesRepo {
 
    // Available countries
    async getAvailableCountries() {
-      const selectedCountries = await this.countriesBucket.getSelected()
+      const selectedCountries = await this.getSelectedCountries()
       return allCountries.filter((country) => {
          return !contains(selectedCountries, (item) => {
             return item.code === country.code
@@ -20,14 +20,28 @@ export class CountriesRepo {
    }
 
    // Selected countries
-   async getSelectedCountries() {
-      const enabledCountry = await this.countriesBucket.getEnabled()
-      const selectedCountries = await this.countriesBucket.getSelected()
-      return {countries: selectedCountries, enabled: enabledCountry}
+   async getSelectedAndEnabledCountries() {
+      const selected = await this.getSelectedCountries()
+      const enabled = await this.getEnabledCountry()
+      return {selected: selected, enabled: enabled}
+   }
+
+   private async getSelectedCountries(): Promise<Country[]> {
+      const selected = await this.countriesBucket.getSelected()
+      if (selected.length === 0) {
+         await this.addCountryToSelected(defaultCountry)
+         return [defaultCountry]
+      } else {
+         return selected
+      }
+   }
+
+   private async addCountryToSelected(country: Country) {
+      await this.countriesBucket.addToSelected(country)
    }
 
    async selectCountry(country: Country) {
-      await this.countriesBucket.addToSelected(country)
+      await this.addCountryToSelected(country)
       countrySelectedNotifier.notify(country)
    }
 
@@ -39,11 +53,33 @@ export class CountriesRepo {
 
    // Enabled country
    async setEnabledCountry(country: Country) {
-      await this.countriesBucket.setEnabled(country)
+      enabledCountry = country
+      await this.saveEnabledCountry(country)
       enabledCountryChangedNotifier.notify(country)
    }
 
-   async getEnabledCountry() {
-      return this.countriesBucket.getEnabled()
+   private async saveEnabledCountry(country: Country) {
+      await this.countriesBucket.setEnabled(country)
+   }
+
+   async getEnabledCountry(): Promise<Country> {
+      if (enabledCountry !== undefined) {
+         return enabledCountry
+      } else {
+         enabledCountry = await this.getCachedEnabledCountry()
+         return enabledCountry
+      }
+   }
+
+   private async getCachedEnabledCountry() {
+      const cachedEnabledCountry = await this.countriesBucket.getEnabled()
+      if (cachedEnabledCountry !== undefined) {
+         return cachedEnabledCountry
+      } else {
+         await this.saveEnabledCountry(defaultCountry)
+         return defaultCountry
+      }
    }
 }
+
+let enabledCountry: Country | undefined
