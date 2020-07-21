@@ -1,10 +1,10 @@
 import * as React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, Image} from 'react-native';
 import {getStyles} from './NavigationView.styles';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import {VectorIcon, VectorIconProps} from '../imageViews/icons/VectorIcon';
 import {BaseComponent} from "../baseViews/baseComponent/BaseComponent";
 import {Appearance} from "../../../../model/model/appearance/Appearance";
+import {ImageIconProps} from "../imageViews/ImageIconProps";
 
 interface Props {
    title: string
@@ -13,7 +13,7 @@ interface Props {
 }
 
 export interface NavigationActionProps {
-   icon: VectorIconProps
+   icon: ImageIconProps
    action: VoidFunction
 }
 
@@ -40,11 +40,14 @@ export class NavigationView extends BaseComponent<Props> {
             style={getStyles(appearance).leftAction}
             onPress={() => {this.props.leftAction?.action()}}
          >
-            <VectorIcon
-               name={this.props.leftAction.icon.name}
+            <Image
                source={this.props.leftAction.icon.source}
-               size={this.props.leftAction.icon.size}
-               color={this.props.leftAction.icon.color}/>
+               style={{
+                  height: this.props.leftAction.icon.size,
+                  width: this.props.leftAction.icon.size,
+                  tintColor: this.props.leftAction.icon.color
+               }}
+            />
          </TouchableOpacity>
       )
    }
@@ -68,11 +71,14 @@ export class NavigationView extends BaseComponent<Props> {
                style={getStyles(appearance).rightAction}
                onPress={() => {this.props.leftAction?.action()}}
             >
-               <VectorIcon
-                  name={this.props.rightAction.icon.name}
+               <Image
                   source={this.props.rightAction.icon.source}
-                  size={this.props.rightAction.icon.size}
-                  color={this.props.rightAction.icon.color}/>
+                  style={{
+                     height: this.props.rightAction.icon.size,
+                     width: this.props.rightAction.icon.size,
+                     tintColor: this.props.rightAction.icon.color
+                  }}
+               />
             </TouchableOpacity>
          )
       } else {

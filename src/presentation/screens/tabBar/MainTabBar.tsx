@@ -1,9 +1,7 @@
 import * as React from 'react';
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
-import {BaseComponent} from "../../helpers/components/baseViews/baseComponent/BaseComponent";
 import {Appearance} from "../../../model/model/appearance/Appearance";
 import {getStyles, getActiveTintColor, getInactiveTintColor} from "./MainTabBar.styles";
-import {VectorIcon} from "../../helpers/components/imageViews/icons/VectorIcon";
 import {NewsFeedScreen} from "../news/newsFeed/screen/NewsFeedScreen";
 import {SettingsListScreen} from "../settings/settingsList/screen/SettingsListScreen";
 import {LocalizableComponent} from "../../helpers/components/baseViews/baseComponent/LocalizableComponent";

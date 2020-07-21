@@ -1,10 +1,9 @@
 import {BaseComponent} from "../../baseViews/baseComponent/BaseComponent";
 import {Appearance} from "../../../../../model/model/appearance/Appearance";
 import {getStyles} from "../screenView/ScreenView.styles";
-import {SafeAreaView, StatusBar, View} from "react-native";
+import {ImageSourcePropType, SafeAreaView, StatusBar, View} from "react-native";
 import {NavigationActionProps, NavigationView} from "../../navigationViews/NavigationView";
 import * as React from "react";
-import {VectorIconSource} from "../../imageViews/icons/VectorIcon";
 
 interface Props {
    title: string
@@ -15,7 +14,7 @@ interface Props {
 export interface TopBarScreenLeftButton {
    action: VoidFunction,
    iconName?: string,
-   iconSource?: VectorIconSource,
+   iconSource?: ImageSourcePropType,
    iconSize?: number,
    iconColor?: string
 }
@@ -23,7 +22,7 @@ export interface TopBarScreenLeftButton {
 export interface TopBarScreenRightButton {
    action: VoidFunction,
    iconName: string,
-   iconSource?: VectorIconSource,
+   iconSource?: ImageSourcePropType,
    iconSize?: number,
    iconColor?: string
 }
@@ -58,9 +57,8 @@ export class TopBarScreenView extends BaseComponent<Props> {
       if (this.props.leftTopBarButton) {
          return {
             icon: {
-               name: this.props.leftTopBarButton.iconName || 'ios-arrow-back',
-               source: this.props.leftTopBarButton.iconSource || "ion",
-               size: 30,
+               source: this.props.leftTopBarButton.iconSource || require('../../../assets/back.png'),
+               size: 20,
                color: appearance.navigation.tint
             },
             action: this.props.leftTopBarButton.action
@@ -74,7 +72,6 @@ export class TopBarScreenView extends BaseComponent<Props> {
       if (this.props.rightTopBarButton) {
          return {
             icon: {
-               name: this.props.rightTopBarButton.iconName,
                source: this.props.rightTopBarButton.iconSource,
                size: 30,
                color: appearance.navigation.tint
