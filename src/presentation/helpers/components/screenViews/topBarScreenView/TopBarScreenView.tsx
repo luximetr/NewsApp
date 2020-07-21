@@ -1,9 +1,9 @@
+import * as React from "react";
 import {BaseComponent} from "../../baseViews/baseComponent/BaseComponent";
 import {Appearance} from "../../../../../model/model/appearance/Appearance";
 import {getStyles} from "../screenView/ScreenView.styles";
 import {ImageSourcePropType, SafeAreaView, StatusBar, View} from "react-native";
 import {NavigationActionProps, NavigationView} from "../../navigationViews/NavigationView";
-import * as React from "react";
 
 interface Props {
    title: string
