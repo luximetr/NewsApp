@@ -8,6 +8,7 @@ import {NewsFeedScreen} from "../news/newsFeed/screen/NewsFeedScreen";
 import {SettingsListScreen} from "../settings/settingsList/screen/SettingsListScreen";
 import {LocalizableComponent} from "../../helpers/components/baseViews/baseComponent/LocalizableComponent";
 import {translate} from "../../../app/repos/appLanguagesRepo/repo/AppLanguagesRepo";
+import {Image, ImageSourcePropType} from "react-native";
 
 const Tab = createBottomTabNavigator();
 
@@ -52,7 +53,7 @@ export class MainTabBar extends LocalizableComponent<Props, State> {
                component={NewsFeedScreen}
                options={{
                   tabBarIcon: (params) => {
-                     return <VectorIcon name={'ios-paper'} source={'ion'} size={24} color={params.color} />
+                     return this.renderTabIcon(params, require('../../helpers/assets/news.png'))
                   },
                   tabBarLabel: this.state.screen1Title
                }}
@@ -62,12 +63,25 @@ export class MainTabBar extends LocalizableComponent<Props, State> {
                component={SettingsListScreen}
                options={{
                   tabBarIcon: (params) => {
-                     return <VectorIcon name={'ios-settings'} source={'ion'} size={30} color={params.color} />
+                     return this.renderTabIcon(params, require('../../helpers/assets/settings.png'))
                   },
                   tabBarLabel: this.state.screen2Title
                }}
             />
          </Tab.Navigator>
+      )
+   }
+
+   // Tab icon
+   protected renderTabIcon(params: any, source: ImageSourcePropType) {
+      return (
+         <Image
+            style={{
+               height: params.size,
+               width: params.size,
+               tintColor: params.color}}
+            source={source}
+         />
       )
    }
 }
