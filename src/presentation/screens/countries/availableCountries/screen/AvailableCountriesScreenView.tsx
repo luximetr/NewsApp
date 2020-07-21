@@ -6,6 +6,7 @@ import {Country} from "../../../../../model/model/country/Country";
 import {CountriesListItemView} from "../helpers/listItem/CountriesListItemView";
 import {getStyles} from "./AvailableCountriesScreenView.styles";
 import {touchableOpacity} from "../../../../helpers/managers/ScreenInfoProvider";
+import {translate} from "../../../../../app/repos/appLanguagesRepo/repo/Translator";
 
 interface Props {
    countries: Country[]
@@ -38,7 +39,7 @@ export class AvailableCountriesScreenView extends BaseComponent<Props> {
             onPress={() => {this.props.onCountrySelect(country)}}
          >
             <CountriesListItemView
-               title={country.name}
+               title={translate(`country_name_${country.code}`)}
             />
          </TouchableOpacity>
       )

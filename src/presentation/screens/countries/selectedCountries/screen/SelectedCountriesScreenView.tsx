@@ -6,6 +6,7 @@ import {getStyles} from "./SelectedCountriesScreenView.styles";
 import {touchableOpacity} from "../../../../helpers/managers/ScreenInfoProvider";
 import {SelectedCountriesListItemView} from "../helpers/listItem/SelectedCountriesListItemView";
 import {SelectedCountriesListItem} from "../helpers/listItem/SelectedCountriesListItem";
+import {translate} from "../../../../../app/repos/appLanguagesRepo/repo/Translator";
 
 interface Props {
    items: SelectedCountriesListItem[]
@@ -40,7 +41,7 @@ export class SelectedCountriesScreenView extends BaseComponent<Props> {
                onLongPress={() => {this.props.onItemLongPress(item)}}
             >
                <SelectedCountriesListItemView
-                  title={item.country.name}
+                  title={translate(`country_name_${item.country.code}`)}
                   isEnabled={item.isEnabled}
                />
             </TouchableOpacity>

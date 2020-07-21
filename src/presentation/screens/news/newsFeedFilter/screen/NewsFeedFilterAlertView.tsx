@@ -3,7 +3,7 @@ import {BottomAlert} from "../../../../helpers/components/alerts/bottomAlert/Bot
 import {Image, ScrollView, Text, TouchableOpacity, View} from "react-native";
 import {getItemColor, getStyles} from "./NewsFeedFilterAlertView.styles";
 import {SelectedCountriesListItem} from "../../../countries/selectedCountries/helpers/listItem/SelectedCountriesListItem";
-import {touchableOpacity} from "../../../../helpers/managers/ScreenInfoProvider";
+import {globalMarkup, touchableOpacity} from "../../../../helpers/managers/ScreenInfoProvider";
 import React from "react";
 import {SelectedCategoriesListItem} from "../../../categories/selectedCategories/helpers/selectedCategoriesListItem/SelectedCategoriesListItem";
 import {LocalizableComponent} from "../../../../helpers/components/baseViews/baseComponent/LocalizableComponent";
@@ -72,7 +72,12 @@ export class NewsFeedFilterAlertView extends LocalizableComponent<Props, State> 
          <View>
             {this.renderCountriesSectionHeader(appearance)}
             <View style={getStyles(appearance).itemsListContainer}>
-               <ScrollView style={getStyles(appearance).itemsScrollView} showsHorizontalScrollIndicator={false} horizontal={true}>
+               <ScrollView
+                  style={getStyles(appearance).itemsScrollView}
+                  showsHorizontalScrollIndicator={false}
+                  horizontal={true}
+                  contentInset={{right: globalMarkup.marginHorizontal}}
+               >
                   {this.renderCountriesList(appearance)}
                </ScrollView>
             </View>
@@ -93,7 +98,7 @@ export class NewsFeedFilterAlertView extends LocalizableComponent<Props, State> 
    protected renderCountriesListItem(appearance: Appearance, item: SelectedCountriesListItem) {
       return this.renderListItem(
          appearance,
-         item.country.name,
+         translate(`country_name_${item.country.code}`),
          item.isEnabled,
          () => {this.props.onCountryItemPress(item)}
       )
@@ -105,7 +110,12 @@ export class NewsFeedFilterAlertView extends LocalizableComponent<Props, State> 
          <View>
             {this.renderCategoriesSectionHeader(appearance)}
             <View style={getStyles(appearance).itemsListContainer}>
-               <ScrollView style={getStyles(appearance).itemsScrollView} showsHorizontalScrollIndicator={false} horizontal={true}>
+               <ScrollView
+                  style={getStyles(appearance).itemsScrollView}
+                  showsHorizontalScrollIndicator={false}
+                  horizontal={true}
+                  contentInset={{right: globalMarkup.marginHorizontal}}
+               >
                   {this.renderCategoriesList(appearance)}
                </ScrollView>
             </View>
