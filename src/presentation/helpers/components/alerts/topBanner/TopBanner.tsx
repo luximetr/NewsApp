@@ -1,7 +1,7 @@
 import {showMessage} from "react-native-flash-message";
 
-export function showTopErrorBanner(message: string) {
-   const normalizedMessage = normalizeMessage(message)
+export function showTopErrorBanner(message?: string) {
+   const normalizedMessage = normalizeMessage(message ?? '')
    showMessage({
       message: normalizedMessage,
       position: "top",

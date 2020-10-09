@@ -1,13 +1,13 @@
 import {parseWebAPIError} from "../model/webAPIError/WebAPIErrorJSONConvertor";
-
-export type WebAPIResult = {
-   data?: any
-   error?: any
-}
+import {NewsJSONConverter} from "../../model/model/news/NewsJSONConverter";
+import {WebAPIResult} from "../model/webAPIResult/WebAPIResult";
+import {News} from "../../model/model/news/News";
 
 export class TopHeadlineWebAPI {
 
-   async getTopHeadline(apiKey: string, country?: string, category?: string): Promise<WebAPIResult> {
+   private newsJSONConverter = new NewsJSONConverter()
+
+   async getTopHeadline(apiKey: string, pageSize: number, page: number, country?: string, category?: string): Promise<WebAPIResult<News[]>> {
       let url = `http://newsapi.org/v2/top-headlines?apiKey=${apiKey}`
       if (country) {
          url = url.concat(`&country=${country}`)
@@ -15,6 +15,8 @@ export class TopHeadlineWebAPI {
       if (category) {
          url = url.concat(`&category=${category}`)
       }
+      url = url.concat(`&pageSize=${pageSize}`)
+      url = url.concat(`&page=${page}`)
       return fetch(
          url,
          {
@@ -23,7 +25,10 @@ export class TopHeadlineWebAPI {
          .then((response) => response.json())
          .then((json) => {
             if (json.status === 'ok') {
-               return {data: json.articles}
+               const news = json.articles.map((item: any) => {
+                  return this.newsJSONConverter.toNews(item)
+               })
+               return {data: news}
             } else {
                const error = parseWebAPIError(json)
                return {error: error}

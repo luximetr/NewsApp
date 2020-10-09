@@ -22,6 +22,7 @@ interface Props {
    onPickerClose: VoidFunction
    onEditCountries: VoidFunction
    onEditCategories: VoidFunction
+   onReachedEnd: VoidFunction
 }
 
 interface State {
@@ -77,6 +78,7 @@ export class NewsFeedScreenView extends LocalizableComponent<Props, State> {
                return this.renderNewsItem(item.item)
             }}
             refreshControl={this.renderRefreshControl(appearance)}
+            onEndReached={() => {this.props.onReachedEnd()}}
          />
       )
    }

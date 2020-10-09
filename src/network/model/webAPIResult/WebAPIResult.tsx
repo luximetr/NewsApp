@@ -1,6 +1,6 @@
 import {WebAPIError} from "../webAPIError/WebAPIError";
 
-export type WebAPIResult = {
-   data?: any
+export type WebAPIResult<T> = {
+   data?: T
    error?: WebAPIError
 }

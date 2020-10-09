@@ -148,7 +148,7 @@
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = DMZC7LUBK8;
+						DevelopmentTeam = 9HC298K985;
 						LastSwiftMigration = 1150;
 						ProvisioningStyle = Manual;
 					};
@@ -297,7 +297,7 @@
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = DMZC7LUBK8;
+				DEVELOPMENT_TEAM = 9HC298K985;
 				INFOPLIST_FILE = NewsApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -305,9 +305,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.deskera.deskmobile1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sync.luximetr.newsapp;
 				PRODUCT_NAME = NewsApp;
-				PROVISIONING_PROFILE_SPECIFIER = "Desk Mobile App Development Profile";
+				PROVISIONING_PROFILE_SPECIFIER = newsapp_dev_profile;
 				SWIFT_OBJC_BRIDGING_HEADER = "NewsApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -321,9 +321,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = DMZC7LUBK8;
+				DEVELOPMENT_TEAM = 9HC298K985;
 				INFOPLIST_FILE = NewsApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -331,9 +332,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.deskera.deskmobile1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sync.luximetr.newsapp;
 				PRODUCT_NAME = NewsApp;
-				PROVISIONING_PROFILE_SPECIFIER = "Desk Mobile App Development Profile";
+				PROVISIONING_PROFILE_SPECIFIER = newsapp_appstore_profile;
 				SWIFT_OBJC_BRIDGING_HEADER = "NewsApp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";

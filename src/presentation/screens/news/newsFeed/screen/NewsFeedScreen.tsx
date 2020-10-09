@@ -21,12 +21,15 @@ interface State {
   isPickerVisible: boolean
 }
 
+const firstPageIndex = 1
+
 export class NewsFeedScreen extends React.Component<Props, State> {
 
   // Data
   private filteredCountry?: Country
   private filteredCategory?: Category
   private filterUpdated = false
+  private currentPage = firstPageIndex
 
   // Dependencies
   private topHeadlinesRepo = new TopHeadlinesRepo()
@@ -53,34 +56,57 @@ export class NewsFeedScreen extends React.Component<Props, State> {
 
   componentDidMount(): void {
     this.setState({isLoading: true})
-    this.loadHeadlines()
+    this.loadHeadlinesNextPage()
   }
 
   // Load headlines
-  private loadHeadlines() {
-    this.asyncLoadHeadlines().then()
+  private loadHeadlinesFirstPage() {
+    this.currentPage = firstPageIndex
+    this.loadHeadlinesNextPage()
   }
 
-  private async asyncLoadHeadlines() {
-    if (this.filteredCountry === undefined) {
-      this.filteredCountry = await this.countriesRepo.getEnabledCountry()
-    }
-    if (this.filteredCategory === undefined) {
-      this.filteredCategory = await this.categoriesRepo.getEnabledCategory()
-    }
-    const result = await this.topHeadlinesRepo.getTopHeadlines(this.filteredCountry, this.filteredCategory)
+  private loadHeadlinesNextPage() {
+    this.loadHeadlinesNextPageAsync().then()
+  }
+
+  private async loadHeadlinesNextPageAsync() {
+    await this.fetchFilteredCountryIfNeeded()
+    await this.fetchFilteredCategoryIfNeeded()
+    const result = await this.topHeadlinesRepo.getTopHeadlines(this.currentPage, this.filteredCountry, this.filteredCategory)
     this.setState({isRefreshing: false, isLoading: false})
     if (result.data) {
-      this.setState({news: result.data})
+      if (result.data.length === 0) { return }
+      if (this.currentPage === firstPageIndex) {
+        this.setState({news: result.data})
+      } else {
+        const allNews = this.state.news.concat(result.data)
+        this.setState({news: allNews})
+      }
+      this.currentPage += 1
     } else {
-      showTopErrorBanner(result.error.message)
+      showTopErrorBanner(result.error?.message)
     }
+  }
+
+  private async fetchFilteredCountryIfNeeded() {
+    if (this.filteredCountry !== undefined) { return }
+    this.filteredCountry = await this.countriesRepo.getEnabledCountry()
+  }
+
+  private async fetchFilteredCategoryIfNeeded() {
+    if (this.filteredCategory !== undefined) { return }
+    this.filteredCategory = await this.categoriesRepo.getEnabledCategory()
+  }
+
+  // Load next page
+  private onReachedNewsListEnd() {
+    this.loadHeadlinesNextPage()
   }
 
   // Refresh
   private onRefresh() {
     this.setState({isRefreshing: true})
-    this.loadHeadlines()
+    this.loadHeadlinesFirstPage()
   }
 
   // Filter
@@ -96,7 +122,7 @@ export class NewsFeedScreen extends React.Component<Props, State> {
   private applyFilters() {
     if (!this.filterUpdated) { return }
     this.filterUpdated = false
-    this.loadHeadlines()
+    this.loadHeadlinesFirstPage()
   }
 
   // Countries
@@ -142,6 +168,7 @@ export class NewsFeedScreen extends React.Component<Props, State> {
          onPickerClose={() => {this.onPickerClose()}}
          onEditCategories={this.onEditCategories.bind(this)}
          onEditCountries={this.onEditCountries.bind(this)}
+         onReachedEnd={this.onReachedNewsListEnd.bind(this)}
       />
     )
   }
