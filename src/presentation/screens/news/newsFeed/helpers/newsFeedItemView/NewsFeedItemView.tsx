@@ -1,13 +1,17 @@
 import {BaseComponent} from "../../../../../helpers/components/baseViews/baseComponent/BaseComponent";
 import {Appearance} from "../../../../../../model/model/appearance/Appearance";
 import React from "react";
-import {View, Text, Image} from "react-native";
-import {getStyles} from "./NewsFeedItemView.styles";
+import {View, Text, Image, TouchableOpacity} from "react-native";
+import {getReadLaterButtonIconColor, getStyles} from "./NewsFeedItemView.styles";
+import {touchableOpacity} from "../../../../../helpers/managers/ScreenInfoProvider";
 
 interface Props {
    title: string
    imageURL?: string
-   source?: string
+   source?: string,
+   isInReadLater: boolean
+   onAddToReadLaterTap?: VoidFunction
+   onRemoveFromReadLaterTap?: VoidFunction
 }
 
 interface State {
@@ -21,8 +25,13 @@ export class NewsFeedItemView extends BaseComponent<Props, State> {
          <View style={getStyles(appearance).container}>
             {this.renderImage(appearance)}
             <View style={getStyles(appearance).content}>
-               {this.renderTitle(appearance)}
-               {this.renderSource(appearance)}
+               <View style={getStyles(appearance).contentContainer}>
+                  <View style={getStyles(appearance).textContainer}>
+                     {this.renderSource(appearance)}
+                     {this.renderTitle(appearance)}
+                  </View>
+                  {this.renderReadLaterButton(appearance)}
+               </View>
             </View>
          </View>
       )
@@ -30,10 +39,10 @@ export class NewsFeedItemView extends BaseComponent<Props, State> {
 
    // Image
    private renderImage(appearance: Appearance) {
-      return this.props.imageURL && (
+      return (
          <Image
             style={getStyles(appearance).image}
-            source={{uri: this.props.imageURL}}
+            source={{uri: this.props.imageURL || ''}}
          />
       )
    }
@@ -60,5 +69,35 @@ export class NewsFeedItemView extends BaseComponent<Props, State> {
             {this.props.title}
          </Text>
       )
+   }
+
+   // Read later button
+   private renderReadLaterButton(appearance: Appearance) {
+      return (
+        <TouchableOpacity
+          activeOpacity={touchableOpacity}
+          style={getStyles(appearance).readLaterButton}
+          onPress={() => {this.onReadLaterButtonTap()}}
+        >
+           <Image
+             source={{uri: 'clock'}}
+             style={[
+                getStyles(appearance).readLaterButtonIcon,
+                {tintColor: getReadLaterButtonIconColor(appearance, this.props.isInReadLater)}]}
+           />
+        </TouchableOpacity>
+      )
+   }
+
+   private onReadLaterButtonTap() {
+      if (this.props.isInReadLater) {
+         if (this.props.onRemoveFromReadLaterTap !== undefined) {
+            this.props.onRemoveFromReadLaterTap()
+         }
+      } else {
+         if (this.props.onAddToReadLaterTap !== undefined) {
+            this.props.onAddToReadLaterTap()
+         }
+      }
    }
 }

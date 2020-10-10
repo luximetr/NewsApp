@@ -27,11 +27,13 @@ export function getStyles(appearance: Appearance) {
          backgroundColor: 'rgba(0, 0, 0, 0.25)',
          flexDirection: "column-reverse",
       },
-      titleContainer: {
-         flex: 1,
+      contentContainer: {
          width: '100%',
-         position: 'absolute',
-         justifyContent: "space-between",
+         flexDirection: 'row',
+         justifyContent: 'space-between',
+      },
+      textContainer: {
+         flex: 1,
       },
       source: {
          paddingBottom: 6,
@@ -42,5 +44,26 @@ export function getStyles(appearance: Appearance) {
          fontSize: 20,
          color: 'white',
       },
+      readLaterButton: {
+         height: 40,
+         width: 40,
+         paddingRight: 2,
+         paddingBottom: 2,
+         alignItems: 'flex-end',
+         justifyContent: 'flex-end',
+         alignSelf: 'flex-end',
+      },
+      readLaterButtonIcon: {
+         height: 17,
+         width: 17,
+      }
    })
+}
+
+export function getReadLaterButtonIconColor(appearance: Appearance, isSelected: boolean) {
+   if (isSelected) {
+      return appearance.action.background.primary
+   } else {
+      return 'white'
+   }
 }

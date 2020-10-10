@@ -10,15 +10,18 @@ export class AsyncStorage {
 
    async addItem(key: string, value: any) {
       const storedString = await ReactAsyncStorage.getItem(key)
+      console.log('WILL SAVE')
       if (storedString) {
          const storedArray = JSON.parse(storedString) as any[]
          storedArray.push(value)
          const arrayString = JSON.stringify(storedArray)
+         console.log(arrayString)
          return ReactAsyncStorage.setItem(key, arrayString)
       } else {
          const array = []
          array.push(value)
          const arrayString = JSON.stringify(array)
+         console.log(arrayString)
          return ReactAsyncStorage.setItem(key, arrayString)
       }
    }

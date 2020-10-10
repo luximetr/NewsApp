@@ -7,6 +7,7 @@ import {SettingsListScreen} from "../settings/settingsList/screen/SettingsListSc
 import {LocalizableComponent} from "../../helpers/components/baseViews/baseComponent/LocalizableComponent";
 import {translate} from "../../../app/repos/appLanguagesRepo/repo/Translator";
 import {Image, ImageSourcePropType} from "react-native";
+import {ReadLaterScreen} from "../news/readLater/screen/ReadLaterScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -14,8 +15,9 @@ interface Props {
 }
 
 interface State {
-   screen1Title: string
-   screen2Title: string
+  screen1Title: string
+  screen2Title: string
+  screen3Title: string
 }
 
 export class MainTabBar extends LocalizableComponent<Props, State> {
@@ -24,16 +26,18 @@ export class MainTabBar extends LocalizableComponent<Props, State> {
    constructor(props: Props) {
       super(props);
       this.state = {
-         screen1Title: '',
-         screen2Title: '',
+        screen1Title: '',
+        screen2Title: '',
+        screen3Title: ''
       }
    }
 
    // Setup strings
    setupStrings() {
       this.setState({
-         screen1Title: translate('tab_bar_tab1_title'),
-         screen2Title: translate('tab_bar_tab2_title'),
+        screen1Title: translate('tab_bar_tab1_title'),
+        screen2Title: translate('tab_bar_tab2_title'),
+        screen3Title: translate('tab_bar_tab3_title')
       })
    }
 
@@ -57,13 +61,23 @@ export class MainTabBar extends LocalizableComponent<Props, State> {
                }}
             />
             <Tab.Screen
+              name={'ReadLater'}
+              component={ReadLaterScreen}
+              options={{
+                tabBarIcon: (params) => {
+                  return this.renderTabIcon(params, {uri: 'clock'})
+                },
+                tabBarLabel: this.state.screen2Title
+              }}
+            />
+            <Tab.Screen
                name={'Settings'}
                component={SettingsListScreen}
                options={{
                   tabBarIcon: (params) => {
                      return this.renderTabIcon(params, {uri: 'settings'})
                   },
-                  tabBarLabel: this.state.screen2Title
+                  tabBarLabel: this.state.screen3Title
                }}
             />
          </Tab.Navigator>
@@ -75,8 +89,8 @@ export class MainTabBar extends LocalizableComponent<Props, State> {
       return (
          <Image
             style={{
-               height: params.size,
-               width: params.size,
+               height: params.size - 3,
+               width: params.size - 3,
                tintColor: params.color}}
             source={source}
          />

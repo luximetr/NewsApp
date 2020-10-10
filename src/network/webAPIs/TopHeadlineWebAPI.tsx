@@ -27,8 +27,9 @@ export class TopHeadlineWebAPI {
             if (json.status === 'ok') {
                const news = json.articles.map((item: any) => {
                   return this.newsJSONConverter.toNews(item)
-               })
-               return {data: news}
+               }) as News[]
+               const filteredNews = news.filter((item: News) => item !== null)
+               return {data: filteredNews}
             } else {
                const error = parseWebAPIError(json)
                return {error: error}

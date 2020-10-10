@@ -10,7 +10,8 @@
   "settings_template_news_source": "NewsApp",
   "settings_template_news_title": "Здесь можно увидеть краткое описание",
   "tab_bar_tab1_title": "Новости",
-  "tab_bar_tab2_title": "Настройки",
+  "tab_bar_tab2_title": "Позже",
+  "tab_bar_tab3_title": "Настройки",
   "categories_title": "Категории",
   "categories_tab1_title": "Выбранные",
   "categories_tab2_title": "Доступные",
@@ -78,5 +79,6 @@
   "country_name_ve": "Венесуэла",
   "country_name_za": "Южная Африка",
   "selected_countries_can_not_remove_error_message": "Вы не можете удалить активную страну",
-  "selected_categories_can_not_remove_error_message": "Вы не можете удалить активную категорию"
+  "selected_categories_can_not_remove_error_message": "Вы не можете удалить активную категорию",
+  "read_later_title": "Читать позже"
 }

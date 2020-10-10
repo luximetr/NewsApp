@@ -13,6 +13,7 @@ import {FloatRoundButton} from "../../../../helpers/components/buttons/floatRoun
 
 interface Props {
    news: News[]
+   readLaterNews: News[]
    isRefreshing: boolean
    isLoading: boolean
    onRefresh: VoidFunction
@@ -23,6 +24,8 @@ interface Props {
    onEditCountries: VoidFunction
    onEditCategories: VoidFunction
    onReachedEnd: VoidFunction
+   onAddToReadLaterPress: (news: News) => void
+   onRemoveToReadLaterPress: (news: News) => void
 }
 
 interface State {
@@ -94,9 +97,19 @@ export class NewsFeedScreenView extends LocalizableComponent<Props, State> {
                title={news.title}
                imageURL={news.imageURL}
                source={news.source.name}
+               isInReadLater={this.getIsInReadLater(news)}
+               onAddToReadLaterTap={() => {this.props.onAddToReadLaterPress(news)}}
+               onRemoveFromReadLaterTap={() => {this.props.onRemoveToReadLaterPress(news)}}
             />
          </TouchableOpacity>
       )
+   }
+
+   private getIsInReadLater(news: News) : boolean {
+      const index = this.props.readLaterNews.findIndex((item) => {
+         return item.url === news.url
+      })
+      return index !== -1
    }
 
    // Refresh control

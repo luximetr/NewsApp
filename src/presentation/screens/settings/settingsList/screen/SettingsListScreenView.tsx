@@ -90,6 +90,7 @@ export class SettingsListScreenView extends LocalizableComponent<Props, State> {
                imageURL={this.state.templateNews.imageURL}
                source={this.state.templateNews.source}
                title={this.state.templateNews.title}
+               isInReadLater={false}
             />
             <View />
          </View>

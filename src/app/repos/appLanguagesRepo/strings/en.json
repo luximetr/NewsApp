@@ -10,7 +10,8 @@
   "settings_template_news_source": "NewsApp",
   "settings_template_news_title": "Here you can see example news title",
   "tab_bar_tab1_title": "News",
-  "tab_bar_tab2_title": "Settings",
+  "tab_bar_tab2_title": "Later",
+  "tab_bar_tab3_title": "Settings",
   "categories_title": "Categories",
   "categories_tab1_title": "Selected",
   "categories_tab2_title": "Available",
@@ -79,4 +80,5 @@
   "country_name_za": "South Africa",
   "selected_countries_can_not_remove_error_message": "You can't remove enabled country",
   "selected_categories_can_not_remove_error_message": "You can't remove enabled category",
+  "read_later_title": "Read later"
 }
